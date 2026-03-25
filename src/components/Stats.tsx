@@ -3,10 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
-  { value: 500, suffix: "+", label: "Projects Posted" },
-  { value: 200, suffix: "+", label: "Companies" },
-  { value: 1000, suffix: "+", label: "Professionals" },
-  { value: 98, suffix: "%", label: "Satisfaction" },
+  { value: 25, suffix: "+", label: "Years of Experience" },
+  { value: 500, suffix: "+", label: "Projects Delivered" },
+  { value: 98, suffix: "%", label: "Client Satisfaction" },
+  { value: 40, suffix: "+", label: "Team Members" },
 ];
 
 function useCountUp(target: number, isVisible: boolean, duration = 2000) {
@@ -46,7 +46,6 @@ export default function Stats() {
 
   return (
     <section ref={sectionRef} className="py-20 lg:py-24 bg-stone-900 bg-grid-dark relative overflow-hidden grain">
-      {/* Top accent */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-terra/50 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
@@ -57,27 +56,28 @@ export default function Stats() {
         </div>
       </div>
 
-      {/* Bottom accent */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-terra/50 to-transparent" />
     </section>
   );
 }
 
-function StatItem({ stat, isVisible, index }: { stat: typeof stats[0]; isVisible: boolean; index: number }) {
+function StatItem({ stat, isVisible, index }: { stat: (typeof stats)[0]; isVisible: boolean; index: number }) {
   const count = useCountUp(stat.value, isVisible);
 
   return (
     <div
       className="text-center lg:text-left space-y-2"
-      style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? "translateY(0)" : "translateY(20px)", transition: `all 0.6s ease-out ${index * 0.15}s` }}
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? "translateY(0)" : "translateY(20px)",
+        transition: `all 0.6s ease-out ${index * 0.15}s`,
+      }}
     >
       <div className="font-display text-4xl lg:text-5xl xl:text-6xl font-light text-stone-50 tracking-tight">
         {count.toLocaleString()}
         <span className="text-terra">{stat.suffix}</span>
       </div>
-      <div className="text-sm text-stone-400 tracking-wide uppercase font-medium">
-        {stat.label}
-      </div>
+      <div className="text-xs text-stone-400 tracking-wide uppercase font-medium">{stat.label}</div>
     </div>
   );
 }

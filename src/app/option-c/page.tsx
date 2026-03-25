@@ -32,6 +32,16 @@ function useReveal(threshold = 0.15) {
   return ref;
 }
 
+function CStatItem({ stat, isVisible, index }: { stat: { value: number; suffix: string; label: string }; isVisible: boolean; index: number }) {
+  const c = useCountUp(stat.value, isVisible);
+  return (
+    <div className="text-center" style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? "none" : "translateY(20px)", transition: `all .6s ease-out ${index * .15}s` }}>
+      <div className="text-4xl lg:text-5xl font-light text-white" style={{ fontFamily: "var(--font-fraunces)" }}>{c.toLocaleString()}<span className="text-[#8BC49E]">{stat.suffix}</span></div>
+      <div className="text-sm text-[#8BC49E] mt-1">{stat.label}</div>
+    </div>
+  );
+}
+
 export default function OptionC() {
   const heroRef = useRef<HTMLElement>(null);
   const catRef = useReveal();
@@ -229,15 +239,9 @@ export default function OptionC() {
               { value: 200, suffix: "+", label: "Companies" },
               { value: 1000, suffix: "+", label: "Professionals" },
               { value: 98, suffix: "%", label: "Satisfaction" },
-            ].map((s, i) => {
-              const c = useCountUp(s.value, statsVis);
-              return (
-                <div key={s.label} className="text-center" style={{ opacity: statsVis ? 1 : 0, transform: statsVis ? "none" : "translateY(20px)", transition: `all .6s ease-out ${i * .15}s` }}>
-                  <div className="text-4xl lg:text-5xl font-light text-white" style={{ fontFamily: "var(--font-fraunces)" }}>{c.toLocaleString()}<span className="text-[#8BC49E]">{s.suffix}</span></div>
-                  <div className="text-sm text-[#8BC49E] mt-1">{s.label}</div>
-                </div>
-              );
-            })}
+            ].map((s, i) => (
+              <CStatItem key={s.label} stat={s} isVisible={statsVis} index={i} />
+            ))}
           </div>
         </div>
       </section>

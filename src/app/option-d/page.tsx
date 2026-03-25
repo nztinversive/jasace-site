@@ -31,6 +31,16 @@ function useReveal(threshold = 0.15) {
   return ref;
 }
 
+function DStatItem({ stat, isVisible, index }: { stat: { value: number; suffix: string; label: string }; isVisible: boolean; index: number }) {
+  const c = useCountUp(stat.value, isVisible);
+  return (
+    <div className="text-center" style={{ opacity: isVisible ? 1 : 0, transform: isVisible ? "none" : "translateY(20px)", transition: `all .6s ease-out ${index * .15}s` }}>
+      <div className="text-4xl lg:text-6xl font-extrabold text-white" style={{ fontFamily: "var(--font-syne)" }}>{c.toLocaleString()}{stat.suffix}</div>
+      <div className="text-xs font-bold text-white/60 tracking-[.2em] mt-2" style={{ fontFamily: "var(--font-syne)" }}>{stat.label}</div>
+    </div>
+  );
+}
+
 export default function OptionD() {
   const heroRef = useRef<HTMLElement>(null);
   const catRef = useReveal();
@@ -199,15 +209,9 @@ export default function OptionD() {
               { value: 200, suffix: "+", label: "COMPANIES" },
               { value: 1000, suffix: "+", label: "PROS" },
               { value: 98, suffix: "%", label: "SATISFACTION" },
-            ].map((s, i) => {
-              const c = useCountUp(s.value, statsVis);
-              return (
-                <div key={s.label} className="text-center" style={{ opacity: statsVis ? 1 : 0, transform: statsVis ? "none" : "translateY(20px)", transition: `all .6s ease-out ${i * .15}s` }}>
-                  <div className="text-4xl lg:text-6xl font-extrabold text-white" style={{ fontFamily: "var(--font-syne)" }}>{c.toLocaleString()}{s.suffix}</div>
-                  <div className="text-xs font-bold text-white/60 tracking-[.2em] mt-2" style={{ fontFamily: "var(--font-syne)" }}>{s.label}</div>
-                </div>
-              );
-            })}
+            ].map((s, i) => (
+              <DStatItem key={s.label} stat={s} isVisible={statsVis} index={i} />
+            ))}
           </div>
         </div>
       </section>

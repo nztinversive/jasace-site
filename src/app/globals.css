@@ -58,6 +58,32 @@ html {
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ── Marquee / Ticker ────────────────────────── */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* ── Parallax helper ─────────────────────────── */
+.parallax-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.parallax-img {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
 
 /* ── Horizontal Rule ─────────────────────────── */
 .hr-accent {
