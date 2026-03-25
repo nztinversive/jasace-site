@@ -10,7 +10,7 @@ const clients = [
   "Nexus Architecture",
   "Ironclad Construction",
   "Grayson Capital",
-  "Summit Health Systems",
+  "Summit Health",
 ];
 
 export default function Clients() {
@@ -32,18 +32,19 @@ export default function Clients() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-16 lg:py-20 bg-stone-50 border-b border-stone-200">
+    <section ref={sectionRef} className="py-14 lg:py-16 bg-stone-100/50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <p className="reveal text-xs font-semibold tracking-[0.2em] uppercase text-stone-400 text-center mb-10">
-          Trusted by Leading Organizations
+        <p className="reveal text-xs font-semibold tracking-[0.2em] uppercase text-stone-400 text-center mb-8">
+          We&apos;ve Built With
         </p>
-        <div className="reveal reveal-delay-1 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-8 items-center">
+        <div className="reveal reveal-delay-1 flex flex-wrap items-center justify-center gap-x-12 gap-y-4 lg:gap-x-16">
           {clients.map((name) => (
-            <div key={name} className="flex items-center justify-center group">
-              <span className="font-display text-sm lg:text-base font-semibold text-stone-300 group-hover:text-stone-500 transition-colors duration-500 text-center leading-tight tracking-tight whitespace-nowrap">
-                {name}
-              </span>
-            </div>
+            <span
+              key={name}
+              className="font-display text-base lg:text-lg font-medium text-stone-300 hover:text-stone-600 transition-colors duration-500 cursor-default tracking-tight"
+            >
+              {name}
+            </span>
           ))}
         </div>
       </div>

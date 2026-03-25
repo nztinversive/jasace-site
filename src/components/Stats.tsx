@@ -1,31 +1,47 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
+
+/*
+ * Redesigned stats — less "corporate dashboard", more editorial.
+ * Large serif numbers with a human-readable label beneath.
+ * Counter uses requestAnimationFrame for smooth animation.
+ */
 
 const stats = [
-  { value: 25, suffix: "+", label: "Years of Experience" },
-  { value: 500, suffix: "+", label: "Projects Delivered" },
-  { value: 98, suffix: "%", label: "Client Satisfaction" },
-  { value: 40, suffix: "+", label: "Team Members" },
+  { value: 25, suffix: "+", label: "Years", detail: "of shaping the built environment" },
+  { value: 500, suffix: "+", label: "Projects", detail: "delivered across three disciplines" },
+  { value: 98, suffix: "%", label: "Satisfaction", detail: "client retention rate" },
+  { value: 40, suffix: "+", label: "People", detail: "architects, engineers, and builders" },
 ];
 
-function useCountUp(target: number, isVisible: boolean, duration = 2000) {
+function useCountUp(target: number, shouldStart: boolean) {
   const [count, setCount] = useState(0);
+  const hasRun = useRef(false);
+
+  const animate = useCallback(() => {
+    if (hasRun.current) return;
+    hasRun.current = true;
+
+    const duration = 1800;
+    const startTime = performance.now();
+
+    function tick(now: number) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease-out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.round(eased * target));
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+  }, [target]);
+
   useEffect(() => {
-    if (!isVisible) return;
-    let start = 0;
-    const step = target / (duration / 16);
-    const id = setInterval(() => {
-      start += step;
-      if (start >= target) {
-        setCount(target);
-        clearInterval(id);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, 16);
-    return () => clearInterval(id);
-  }, [isVisible, target, duration]);
+    if (shouldStart) animate();
+  }, [shouldStart, animate]);
+
   return count;
 }
 
@@ -45,39 +61,65 @@ export default function Stats() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-20 lg:py-24 bg-stone-900 bg-grid-dark relative overflow-hidden grain">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-terra/50 to-transparent" />
+    <section ref={sectionRef} className="relative overflow-hidden">
+      {/* Top accent */}
+      <div className="h-px bg-gradient-to-r from-transparent via-terra/40 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {stats.map((stat, i) => (
-            <StatItem key={stat.label} stat={stat} isVisible={isVisible} index={i} />
-          ))}
+      <div className="bg-stone-900 bg-grid-dark grain relative py-24 lg:py-32">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          {/* Headline */}
+          <div className="text-center mb-16">
+            <span
+              className="text-xs font-semibold tracking-[0.2em] uppercase text-terra"
+              style={{ opacity: isVisible ? 1 : 0, transition: "opacity 0.6s ease-out" }}
+            >
+              By the Numbers
+            </span>
+          </div>
+
+          {/* Stats Grid */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8 lg:gap-x-0">
+            {stats.map((stat, i) => (
+              <StatItem key={stat.label} stat={stat} isVisible={isVisible} index={i} isLast={i === stats.length - 1} />
+            ))}
+          </div>
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-terra/50 to-transparent" />
+      {/* Bottom accent */}
+      <div className="h-px bg-gradient-to-r from-transparent via-terra/40 to-transparent" />
     </section>
   );
 }
 
-function StatItem({ stat, isVisible, index }: { stat: (typeof stats)[0]; isVisible: boolean; index: number }) {
+function StatItem({
+  stat,
+  isVisible,
+  index,
+  isLast,
+}: {
+  stat: (typeof stats)[0];
+  isVisible: boolean;
+  index: number;
+  isLast: boolean;
+}) {
   const count = useCountUp(stat.value, isVisible);
 
   return (
     <div
-      className="text-center lg:text-left space-y-2"
+      className={`text-center relative ${!isLast ? "lg:border-r lg:border-stone-700/40" : ""}`}
       style={{
         opacity: isVisible ? 1 : 0,
-        transform: isVisible ? "translateY(0)" : "translateY(20px)",
-        transition: `all 0.6s ease-out ${index * 0.15}s`,
+        transform: isVisible ? "translateY(0)" : "translateY(30px)",
+        transition: `all 0.8s cubic-bezier(0.22, 1, 0.36, 1) ${index * 0.12}s`,
       }}
     >
-      <div className="font-display text-4xl lg:text-5xl xl:text-6xl font-light text-stone-50 tracking-tight">
+      <div className="font-display text-5xl sm:text-6xl lg:text-7xl font-light text-stone-50 tracking-tight leading-none">
         {count.toLocaleString()}
         <span className="text-terra">{stat.suffix}</span>
       </div>
-      <div className="text-xs text-stone-400 tracking-wide uppercase font-medium">{stat.label}</div>
+      <div className="text-sm font-semibold text-stone-300 mt-3 tracking-wide">{stat.label}</div>
+      <div className="text-xs text-stone-500 mt-1 italic">{stat.detail}</div>
     </div>
   );
 }

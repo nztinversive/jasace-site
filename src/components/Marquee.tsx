@@ -1,24 +1,29 @@
 export default function Marquee() {
   const items = [
     "Architecture",
+    "Construction",
     "Engineering",
-    "Construction Management",
-    "Structural Design",
-    "Urban Planning",
     "Sustainability",
+    "Urban Planning",
+    "Structural Design",
     "Project Delivery",
     "Design Excellence",
   ];
 
   const track = items.map((item, i) => (
-    <span key={i} className="flex items-center gap-8 mx-8">
-      <span className="font-display text-xl lg:text-2xl font-light tracking-tight text-stone-900/80 whitespace-nowrap">{item}</span>
-      <span className="w-2 h-2 bg-terra rounded-full flex-shrink-0" />
+    <span key={i} className="flex items-center gap-10 mx-10">
+      <span className="font-display text-2xl lg:text-4xl font-light italic tracking-tight text-stone-800/60 whitespace-nowrap hover:text-terra transition-colors duration-500 cursor-default">
+        {item}
+      </span>
+      <span className="w-1.5 h-1.5 bg-terra/60 rounded-full flex-shrink-0" />
     </span>
   ));
 
   return (
-    <div className="py-6 border-y border-stone-200 overflow-hidden bg-stone-50">
+    <div className="py-8 lg:py-10 border-y border-stone-200/80 overflow-hidden bg-stone-50 relative">
+      {/* Fade edges */}
+      <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-stone-50 to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-stone-50 to-transparent z-10 pointer-events-none" />
       <div className="marquee-track flex items-center" style={{ width: "max-content" }}>
         {track}
         {track}
