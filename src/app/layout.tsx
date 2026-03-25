@@ -70,7 +70,7 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "Jasace — Where AEC Pros Find Projects",
   description:
-    "Jasace connects architects, contractors, and engineers with new projects and opportunities in the AEC industry.",
+    "Jasace is a boutique AEC consulting firm delivering architecture, construction, and engineering excellence.",
 };
 
 const fontVars = [

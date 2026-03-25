@@ -68,7 +68,7 @@ export default function About() {
 
             <div className="reveal reveal-delay-3 grid grid-cols-2 gap-6 pt-4">
               {[
-                { label: "Integrated Approach", desc: "Architecture, engineering, and construction under one roof." },
+                { label: "Integrated Approach", desc: "Architecture, construction, and engineering under one roof." },
                 { label: "Client-First", desc: "Your vision drives every decision we make." },
                 { label: "Sustainable Design", desc: "Building responsibly for the next generation." },
                 { label: "Local Expertise", desc: "Deep roots in the communities we serve." },

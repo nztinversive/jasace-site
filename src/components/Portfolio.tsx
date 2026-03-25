@@ -2,63 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-
-const projects = [
-  {
-    title: "Downtown Mixed-Use Tower",
-    client: "Meridian Development Group",
-    location: "Austin, TX",
-    category: "Architecture",
-    year: "2024",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop",
-    featured: true,
-  },
-  {
-    title: "Highway 101 Bridge Rehabilitation",
-    client: "Pacific Infrastructure Co.",
-    location: "San Jose, CA",
-    category: "Engineering",
-    year: "2023",
-    image: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&h=600&fit=crop",
-    featured: true,
-  },
-  {
-    title: "Lakefront Residential Complex",
-    client: "Harborview Builders",
-    location: "Chicago, IL",
-    category: "Construction",
-    year: "2024",
-    image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&h=600&fit=crop",
-    featured: false,
-  },
-  {
-    title: "Municipal Water Treatment",
-    client: "ClearFlow Engineering",
-    location: "Denver, CO",
-    category: "Engineering",
-    year: "2023",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop",
-    featured: false,
-  },
-  {
-    title: "Corporate Campus Expansion",
-    client: "Nexus Architecture Studio",
-    location: "Nashville, TN",
-    category: "Architecture",
-    year: "2024",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
-    featured: false,
-  },
-  {
-    title: "Stadium Renovation Phase II",
-    client: "Ironclad Construction",
-    location: "Phoenix, AZ",
-    category: "Construction",
-    year: "2023",
-    image: "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=800&h=600&fit=crop",
-    featured: false,
-  },
-];
+import Link from "next/link";
+import { projects } from "@/data/projects";
 
 export default function Portfolio() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -96,31 +41,29 @@ export default function Portfolio() {
             </h2>
           </div>
           <p className="reveal reveal-delay-2 text-stone-500 text-sm max-w-xs leading-relaxed">
-            A selection of recent work across architecture, engineering, and construction.
+            A selection of recent work across architecture, construction, and engineering.
           </p>
         </div>
 
         {/* Featured: 2-up large */}
         <div className="grid md:grid-cols-2 gap-6 mb-6">
           {featured.map((project, i) => (
-            <div
-              key={project.title}
-              className={`reveal reveal-delay-${i + 1} group relative overflow-hidden cursor-pointer`}
+            <Link
+              key={project.slug}
+              href={`/work/${project.slug}`}
+              className={`reveal reveal-delay-${i + 1} group relative overflow-hidden cursor-pointer block`}
             >
               <div className="aspect-[3/2] relative overflow-hidden">
                 <Image
-                  src={project.image}
+                  src={project.heroImage}
                   alt={project.title}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-stone-900/70 via-stone-900/10 to-transparent" />
-                {/* Hover overlay */}
                 <div className="absolute inset-0 bg-terra/0 group-hover:bg-terra/10 transition-colors duration-500" />
               </div>
-
-              {/* Content overlay */}
               <div className="absolute bottom-0 inset-x-0 p-6 lg:p-8">
                 <div className="flex items-end justify-between gap-4">
                   <div>
@@ -135,20 +78,21 @@ export default function Portfolio() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
         {/* Rest: 4-up smaller grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {rest.map((project, i) => (
-            <div
-              key={project.title}
-              className={`reveal reveal-delay-${Math.min(i + 1, 4)} group cursor-pointer`}
+            <Link
+              key={project.slug}
+              href={`/work/${project.slug}`}
+              className={`reveal reveal-delay-${Math.min(i + 1, 4)} group cursor-pointer block`}
             >
               <div className="aspect-[4/3] relative overflow-hidden mb-4">
                 <Image
-                  src={project.image}
+                  src={project.heroImage}
                   alt={project.title}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -160,7 +104,7 @@ export default function Portfolio() {
               <div className="text-xs text-terra font-medium tracking-wider uppercase">{project.category} &middot; {project.year}</div>
               <h3 className="font-display text-lg font-medium tracking-tight mt-1 group-hover:text-terra transition-colors">{project.title}</h3>
               <p className="text-xs text-stone-500 mt-1">{project.location}</p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

@@ -1,5 +1,5 @@
 const footerLinks = {
-  Services: ["Architecture", "Engineering", "Construction", "Consulting"],
+  Services: ["Architecture", "Construction", "Engineering", "Consulting"],
   Company: ["About", "Careers", "News", "Contact"],
   Resources: ["Case Studies", "Insights", "Sustainability", "Partners"],
   Legal: ["Privacy", "Terms", "Cookies", "Licenses"],
@@ -18,7 +18,7 @@ export default function Footer() {
             </a>
             <p className="text-sm leading-relaxed max-w-sm">
               A full-service AEC consulting firm delivering architecture,
-              engineering, and construction excellence since 2001.
+              construction, and engineering excellence since 2001.
             </p>
             <div className="pt-2 space-y-3">
               <p className="text-xs font-semibold tracking-[0.15em] uppercase text-stone-500">Stay Updated</p>

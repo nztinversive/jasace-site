@@ -54,7 +54,7 @@ export default function Hero() {
           <div className="reveal">
             <span className="inline-flex items-center gap-3 text-xs font-semibold tracking-[0.25em] uppercase text-terra">
               <span className="w-10 h-px bg-terra" />
-              Architecture &middot; Engineering &middot; Construction
+              Architecture &middot; Construction &middot; Engineering
             </span>
           </div>
 
@@ -66,7 +66,7 @@ export default function Hero() {
 
           <p className="reveal reveal-delay-2 text-lg lg:text-xl text-white/60 leading-relaxed max-w-xl">
             A boutique AEC consulting firm delivering design excellence,
-            engineering precision, and construction expertise for projects that matter.
+            construction expertise, and engineering precision for projects that matter.
           </p>
 
           <div className="reveal reveal-delay-3 flex flex-wrap items-center gap-4 pt-2">

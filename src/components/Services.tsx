@@ -12,18 +12,18 @@ const services = [
     capabilities: ["Master Planning", "Commercial Design", "Residential", "Adaptive Reuse"],
   },
   {
-    title: "Engineering",
-    subtitle: "Precision & Performance",
-    description: "Structural, civil, and MEP engineering solutions that perform beautifully. We bring technical rigor and creative problem-solving to every engineering challenge.",
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop",
-    capabilities: ["Structural", "Civil", "MEP Systems", "Environmental"],
-  },
-  {
     title: "Construction",
     subtitle: "Delivered with Integrity",
     description: "Construction management that keeps your project on time, on budget, and built to the highest standards. We bring decades of field experience to every build.",
     image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop",
     capabilities: ["Project Management", "Cost Control", "Quality Assurance", "Scheduling"],
+  },
+  {
+    title: "Engineering",
+    subtitle: "Precision & Performance",
+    description: "Structural, civil, and MEP engineering solutions that perform beautifully. We bring technical rigor and creative problem-solving to every engineering challenge.",
+    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop",
+    capabilities: ["Structural", "Civil", "MEP Systems", "Environmental"],
   },
 ];
 
@@ -59,7 +59,7 @@ export default function Services() {
             <span className="italic font-medium">One Vision</span>
           </h2>
           <p className="reveal reveal-delay-2 text-stone-500 leading-relaxed max-w-lg">
-            We bring architecture, engineering, and construction under one roof — delivering
+            We bring architecture, construction, and engineering under one roof — delivering
             integrated solutions with clarity and precision.
           </p>
         </div>

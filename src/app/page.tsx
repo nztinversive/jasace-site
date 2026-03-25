@@ -8,10 +8,14 @@ import Stats from "@/components/Stats";
 import Testimonials from "@/components/Testimonials";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
+import PageTransition from "@/components/PageTransition";
 
 export default function Home() {
   return (
     <main>
+      <PageTransition />
+      <ScrollProgress />
       <Navbar />
       <Hero />
       <Marquee />
