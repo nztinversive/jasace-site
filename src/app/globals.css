@@ -2,12 +2,90 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Base ────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+::selection {
+  background-color: #B8432F;
+  color: #FAF9F6;
+}
+
+/* ── Architectural Grid Background ────────────── */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(226, 223, 217, 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 223, 217, 0.4) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.bg-grid-dark {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ── Grain Texture Overlay ───────────────────── */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ── Scroll-triggered Animations ─────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ── Horizontal Rule ─────────────────────────── */
+.hr-accent {
+  height: 1px;
+  background: linear-gradient(to right, #B8432F, #C9A96E, transparent);
+}
+
+/* ── Utilities ───────────────────────────────── */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* ── Custom Scrollbar ────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F0EDE8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #B8B3A8;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7A756E;
 }
