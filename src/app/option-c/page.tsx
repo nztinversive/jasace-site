@@ -21,6 +21,16 @@ function useCountUp(target: number, visible: boolean) {
   return count;
 }
 
+function StatItemC({ value, suffix, label, visible, delay }: { value: number; suffix: string; label: string; visible: boolean; delay: number }) {
+  const c = useCountUp(value, visible);
+  return (
+    <div className="text-center" style={{ opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(20px)", transition: `all .6s ease-out ${delay}s` }}>
+      <div className="text-4xl lg:text-5xl font-light text-white" style={{ fontFamily: "var(--font-fraunces)" }}>{c.toLocaleString()}<span className="text-[#8BC49E]">{suffix}</span></div>
+      <div className="text-sm text-[#8BC49E] mt-1">{label}</div>
+    </div>
+  );
+}
+
 function useReveal(threshold = 0.15) {
   const ref = useRef<HTMLElement>(null);
   useEffect(() => {
@@ -229,15 +239,9 @@ export default function OptionC() {
               { value: 200, suffix: "+", label: "Companies" },
               { value: 1000, suffix: "+", label: "Professionals" },
               { value: 98, suffix: "%", label: "Satisfaction" },
-            ].map((s, i) => {
-              const c = useCountUp(s.value, statsVis);
-              return (
-                <div key={s.label} className="text-center" style={{ opacity: statsVis ? 1 : 0, transform: statsVis ? "none" : "translateY(20px)", transition: `all .6s ease-out ${i * .15}s` }}>
-                  <div className="text-4xl lg:text-5xl font-light text-white" style={{ fontFamily: "var(--font-fraunces)" }}>{c.toLocaleString()}<span className="text-[#8BC49E]">{s.suffix}</span></div>
-                  <div className="text-sm text-[#8BC49E] mt-1">{s.label}</div>
-                </div>
-              );
-            })}
+            ].map((s, i) => (
+              <StatItemC key={s.label} value={s.value} suffix={s.suffix} label={s.label} visible={statsVis} delay={i * 0.15} />
+            ))}
           </div>
         </div>
       </section>

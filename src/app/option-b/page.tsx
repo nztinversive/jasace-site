@@ -27,6 +27,19 @@ function useCountUp(target: number, visible: boolean) {
   return count;
 }
 
+// ─── Stat Item Component ──────────────────────────
+function StatItemB({ value, suffix, label, visible, delay }: { value: number; suffix: string; label: string; visible: boolean; delay: number }) {
+  const c = useCountUp(value, visible);
+  return (
+    <div className="text-center" style={{ opacity: visible ? 1 : 0, transform: visible ? "none" : "translateY(20px)", transition: `all .6s ease-out ${delay}s` }}>
+      <div className="text-4xl lg:text-5xl font-light text-white" style={{ fontFamily: "var(--font-ibm-mono)" }}>
+        {c.toLocaleString()}<span className="text-[#0EA5E9]">{suffix}</span>
+      </div>
+      <div className="text-xs text-[#475569] tracking-[.15em] uppercase mt-2" style={{ fontFamily: "var(--font-ibm-mono)" }}>{label}</div>
+    </div>
+  );
+}
+
 // ─── Reveal Hook ──────────────────────────────────
 function useReveal(threshold = 0.15) {
   const ref = useRef<HTMLElement>(null);
@@ -174,7 +187,7 @@ export default function OptionB() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16">
             <div className="space-y-3">
-              <span className="rv text-xs tracking-[.25em] uppercase text-[#0EA5E9]" style={{ fontFamily: "var(--font-ibm-mono)" }}>// Disciplines</span>
+              <span className="rv text-xs tracking-[.25em] uppercase text-[#0EA5E9]" style={{ fontFamily: "var(--font-ibm-mono)" }}>{'// Disciplines'}</span>
               <h2 className="rv rv-d1 text-4xl lg:text-5xl font-light text-white" style={{ fontFamily: "var(--font-ibm-mono)" }}>Browse by Discipline</h2>
             </div>
           </div>
@@ -210,7 +223,7 @@ export default function OptionB() {
       <section ref={howRef} className="py-24 lg:py-32 border-t border-[#1E293B] bp-grid">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-20">
-            <span className="rv text-xs tracking-[.25em] uppercase text-[#0EA5E9]" style={{ fontFamily: "var(--font-ibm-mono)" }}>// Process</span>
+            <span className="rv text-xs tracking-[.25em] uppercase text-[#0EA5E9]" style={{ fontFamily: "var(--font-ibm-mono)" }}>{'// Process'}</span>
             <h2 className="rv rv-d1 text-4xl lg:text-5xl font-light text-white mt-3" style={{ fontFamily: "var(--font-ibm-mono)" }}>How It Works</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -239,17 +252,9 @@ export default function OptionB() {
               { value: 200, suffix: "+", label: "Companies" },
               { value: 1000, suffix: "+", label: "Professionals" },
               { value: 98, suffix: "%", label: "Satisfaction" },
-            ].map((s, i) => {
-              const c = useCountUp(s.value, statsVis);
-              return (
-                <div key={s.label} className="text-center" style={{ opacity: statsVis ? 1 : 0, transform: statsVis ? "none" : "translateY(20px)", transition: `all .6s ease-out ${i * .15}s` }}>
-                  <div className="text-4xl lg:text-5xl font-light text-white" style={{ fontFamily: "var(--font-ibm-mono)" }}>
-                    {c.toLocaleString()}<span className="text-[#0EA5E9]">{s.suffix}</span>
-                  </div>
-                  <div className="text-xs text-[#475569] tracking-[.15em] uppercase mt-2" style={{ fontFamily: "var(--font-ibm-mono)" }}>{s.label}</div>
-                </div>
-              );
-            })}
+            ].map((s, i) => (
+              <StatItemB key={s.label} value={s.value} suffix={s.suffix} label={s.label} visible={statsVis} delay={i * 0.15} />
+            ))}
           </div>
         </div>
       </section>
@@ -259,7 +264,7 @@ export default function OptionB() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16">
             <div className="space-y-3">
-              <span className="rv text-xs tracking-[.25em] uppercase text-[#0EA5E9]" style={{ fontFamily: "var(--font-ibm-mono)" }}>// Opportunities</span>
+              <span className="rv text-xs tracking-[.25em] uppercase text-[#0EA5E9]" style={{ fontFamily: "var(--font-ibm-mono)" }}>{'// Opportunities'}</span>
               <h2 className="rv rv-d1 text-4xl lg:text-5xl font-light text-white" style={{ fontFamily: "var(--font-ibm-mono)" }}>Featured Projects</h2>
             </div>
             <a href="#" className="rv rv-d2 text-sm text-[#0EA5E9] hover:text-[#38BDF8] transition-colors" style={{ fontFamily: "var(--font-ibm-mono)" }}>view all &rarr;</a>
@@ -296,7 +301,7 @@ export default function OptionB() {
       <section ref={testRef} className="py-24 lg:py-32 border-b border-[#1E293B] bp-grid">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
-            <span className="rv text-xs tracking-[.25em] uppercase text-[#0EA5E9]" style={{ fontFamily: "var(--font-ibm-mono)" }}>// Testimonials</span>
+            <span className="rv text-xs tracking-[.25em] uppercase text-[#0EA5E9]" style={{ fontFamily: "var(--font-ibm-mono)" }}>{'// Testimonials'}</span>
             <h2 className="rv rv-d1 text-4xl lg:text-5xl font-light text-white mt-3" style={{ fontFamily: "var(--font-ibm-mono)" }}>Trusted by Pros</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
