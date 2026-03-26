@@ -44,8 +44,10 @@ export default function CTA() {
         </div>
 
         {/* Right: Content */}
-        <div className="bg-stone-900 bg-grid-dark relative grain py-20 lg:py-28 px-6 lg:px-16 flex items-center">
+        <div className="bg-stone-950 bg-grid-dark relative grain py-20 lg:py-28 px-6 lg:px-16 flex items-center">
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-terra/40 via-transparent to-transparent" />
+          {/* Subtle glow */}
+          <div className="absolute top-1/3 right-0 w-48 h-48 rounded-full bg-terra/[0.04] blur-[60px] pointer-events-none" />
 
           <div className="w-full max-w-lg space-y-8">
             <span className="reveal inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-terra">

@@ -11,19 +11,19 @@ export default function Marquee() {
   ];
 
   const track = items.map((item, i) => (
-    <span key={i} className="flex items-center gap-10 mx-10">
-      <span className="font-display text-2xl lg:text-4xl font-light italic tracking-tight text-stone-800/60 whitespace-nowrap hover:text-terra transition-colors duration-500 cursor-default">
+    <span key={i} className="flex items-center gap-8 mx-8">
+      <span className="font-display text-3xl lg:text-5xl font-light italic tracking-tight text-stone-900/[0.08] whitespace-nowrap hover:text-terra/40 transition-colors duration-700 cursor-default select-none">
         {item}
       </span>
-      <span className="w-1.5 h-1.5 bg-terra/60 rounded-full flex-shrink-0" />
+      <span className="w-2 h-2 border border-terra/30 rotate-45 flex-shrink-0" />
     </span>
   ));
 
   return (
-    <div className="py-8 lg:py-10 border-y border-stone-200/80 overflow-hidden bg-stone-50 relative">
+    <div className="py-10 lg:py-14 border-y border-stone-200/60 overflow-hidden bg-stone-50 relative">
       {/* Fade edges */}
-      <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-stone-50 to-transparent z-10 pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-stone-50 to-transparent z-10 pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-stone-50 to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-stone-50 to-transparent z-10 pointer-events-none" />
       <div className="marquee-track flex items-center" style={{ width: "max-content" }}>
         {track}
         {track}

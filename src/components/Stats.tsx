@@ -65,7 +65,11 @@ export default function Stats() {
       {/* Top accent */}
       <div className="h-px bg-gradient-to-r from-transparent via-terra/40 to-transparent" />
 
-      <div className="bg-stone-900 bg-grid-dark grain relative py-24 lg:py-32">
+      <div className="bg-stone-950 bg-grid-dark grain relative py-24 lg:py-32">
+        {/* Glowing accent orbs */}
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-64 h-64 rounded-full bg-terra/[0.04] blur-[80px] pointer-events-none" />
+        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-48 h-48 rounded-full bg-terra/[0.03] blur-[60px] pointer-events-none" />
+
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
           {/* Headline */}
           <div className="text-center mb-16">

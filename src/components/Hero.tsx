@@ -3,6 +3,11 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 
+/*
+ * Hero with animated architectural wireframe overlay.
+ * Adds technical edge while keeping editorial sophistication.
+ */
+
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const imgRef = useRef<HTMLDivElement>(null);
@@ -38,16 +43,76 @@ export default function Hero() {
             priority
           />
         </div>
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-stone-950/85 via-stone-900/60 to-stone-900/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-950/50 via-transparent to-stone-950/30" />
+        {/* Darker, more dramatic overlays */}
+        <div className="absolute inset-0 bg-gradient-to-r from-stone-950/90 via-stone-950/70 to-stone-900/50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-950/60 via-transparent to-stone-950/40" />
         {/* Grain */}
         <div className="absolute inset-0 grain" />
       </div>
 
-      {/* Corner accents */}
-      <div className="absolute top-24 left-8 w-24 h-24 border-l border-t border-white/10 hidden lg:block" />
-      <div className="absolute bottom-12 right-8 w-24 h-24 border-r border-b border-white/10 hidden lg:block" />
+      {/* ═══ ANIMATED WIREFRAME OVERLAY ═══ */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="wireGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="#B8432F" stopOpacity="0.15" />
+              <stop offset="100%" stopColor="#B8432F" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          {/* Animated grid lines — architectural feel */}
+          <line x1="20%" y1="0" x2="20%" y2="100%" stroke="white" strokeOpacity="0.03" strokeWidth="1">
+            <animate attributeName="x1" values="20%;22%;20%" dur="8s" repeatCount="indefinite" />
+            <animate attributeName="x2" values="20%;18%;20%" dur="8s" repeatCount="indefinite" />
+          </line>
+          <line x1="50%" y1="0" x2="50%" y2="100%" stroke="white" strokeOpacity="0.03" strokeWidth="1" />
+          <line x1="80%" y1="0" x2="80%" y2="100%" stroke="white" strokeOpacity="0.03" strokeWidth="1">
+            <animate attributeName="x1" values="80%;78%;80%" dur="10s" repeatCount="indefinite" />
+            <animate attributeName="x2" values="80%;82%;80%" dur="10s" repeatCount="indefinite" />
+          </line>
+          <line x1="0" y1="30%" x2="100%" y2="30%" stroke="white" strokeOpacity="0.03" strokeWidth="1" />
+          <line x1="0" y1="70%" x2="100%" y2="70%" stroke="white" strokeOpacity="0.03" strokeWidth="1" />
+
+          {/* Animated blueprint rectangle — right side */}
+          <rect x="60%" y="15%" width="30%" height="45%" fill="none" stroke="url(#wireGrad)" strokeWidth="1" strokeDasharray="8 4">
+            <animate attributeName="stroke-dashoffset" values="0;-24" dur="3s" repeatCount="indefinite" />
+          </rect>
+
+          {/* Floating crosshair — engineering precision */}
+          <g opacity="0.12">
+            <circle cx="75%" cy="37%" r="20" fill="none" stroke="#B8432F" strokeWidth="0.5">
+              <animate attributeName="r" values="18;22;18" dur="4s" repeatCount="indefinite" />
+            </circle>
+            <line x1="73%" y1="37%" x2="77%" y2="37%" stroke="#B8432F" strokeWidth="0.5" />
+            <line x1="75%" y1="35%" x2="75%" y2="39%" stroke="#B8432F" strokeWidth="0.5" />
+          </g>
+
+          {/* Diagonal construction line */}
+          <line x1="65%" y1="100%" x2="100%" y2="20%" stroke="white" strokeOpacity="0.02" strokeWidth="1" strokeDasharray="12 8">
+            <animate attributeName="stroke-dashoffset" values="0;-40" dur="5s" repeatCount="indefinite" />
+          </line>
+
+          {/* Small floating triangle — architectural accent */}
+          <polygon points="0,0 30,0 15,26" fill="none" stroke="#B8432F" strokeWidth="0.5" opacity="0.1" transform="translate(85%, 70%)">
+            <animateTransform attributeName="transform" type="rotate" values="0 15 13;360 15 13" dur="20s" repeatCount="indefinite" additive="sum" />
+          </polygon>
+        </svg>
+
+        {/* Glowing terracotta accent orb — top right */}
+        <div
+          className="absolute -top-20 -right-20 w-96 h-96 rounded-full hidden lg:block"
+          style={{
+            background: "radial-gradient(circle, rgba(184,67,47,0.08) 0%, transparent 70%)",
+            animation: "pulse 6s ease-in-out infinite",
+          }}
+        />
+      </div>
+
+      {/* Corner accents — larger, bolder */}
+      <div className="absolute top-24 left-8 w-32 h-32 border-l border-t border-white/[0.07] hidden lg:block" />
+      <div className="absolute bottom-16 right-8 w-32 h-32 border-r border-b border-terra/20 hidden lg:block" />
+      {/* Extra corner detail */}
+      <div className="absolute top-24 left-8 w-3 h-3 bg-terra/30 hidden lg:block" />
+      <div className="absolute bottom-16 right-8 w-3 h-3 bg-terra/30 hidden lg:block" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10">
         <div className="max-w-3xl space-y-8">
@@ -58,36 +123,38 @@ export default function Hero() {
             </span>
           </div>
 
-          <h1 className="reveal reveal-delay-1 font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-light leading-[0.92] tracking-tight text-white text-balance">
+          <h1 className="reveal reveal-delay-1 font-display text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] font-light leading-[0.90] tracking-tight text-white text-balance">
             We Shape the
             <br />
             <span className="font-semibold italic text-terra">Built Environment</span>
           </h1>
 
-          <p className="reveal reveal-delay-2 text-lg lg:text-xl text-white/60 leading-relaxed max-w-xl">
+          <p className="reveal reveal-delay-2 text-lg lg:text-xl text-white/50 leading-relaxed max-w-xl">
             A boutique ACE consulting practice delivering design excellence,
             construction expertise, and engineering precision for projects that matter.
           </p>
 
           <div className="reveal reveal-delay-3 flex flex-wrap items-center gap-4 pt-2">
-            <a href="#work" className="px-8 py-4 bg-terra text-stone-50 text-sm font-semibold tracking-wide hover:bg-terra-light transition-colors duration-300">
-              View Our Work
+            <a href="#work" className="group px-8 py-4 bg-terra text-stone-50 text-sm font-semibold tracking-wide hover:bg-terra-light transition-colors duration-300 relative overflow-hidden">
+              <span className="relative z-10">View Our Work</span>
+              {/* Shine effect on hover */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
             </a>
-            <a href="#contact" className="px-8 py-4 border border-white/25 text-white/80 text-sm font-semibold tracking-wide hover:bg-white/10 hover:border-white/40 transition-all duration-300">
+            <a href="#contact" className="px-8 py-4 border border-white/20 text-white/70 text-sm font-semibold tracking-wide hover:bg-white/5 hover:border-white/30 hover:text-white transition-all duration-300">
               Get in Touch
             </a>
           </div>
 
-          {/* Micro credibility */}
+          {/* Micro credibility — with pulsing dot */}
           <div className="reveal reveal-delay-4 flex items-center gap-6 pt-4 text-xs text-white/40">
             <span className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-terra rounded-full" />
+              <span className="w-1.5 h-1.5 bg-terra rounded-full animate-pulse" />
               <span className="text-white/60">Las Vegas, NV</span>
             </span>
-            <span className="w-px h-4 bg-white/20" />
-            <span className="text-white/60">100+ projects delivered</span>
-            <span className="w-px h-4 bg-white/20" />
-            <span className="text-white/60">98% client satisfaction</span>
+            <span className="w-px h-4 bg-white/15" />
+            <span className="text-white/50">100+ projects delivered</span>
+            <span className="w-px h-4 bg-white/15" />
+            <span className="text-white/50">98% client satisfaction</span>
           </div>
         </div>
       </div>
