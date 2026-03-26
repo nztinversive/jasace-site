@@ -72,44 +72,44 @@ const siteUrl = "https://jasace.com";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Jasace AEC — Architecture, Construction & Engineering Consulting",
-    template: "%s | Jasace AEC",
+    default: "Jasace ACE — Architecture, Construction & Engineering Consulting",
+    template: "%s | Jasace ACE",
   },
   description:
-    "Jasace is a boutique AEC consulting firm delivering architecture, construction, and engineering excellence. 25+ years, 500+ projects delivered.",
+    "Jasace is a boutique ACE consulting practice delivering architecture, construction, and engineering excellence. 25+ years, 500+ projects delivered.",
   keywords: [
     "architecture consulting",
     "construction management",
     "engineering consulting",
-    "AEC firm",
+    "ACE consulting",
     "structural engineering",
     "commercial architecture",
     "project management",
     "Jasace",
   ],
-  authors: [{ name: "Jasace AEC" }],
+  authors: [{ name: "Jasace ACE" }],
   openGraph: {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: "Jasace AEC",
-    title: "Jasace AEC — Architecture, Construction & Engineering Consulting",
+    siteName: "Jasace ACE",
+    title: "Jasace ACE — Architecture, Construction & Engineering Consulting",
     description:
-      "A boutique AEC consulting firm delivering design excellence, construction expertise, and engineering precision for projects that matter.",
+      "A boutique ACE consulting practice delivering design excellence, construction expertise, and engineering precision for projects that matter.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Jasace AEC — Shaping the Built Environment",
+        alt: "Jasace ACE — Shaping the Built Environment",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jasace AEC — Architecture, Construction & Engineering",
+    title: "Jasace ACE — Architecture, Construction & Engineering",
     description:
-      "A boutique AEC consulting firm. 25+ years, 500+ projects delivered.",
+      "A boutique ACE consulting practice. 25+ years, 500+ projects delivered.",
     images: ["/og-image.jpg"],
   },
   robots: {

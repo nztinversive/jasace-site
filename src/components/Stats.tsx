@@ -12,7 +12,7 @@ const stats = [
   { value: 25, suffix: "+", label: "Years", detail: "of shaping the built environment" },
   { value: 500, suffix: "+", label: "Projects", detail: "delivered across three disciplines" },
   { value: 98, suffix: "%", label: "Satisfaction", detail: "client retention rate" },
-  { value: 40, suffix: "+", label: "People", detail: "architects, engineers, and builders" },
+  { value: 15, suffix: "+", label: "Partners", detail: "trusted network of collaborators" },
 ];
 
 function useCountUp(target: number, shouldStart: boolean) {

@@ -65,7 +65,7 @@ export default function Hero() {
           </h1>
 
           <p className="reveal reveal-delay-2 text-lg lg:text-xl text-white/60 leading-relaxed max-w-xl">
-            A boutique AEC consulting firm delivering design excellence,
+            A boutique ACE consulting practice delivering design excellence,
             construction expertise, and engineering precision for projects that matter.
           </p>
 
@@ -79,16 +79,15 @@ export default function Hero() {
           </div>
 
           {/* Micro credibility */}
-          <div className="reveal reveal-delay-4 flex items-center gap-8 pt-4">
-            <div className="flex -space-x-2">
-              <Image src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=face" alt="" width={36} height={36} className="rounded-full border-2 border-stone-900 object-cover" />
-              <Image src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=64&h=64&fit=crop&crop=face" alt="" width={36} height={36} className="rounded-full border-2 border-stone-900 object-cover" />
-              <Image src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=64&h=64&fit=crop&crop=face" alt="" width={36} height={36} className="rounded-full border-2 border-stone-900 object-cover" />
-            </div>
-            <div className="text-xs text-white/40 leading-tight">
-              <span className="text-white/70 font-semibold">40+ professionals</span>
-              <br />25 years of AEC excellence
-            </div>
+          <div className="reveal reveal-delay-4 flex items-center gap-6 pt-4 text-xs text-white/40">
+            <span className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 bg-terra rounded-full" />
+              <span className="text-white/60">25+ years in ACE</span>
+            </span>
+            <span className="w-px h-4 bg-white/20" />
+            <span className="text-white/60">500+ projects delivered</span>
+            <span className="w-px h-4 bg-white/20" />
+            <span className="text-white/60">98% client satisfaction</span>
           </div>
         </div>
       </div>

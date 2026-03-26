@@ -77,11 +77,11 @@ export default function Testimonials() {
         </div>
 
         {/* Featured Rotating Quote */}
-        <div className="reveal reveal-delay-2 max-w-4xl mx-auto text-center">
+        <div className="reveal reveal-delay-2 max-w-3xl mx-auto text-center px-4">
           <div className="min-h-[200px] flex flex-col items-center justify-center">
             <blockquote
               key={active}
-              className="font-display text-2xl sm:text-3xl lg:text-4xl font-light text-stone-800 leading-snug tracking-tight italic animate-fade-in"
+              className="font-display text-xl sm:text-2xl lg:text-3xl font-light text-stone-800 leading-relaxed tracking-tight italic"
               style={{ animation: "fadeIn 0.6s ease-out" }}
             >
               &ldquo;{t.quote}&rdquo;

@@ -22,7 +22,7 @@ const services = [
     title: "Engineering",
     subtitle: "Precision & Performance",
     description: "Structural, civil, and MEP engineering solutions that perform beautifully. We bring technical rigor and creative problem-solving to every engineering challenge.",
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=600&fit=crop",
+    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop",
     capabilities: ["Structural", "Civil", "MEP Systems", "Environmental"],
   },
 ];

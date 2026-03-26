@@ -31,8 +31,8 @@ export default function About() {
           <div className="relative">
             <div className="reveal aspect-[4/5] relative">
               <Image
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&h=900&fit=crop"
-                alt="Our office space"
+                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=700&h=900&fit=crop"
+                alt="Architect reviewing blueprints on site"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -59,11 +59,11 @@ export default function About() {
             </h2>
 
             <p className="reveal reveal-delay-2 text-stone-500 leading-relaxed">
-              Founded in 2001, Jasace has grown from a small architecture studio into a
-              full-service AEC consulting firm. We remain committed to the same principle
-              that started it all: every project deserves our full attention, every client
-              deserves our honest counsel, and every building should enhance the lives
-              of the people who use it.
+              Founded in 2001, Jasace is a boutique ACE consulting practice built on a
+              simple principle: every project deserves full attention, every client
+              deserves honest counsel, and every building should enhance the lives
+              of the people who use it. With a trusted network of collaborators,
+              we deliver the expertise of a large firm with the care of a dedicated partner.
             </p>
 
             <div className="reveal reveal-delay-3 grid grid-cols-2 gap-6 pt-4">
