@@ -19,7 +19,7 @@ export const posts: BlogPost[] = [
     category: "Sustainability",
     readTime: "6 min read",
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=500&fit=crop",
-    author: "James Acevedo",
+    author: "Jason Reese",
     content: [
       "The construction industry accounts for nearly 40% of global carbon emissions. As regulatory pressure mounts and client expectations evolve, ACE firms face a pivotal question: adapt or be left behind.",
       "At Jasace, we've been investing in sustainable design practices for over a decade. From mass timber structures to passive house principles, our approach treats sustainability not as a checkbox but as a design driver.",
@@ -35,7 +35,7 @@ export const posts: BlogPost[] = [
     category: "Project Delivery",
     readTime: "5 min read",
     image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=500&fit=crop",
-    author: "James Acevedo",
+    author: "Jason Reese",
     content: [
       "Traditional design-bid-build project delivery creates adversarial relationships. The architect designs in isolation, the contractor bids competitively, and the engineer fills in the gaps. The result? Change orders, delays, and finger-pointing.",
       "Integrated Project Delivery (IPD) flips this model. By bringing all disciplines to the table from day one, we eliminate the costly surprises that plague conventional projects.",
@@ -51,7 +51,7 @@ export const posts: BlogPost[] = [
     category: "Engineering",
     readTime: "7 min read",
     image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&h=500&fit=crop",
-    author: "James Acevedo",
+    author: "Jason Reese",
     content: [
       "California alone has over 25,000 bridges and buildings that predate modern seismic codes. Replacing them all isn't feasible — but innovative retrofit techniques are making it possible to extend their service life by 50-75 years.",
       "Carbon fiber reinforced polymer (CFRP) wrapping has emerged as a game-changer. Unlike traditional steel jacketing, CFRP is lighter, faster to install, and doesn't add significant mass to the structure — a critical advantage in seismic design.",
@@ -67,7 +67,7 @@ export const posts: BlogPost[] = [
     category: "Architecture",
     readTime: "5 min read",
     image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=500&fit=crop",
-    author: "James Acevedo",
+    author: "Jason Reese",
     content: [
       "The pandemic didn't kill the office — it exposed what was already broken. Rows of identical desks, fluorescent lighting, and one-size-fits-all floor plans were never great. Now, workers have a choice, and the bar for office design has never been higher.",
       "Our approach at Jasace starts with a question: what can this office offer that a home office can't? The answer is almost always about connection, collaboration, and culture.",

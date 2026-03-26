@@ -40,8 +40,8 @@ export default function About() {
             </div>
             {/* Overlapping stat card */}
             <div className="reveal reveal-delay-2 absolute -bottom-6 -right-6 lg:-right-12 bg-stone-900 text-stone-50 p-8 w-48 lg:w-56 shadow-2xl">
-              <div className="font-display text-4xl lg:text-5xl font-light tracking-tight">25<span className="text-terra">+</span></div>
-              <div className="text-xs text-stone-400 tracking-wide uppercase mt-1">Years of<br />Excellence</div>
+              <div className="font-display text-4xl lg:text-5xl font-light tracking-tight">10<span className="text-terra">+</span></div>
+              <div className="text-xs text-stone-400 tracking-wide uppercase mt-1">Years in<br />the Industry</div>
               <div className="w-8 h-px bg-terra mt-4" />
             </div>
           </div>
@@ -59,11 +59,11 @@ export default function About() {
             </h2>
 
             <p className="reveal reveal-delay-2 text-stone-500 leading-relaxed">
-              Founded in 2001, Jasace is a boutique ACE consulting practice built on a
-              simple principle: every project deserves full attention, every client
-              deserves honest counsel, and every building should enhance the lives
-              of the people who use it. With a trusted network of collaborators,
-              we deliver the expertise of a large firm with the care of a dedicated partner.
+              Founded in Las Vegas by Jason Reese, Jasace is a boutique ACE consulting
+              practice built on a simple principle: every project deserves full attention,
+              every client deserves honest counsel, and every building should enhance the
+              lives of the people who use it. With a trusted network of collaborators,
+              we deliver the expertise of a larger firm with the care of a dedicated partner.
             </p>
 
             <div className="reveal reveal-delay-3 grid grid-cols-2 gap-6 pt-4">

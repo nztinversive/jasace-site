@@ -82,10 +82,10 @@ export default function Hero() {
           <div className="reveal reveal-delay-4 flex items-center gap-6 pt-4 text-xs text-white/40">
             <span className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-terra rounded-full" />
-              <span className="text-white/60">25+ years in ACE</span>
+              <span className="text-white/60">Las Vegas, NV</span>
             </span>
             <span className="w-px h-4 bg-white/20" />
-            <span className="text-white/60">500+ projects delivered</span>
+            <span className="text-white/60">100+ projects delivered</span>
             <span className="w-px h-4 bg-white/20" />
             <span className="text-white/60">98% client satisfaction</span>
           </div>

@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     template: "%s | Jasace ACE",
   },
   description:
-    "Jasace is a boutique ACE consulting practice delivering architecture, construction, and engineering excellence. 25+ years, 500+ projects delivered.",
+    "Jasace is a boutique ACE consulting practice in Las Vegas, NV delivering architecture, construction, and engineering excellence.",
   keywords: [
     "architecture consulting",
     "construction management",

@@ -72,7 +72,7 @@ export default function PrivacyPage() {
           <div className="mt-16 pt-8 border-t border-stone-200">
             <p className="text-sm text-stone-400">
               Questions about this policy? Contact us at{" "}
-              <Link href="/contact" className="text-terra hover:underline">hello@jasace.com</Link>.
+              <Link href="/contact" className="text-terra hover:underline">jason@jasace.com</Link>.
             </p>
           </div>
         </div>

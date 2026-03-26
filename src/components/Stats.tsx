@@ -9,8 +9,8 @@ import { useEffect, useRef, useState, useCallback } from "react";
  */
 
 const stats = [
-  { value: 25, suffix: "+", label: "Years", detail: "of shaping the built environment" },
-  { value: 500, suffix: "+", label: "Projects", detail: "delivered across three disciplines" },
+  { value: 10, suffix: "+", label: "Years", detail: "in the engineering industry" },
+  { value: 100, suffix: "+", label: "Projects", detail: "delivered across three disciplines" },
   { value: 98, suffix: "%", label: "Satisfaction", detail: "client retention rate" },
   { value: 15, suffix: "+", label: "Partners", detail: "trusted network of collaborators" },
 ];

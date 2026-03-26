@@ -158,9 +158,9 @@ export default function Navbar() {
               Start a Project
             </Link>
             <div className="mt-6 flex items-center gap-4 text-xs text-stone-400">
-              <span>hello@jasace.com</span>
+              <span>jason@jasace.com</span>
               <span className="w-px h-3 bg-stone-300" />
-              <span>(512) 555-0180</span>
+              <span>(702) 403-5346</span>
             </div>
           </div>
         </div>

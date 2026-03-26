@@ -46,16 +46,16 @@ export default function AboutPage() {
             <div className="grid lg:grid-cols-2 gap-16 items-start">
               <div className="space-y-6">
                 <h2 className="font-display text-3xl lg:text-4xl font-light tracking-tight">
-                  Founded in 2001,<br /><span className="italic font-medium">rooted in excellence</span>
+                  Founded in Las Vegas,<br /><span className="italic font-medium">built on results</span>
                 </h2>
                 <p className="text-stone-500 leading-relaxed">
-                  Jasace began as a one-person architecture consulting practice in Austin, Texas. Founder James Acevedo believed that the best buildings come from people who think across disciplines — not in silos.
+                  Jasace was founded by Jason Reese in Las Vegas, Nevada — built on the belief that the best projects come from people who think across disciplines, not in silos.
                 </p>
                 <p className="text-stone-500 leading-relaxed">
-                  Over 25 years, that belief shaped a boutique ACE practice built on personal attention, deep expertise, and a trusted network of specialist collaborators. We added construction management in 2010 and engineering consulting in 2006, but the philosophy never changed: listen deeply, design thoughtfully, build with integrity.
+                  With a background in business development and operations management in the engineering industry, Jason brings a unique perspective to ACE consulting — combining technical understanding with strong project delivery and client relationships. A UNLV graduate with a BBA in International Business Management, he built Jasace into a trusted name across the Southwest.
                 </p>
                 <p className="text-stone-500 leading-relaxed">
-                  Today, Jasace delivers the expertise of a full-service firm with the personal care of a dedicated partner. Every client works directly with our principals — no hand-offs, no layers, no surprises.
+                  Today, Jasace delivers the expertise of a full-service firm with the personal care of a dedicated partner. Every client works directly with Jason — no hand-offs, no layers, no surprises.
                 </p>
               </div>
 
@@ -88,13 +88,13 @@ export default function AboutPage() {
                 Who We Are
               </span>
               <h2 className="font-display text-4xl lg:text-5xl font-light tracking-tight">
-                Small Team, <span className="italic font-medium">Big Impact</span>
+                Meet the <span className="italic font-medium">Founder</span>
               </h2>
               <p className="text-stone-500 leading-relaxed">
-                We believe the best work comes from small, focused teams with direct access to decision-makers. No layers. No hand-offs. Just dedicated expertise from start to finish.
+                When you work with Jasace, you work directly with Jason. No layers, no hand-offs — just dedicated expertise and a trusted network of specialist collaborators.
               </p>
             </div>
-            <div className="grid sm:grid-cols-2 gap-12 max-w-4xl">
+            <div className="grid sm:grid-cols-1 gap-12 max-w-md">
               {leadership.map((person) => (
                 <div key={person.name} className="group">
                   <div className="aspect-[4/5] relative overflow-hidden mb-5 bg-stone-200">

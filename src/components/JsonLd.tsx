@@ -2,53 +2,43 @@ export default function JsonLd() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    name: "Jasace AEC",
+    name: "Jasace ACE",
     description:
-      "A boutique AEC consulting firm delivering architecture, construction, and engineering excellence since 2001.",
+      "A boutique ACE consulting practice delivering architecture, construction, and engineering excellence. Based in Las Vegas, NV.",
     url: "https://jasace.com",
     logo: "https://jasace.com/logo.png",
     image: "https://jasace.com/og-image.jpg",
-    telephone: "(512) 555-0180",
-    email: "hello@jasace.com",
+    telephone: "(702) 403-5346",
+    email: "jason@jasace.com",
+    founder: {
+      "@type": "Person",
+      name: "Jason Reese",
+    },
     address: {
       "@type": "PostalAddress",
-      streetAddress: "1200 Congress Avenue, Suite 400",
-      addressLocality: "Austin",
-      addressRegion: "TX",
-      postalCode: "78701",
+      addressLocality: "Las Vegas",
+      addressRegion: "NV",
       addressCountry: "US",
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 30.2672,
-      longitude: -97.7431,
+      latitude: 36.1699,
+      longitude: -115.1398,
     },
-    foundingDate: "2001",
-    numberOfEmployees: {
-      "@type": "QuantitativeValue",
-      minValue: 40,
-    },
+    foundingDate: "2015",
     sameAs: [
       "https://linkedin.com/company/jasace",
-      "https://instagram.com/jasace_aec",
-      "https://twitter.com/jasace_aec",
+      "https://instagram.com/jasace_ace",
     ],
     areaServed: {
-      "@type": "Country",
-      name: "United States",
+      "@type": "State",
+      name: "Nevada",
     },
     serviceType: [
       "Architecture Consulting",
       "Construction Management",
-      "Structural Engineering",
-      "Civil Engineering",
-      "MEP Engineering",
+      "Engineering Consulting",
     ],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "127",
-    },
   };
 
   return (
