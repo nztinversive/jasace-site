@@ -17,7 +17,7 @@ import SectionDivider from "@/components/SectionDivider";
 
 export default function Home() {
   return (
-    <main>
+    <main id="main-content">
       <JsonLd />
       <PageTransition />
       <ScrollProgress />

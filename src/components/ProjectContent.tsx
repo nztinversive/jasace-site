@@ -96,10 +96,14 @@ export default function ProjectContent({ project, prevProject, nextProject }: {
         <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-900/30 to-stone-900/10" />
         <div className="absolute inset-0 grain" />
 
-        <Link href="/#work" className="absolute top-6 left-6 z-20 flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors group">
-          <svg className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" /></svg>
-          All Projects
-        </Link>
+        {/* Breadcrumb */}
+        <div className="absolute top-6 left-6 z-20 flex items-center gap-2 text-sm text-white/40">
+          <Link href="/" className="hover:text-white/70 transition-colors">Home</Link>
+          <span>/</span>
+          <Link href="/#work" className="hover:text-white/70 transition-colors">Work</Link>
+          <span>/</span>
+          <span className="text-white/70 truncate max-w-[200px]">{project.title}</span>
+        </div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full pb-12 lg:pb-16 relative z-10">
           <div className="reveal">
