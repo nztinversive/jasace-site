@@ -7,8 +7,8 @@ import ScrollProgress from "@/components/ScrollProgress";
 import AboutClient from "./AboutClient";
 
 export const metadata = {
-  title: "About — Jasace AEC",
-  description: "Meet the team behind Jasace. 25+ years of architecture, construction, and engineering excellence.",
+  title: "About — Jasace ACE",
+  description: "The story behind Jasace. 25+ years of architecture, construction, and engineering consulting.",
 };
 
 export default function AboutPage() {
@@ -20,8 +20,8 @@ export default function AboutPage() {
         {/* Hero */}
         <section className="relative h-[50vh] min-h-[400px] flex items-end overflow-hidden">
           <Image
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&h=800&fit=crop"
-            alt="Jasace office"
+            src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&h=800&fit=crop"
+            alt="Architect reviewing blueprints on site"
             fill
             className="object-cover"
             sizes="100vw"
@@ -49,13 +49,13 @@ export default function AboutPage() {
                   Founded in 2001,<br /><span className="italic font-medium">rooted in excellence</span>
                 </h2>
                 <p className="text-stone-500 leading-relaxed">
-                  Jasace began as a three-person architecture studio in Austin, Texas. Our founder, James Acevedo, believed that the best buildings come from teams that think across disciplines — not in silos.
+                  Jasace began as a one-person architecture consulting practice in Austin, Texas. Founder James Acevedo believed that the best buildings come from people who think across disciplines — not in silos.
                 </p>
                 <p className="text-stone-500 leading-relaxed">
-                  Over 25 years, that vision grew into a full-service AEC consulting firm with 40+ professionals, two offices, and over 500 completed projects. We added construction management in 2010 and engineering in 2006, but the philosophy never changed: listen deeply, design thoughtfully, build with integrity.
+                  Over 25 years, that belief shaped a boutique ACE practice built on personal attention, deep expertise, and a trusted network of specialist collaborators. We added construction management in 2010 and engineering consulting in 2006, but the philosophy never changed: listen deeply, design thoughtfully, build with integrity.
                 </p>
                 <p className="text-stone-500 leading-relaxed">
-                  Today, Jasace serves clients ranging from municipal agencies to Fortune 500 companies. We remain committed to the boutique approach that built our reputation — every client gets our senior team&apos;s attention, every project gets our full commitment.
+                  Today, Jasace delivers the expertise of a full-service firm with the personal care of a dedicated partner. Every client works directly with our principals — no hand-offs, no layers, no surprises.
                 </p>
               </div>
 
@@ -79,32 +79,34 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Team */}
+        {/* Team — 2 person layout */}
         <section className="py-20 lg:py-28 bg-stone-100">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="max-w-2xl mb-16 space-y-4">
               <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-terra">
                 <span className="w-8 h-px bg-terra" />
-                Leadership
+                Who We Are
               </span>
               <h2 className="font-display text-4xl lg:text-5xl font-light tracking-tight">
-                The People Behind <span className="italic font-medium">the Work</span>
+                Small Team, <span className="italic font-medium">Big Impact</span>
               </h2>
+              <p className="text-stone-500 leading-relaxed">
+                We believe the best work comes from small, focused teams with direct access to decision-makers. No layers. No hand-offs. Just dedicated expertise from start to finish.
+              </p>
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid sm:grid-cols-2 gap-12 max-w-4xl">
               {leadership.map((person) => (
                 <div key={person.name} className="group">
-                  <div className="aspect-[4/5] relative overflow-hidden mb-5">
-                    <Image
-                      src={person.image}
-                      alt={person.name}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    />
+                  <div className="aspect-[4/5] relative overflow-hidden mb-5 bg-stone-200">
+                    {/* Placeholder for real photo — shows initials */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-stone-900">
+                      <span className="font-display text-5xl text-stone-50/20 font-light">
+                        {person.name.split(" ").map(n => n[0]).join("")}
+                      </span>
+                    </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-stone-900/30 to-transparent" />
                   </div>
-                  <h3 className="font-display text-xl font-medium tracking-tight">{person.name}</h3>
+                  <h3 className="font-display text-2xl font-medium tracking-tight">{person.name}</h3>
                   <p className="text-xs text-terra font-semibold tracking-wider uppercase mt-1">{person.title}</p>
                   <p className="text-sm text-stone-500 leading-relaxed mt-3">{person.bio}</p>
                 </div>
@@ -144,7 +146,7 @@ export default function AboutPage() {
             <h2 className="font-display text-3xl lg:text-4xl font-light tracking-tight">
               Want to Work <span className="italic font-medium">With Us?</span>
             </h2>
-            <p className="text-stone-500">We&apos;re always looking for talented people and exciting projects.</p>
+            <p className="text-stone-500">We take on a limited number of projects each year so we can give each one our full attention.</p>
             <div className="flex items-center justify-center gap-4">
               <Link href="/contact" className="px-8 py-4 bg-stone-900 text-stone-50 text-sm font-semibold hover:bg-terra transition-colors">
                 Start a Project
