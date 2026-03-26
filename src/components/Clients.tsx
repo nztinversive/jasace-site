@@ -32,19 +32,26 @@ export default function Clients() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-14 lg:py-16 bg-stone-100/50 overflow-hidden">
+    <section ref={sectionRef} className="py-16 lg:py-20 bg-stone-100/60 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <p className="reveal text-xs font-semibold tracking-[0.2em] uppercase text-stone-400 text-center mb-8">
+        <p className="reveal text-xs font-semibold tracking-[0.2em] uppercase text-stone-400 text-center mb-10">
           We&apos;ve Built With
         </p>
-        <div className="reveal reveal-delay-1 flex flex-wrap items-center justify-center gap-x-12 gap-y-4 lg:gap-x-16">
-          {clients.map((name) => (
-            <span
+        <div className="reveal reveal-delay-1 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8">
+          {clients.map((name, i) => (
+            <div
               key={name}
-              className="font-display text-base lg:text-lg font-medium text-stone-300 hover:text-stone-600 transition-colors duration-500 cursor-default tracking-tight"
+              className={`flex items-center justify-center py-5 lg:py-6 border-stone-200/80 hover:bg-stone-200/30 transition-colors duration-500 cursor-default ${
+                i < clients.length - (clients.length % 4 || 4) ? "border-b lg:border-b-0" : ""
+              } ${i % 4 !== 3 ? "border-r sm:border-r" : "border-r-0 sm:border-r-0"} ${
+                i < clients.length - 1 ? "lg:border-r" : "lg:border-r-0"
+              }`}
+              style={{ borderColor: "rgba(214, 211, 205, 0.6)" }}
             >
-              {name}
-            </span>
+              <span className="font-display text-sm lg:text-base font-medium text-stone-400 hover:text-stone-700 transition-colors duration-500 tracking-tight text-center px-2">
+                {name}
+              </span>
+            </div>
           ))}
         </div>
       </div>

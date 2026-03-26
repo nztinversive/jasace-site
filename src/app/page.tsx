@@ -13,6 +13,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import PageTransition from "@/components/PageTransition";
 import BackToTop from "@/components/BackToTop";
 import JsonLd from "@/components/JsonLd";
+import SectionDivider from "@/components/SectionDivider";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
       <Marquee />
       <Clients />
       <Services />
+      <div className="bg-stone-100"><SectionDivider /></div>
       <About />
       <Portfolio />
       <Stats />

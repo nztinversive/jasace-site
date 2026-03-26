@@ -82,30 +82,46 @@ export default function Portfolio() {
           ))}
         </div>
 
-        {/* Rest: 4-up smaller grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {rest.map((project, i) => (
-            <Link
-              key={project.slug}
-              href={`/work/${project.slug}`}
-              className={`reveal reveal-delay-${Math.min(i + 1, 4)} group cursor-pointer block`}
-            >
-              <div className="aspect-[4/3] relative overflow-hidden mb-4">
-                <Image
-                  src={project.heroImage}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-stone-900/30 to-transparent" />
-                <div className="absolute inset-0 bg-terra/0 group-hover:bg-terra/10 transition-colors duration-500" />
-              </div>
-              <div className="text-xs text-terra font-medium tracking-wider uppercase">{project.category} &middot; {project.year}</div>
-              <h3 className="font-display text-lg font-medium tracking-tight mt-1 group-hover:text-terra transition-colors">{project.title}</h3>
-              <p className="text-xs text-stone-500 mt-1">{project.location}</p>
-            </Link>
-          ))}
+        {/* Rest: asymmetric grid — 1 tall + 1 wide + 2 standard */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-6" style={{ gridAutoRows: "minmax(0, 1fr)" }}>
+          {rest.map((project, i) => {
+            // First card spans 2 rows (tall), second spans 2 cols (wide)
+            const spanClass = i === 0
+              ? "lg:row-span-2"
+              : i === 1
+              ? "lg:col-span-2"
+              : "";
+            const aspectClass = i === 0
+              ? "aspect-[3/4] lg:aspect-auto lg:h-full"
+              : i === 1
+              ? "aspect-[2/1] lg:aspect-auto lg:h-full"
+              : "aspect-[4/3]";
+
+            return (
+              <Link
+                key={project.slug}
+                href={`/work/${project.slug}`}
+                className={`reveal reveal-delay-${Math.min(i + 1, 4)} group cursor-pointer block relative overflow-hidden ${spanClass}`}
+              >
+                <div className={`relative overflow-hidden ${i < 2 ? "h-full" : ""} ${aspectClass}`}>
+                  <Image
+                    src={project.heroImage}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-stone-900/10 to-transparent" />
+                  <div className="absolute inset-0 bg-terra/0 group-hover:bg-terra/10 transition-colors duration-500" />
+                  <div className="absolute bottom-0 inset-x-0 p-5">
+                    <div className="text-[10px] text-white/50 font-medium tracking-wider uppercase mb-1">{project.category} &middot; {project.year}</div>
+                    <h3 className="font-display text-lg font-medium text-white tracking-tight group-hover:text-terra-100 transition-colors">{project.title}</h3>
+                    <p className="text-xs text-white/50 mt-0.5">{project.location}</p>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
