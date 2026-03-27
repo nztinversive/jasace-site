@@ -48,7 +48,7 @@ export default function Clients() {
               }`}
               style={{ borderColor: "rgba(214, 211, 205, 0.6)" }}
             >
-              <span className="font-display text-sm lg:text-base font-medium text-stone-400 hover:text-stone-700 transition-colors duration-500 tracking-tight text-center px-2">
+              <span className="font-display text-sm lg:text-base font-medium text-stone-500 hover:text-stone-800 transition-colors duration-500 tracking-tight text-center px-2">
                 {name}
               </span>
             </div>
