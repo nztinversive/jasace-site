@@ -46,19 +46,20 @@ function Lightbox({ images, index, onClose }: { images: string[]; index: number;
   );
 }
 
-/* ── Reveal Hook ──────────────────────────────── */
+/* ── Reveal Hook (state-based to survive re-renders) ── */
 function useReveal(threshold = 0.15) {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLElement | null>(null);
+  const [revealed, setRevealed] = useState(false);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) el.querySelectorAll(".reveal").forEach((c) => c.classList.add("visible"));
+      if (e.isIntersecting) setRevealed(true);
     }, { threshold });
     obs.observe(el);
     return () => obs.disconnect();
   }, [threshold]);
-  return ref;
+  return { ref, revealed };
 }
 
 /* ── Main Content Component ──────────────────── */
@@ -68,8 +69,8 @@ export default function ProjectContent({ project, prevProject, nextProject }: {
   nextProject: { slug: string; title: string };
 }) {
   const heroRef = useRef<HTMLElement>(null);
-  const contentRef = useReveal(0.1);
-  const galleryRef = useReveal(0.1);
+  const { ref: contentRef, revealed: contentRevealed } = useReveal(0.1);
+  const { ref: galleryRef, revealed: galleryRevealed } = useReveal(0.1);
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   const imgRef = useRef<HTMLDivElement>(null);
@@ -126,7 +127,7 @@ export default function ProjectContent({ project, prevProject, nextProject }: {
       </section>
 
       {/* ── CONTENT ── */}
-      <section ref={contentRef} className="py-20 lg:py-28">
+      <section ref={contentRef} className={`py-20 lg:py-28 ${contentRevealed ? "[&_.reveal]:opacity-100 [&_.reveal]:translate-y-0" : ""}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
             <div className="lg:col-span-7 space-y-12">
@@ -170,7 +171,7 @@ export default function ProjectContent({ project, prevProject, nextProject }: {
       </section>
 
       {/* ── GALLERY ── */}
-      <section ref={galleryRef} className="pb-20 lg:pb-28">
+      <section ref={galleryRef} className={`pb-20 lg:pb-28 ${galleryRevealed ? "[&_.reveal]:opacity-100 [&_.reveal]:translate-y-0" : ""}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <h3 className="reveal font-display text-2xl font-light tracking-tight mb-8">
             Project <span className="italic font-medium">Gallery</span>

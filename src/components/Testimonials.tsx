@@ -2,15 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 
-/*
- * Redesigned testimonials — editorial, not corporate.
- * One large featured quote + two supporting quotes.
- * No star ratings. Let the words speak.
- */
-
 const testimonials = [
   {
-    quote: "Jasace completely changed how we approach our projects. They delivered a $2M commercial build ahead of schedule — and the design exceeded every expectation.",
+    quote: "Jasace completely changed how we approach our projects. They delivered a $2M commercial build ahead of schedule \u2014 and the design exceeded every expectation.",
     name: "M. Chen",
     title: "CEO, Chen Development Group",
   },
@@ -29,15 +23,12 @@ const testimonials = [
 export default function Testimonials() {
   const sectionRef = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
+  const [revealed, setRevealed] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.querySelectorAll(".reveal").forEach((el) => el.classList.add("visible"));
-          }
-        });
+      ([entry]) => {
+        if (entry.isIntersecting) setRevealed(true);
       },
       { threshold: 0.15 }
     );
@@ -52,6 +43,7 @@ export default function Testimonials() {
   }, []);
 
   const t = testimonials[active];
+  const vis = revealed ? "visible" : "";
 
   return (
     <section ref={sectionRef} className="py-28 lg:py-36 bg-stone-900 relative overflow-hidden">
@@ -64,18 +56,18 @@ export default function Testimonials() {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-          <span className="reveal inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-terra mx-auto">
+          <span className={`reveal ${vis} inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-terra mx-auto`}>
             <span className="w-8 h-px bg-terra" />
             What They Say
             <span className="w-8 h-px bg-terra" />
           </span>
-          <h2 className="reveal reveal-delay-1 font-display text-4xl lg:text-5xl font-light tracking-tight text-stone-50">
+          <h2 className={`reveal reveal-delay-1 ${vis} font-display text-4xl lg:text-5xl font-light tracking-tight text-stone-50`}>
             Built on <span className="italic font-medium text-terra">Trust</span>
           </h2>
         </div>
 
         {/* Featured Rotating Quote */}
-        <div className="reveal reveal-delay-2 max-w-3xl mx-auto text-center px-4">
+        <div className={`reveal reveal-delay-2 ${vis} max-w-3xl mx-auto text-center px-4`}>
           <div className="min-h-[200px] flex flex-col items-center justify-center">
             <blockquote
               key={active}

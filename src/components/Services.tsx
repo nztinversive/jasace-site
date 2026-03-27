@@ -3,12 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
-/*
- * Services redesigned as bold interactive cards.
- * Click/hover to expand details. More Innova energy
- * while keeping Jasace editorial sophistication.
- */
-
 const services = [
   {
     title: "Architecture",
@@ -42,15 +36,12 @@ const services = [
 export default function Services() {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeIdx, setActiveIdx] = useState(0);
+  const [revealed, setRevealed] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.querySelectorAll(".reveal").forEach((el) => el.classList.add("visible"));
-          }
-        });
+      ([entry]) => {
+        if (entry.isIntersecting) setRevealed(true);
       },
       { threshold: 0.08 }
     );
@@ -59,6 +50,7 @@ export default function Services() {
   }, []);
 
   const active = services[activeIdx];
+  const vis = revealed ? "visible" : "";
 
   return (
     <section ref={sectionRef} id="services" className="py-28 lg:py-36 bg-stone-950 relative overflow-hidden">
@@ -73,11 +65,11 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="max-w-2xl mb-16 space-y-4">
-          <span className="reveal inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-terra">
+          <span className={`reveal ${vis} inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-terra`}>
             <span className="w-8 h-px bg-terra" />
             What We Do
           </span>
-          <h2 className="reveal reveal-delay-1 font-display text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight text-stone-50">
+          <h2 className={`reveal reveal-delay-1 ${vis} font-display text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight text-stone-50`}>
             Three Disciplines,<br />
             <span className="italic font-medium text-terra">One Vision</span>
           </h2>
@@ -91,7 +83,7 @@ export default function Services() {
               <button
                 key={svc.title}
                 onClick={() => setActiveIdx(i)}
-                className={`reveal reveal-delay-${i + 1} w-full text-left p-6 border transition-all duration-500 group relative overflow-hidden ${
+                className={`reveal reveal-delay-${i + 1} ${vis} w-full text-left p-6 border transition-all duration-500 group relative overflow-hidden ${
                   i === activeIdx
                     ? "border-terra/40 bg-terra/[0.06]"
                     : "border-stone-800 bg-stone-900/50 hover:border-stone-700 hover:bg-stone-900/80"
@@ -129,7 +121,7 @@ export default function Services() {
 
           {/* Right: Detail panel with photo */}
           <div className="lg:col-span-8 relative">
-            <div className="reveal reveal-delay-2 relative aspect-[4/3] lg:aspect-auto lg:h-full overflow-hidden group">
+            <div className={`reveal reveal-delay-2 ${vis} relative aspect-[4/3] lg:aspect-auto lg:h-full min-h-[300px] overflow-hidden group`}>
               {/* Image — changes with active tab */}
               <div key={activeIdx} className="absolute inset-0" style={{ animation: "fadeIn 0.5s ease-out" }}>
                 <Image
@@ -154,8 +146,8 @@ export default function Services() {
               <div className="absolute bottom-4 right-4 w-8 h-8 border-r border-b border-terra/30" />
 
               {/* Content overlay */}
-              <div className="absolute bottom-0 inset-x-0 p-8 lg:p-12">
-                <p key={`desc-${activeIdx}`} className="text-stone-300 leading-relaxed max-w-xl" style={{ animation: "fadeIn 0.5s ease-out 0.1s both" }}>
+              <div className="absolute bottom-0 inset-x-0 p-6 sm:p-8 lg:p-12">
+                <p key={`desc-${activeIdx}`} className="text-stone-300 leading-relaxed max-w-xl text-sm sm:text-base" style={{ animation: "fadeIn 0.5s ease-out 0.1s both" }}>
                   {active.description}
                 </p>
                 <a href="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-terra hover:text-terra-light transition-colors mt-6 group/link" style={{ animation: "fadeIn 0.5s ease-out 0.2s both" }}>
