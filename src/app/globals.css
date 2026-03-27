@@ -150,20 +150,35 @@ html {
   }
 }
 
-/* ── Custom Scrollbar ────────────────────────── */
+/* ── Glass morphism utility ──────────────────── */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ── Gradient text utility ───────────────────── */
+.text-gradient {
+  background: linear-gradient(135deg, #B8432F 0%, #C9A96E 50%, #B8432F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Custom Scrollbar (dark) ─────────────────── */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F0EDE8;
+  background: #0F0E0D;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #B8B3A8;
+  background: #3D3A35;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #7A756E;
+  background: #5C5750;
 }

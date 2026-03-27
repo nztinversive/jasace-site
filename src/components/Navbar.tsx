@@ -16,7 +16,6 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
-  const isHome = pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -45,20 +44,18 @@ export default function Navbar() {
     [pathname]
   );
 
-  const showLight = isHome && !scrolled && !menuOpen;
-
   return (
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-          scrolled || !isHome || menuOpen
-            ? "bg-stone-50/90 backdrop-blur-md border-b border-stone-200/80 py-3"
+          scrolled && !menuOpen
+            ? "bg-stone-950/80 backdrop-blur-md border-b border-stone-800/60 py-3"
             : "bg-transparent py-5"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
           <Link href="/" className="group relative z-[60]">
-            <span className={`font-display text-3xl font-semibold tracking-tight transition-colors duration-700 ${showLight ? "text-white" : "text-stone-900"}`}>
+            <span className="font-display text-3xl font-bold tracking-tight text-white">
               <span className="text-terra">J</span>asace
             </span>
           </Link>
@@ -71,8 +68,8 @@ export default function Navbar() {
                 href={link.href}
                 className={`text-sm font-medium tracking-wide transition-colors duration-500 relative group ${
                   isActive(link.href)
-                    ? showLight ? "text-white" : "text-stone-900"
-                    : showLight ? "text-white/60 hover:text-white" : "text-stone-500 hover:text-stone-900"
+                    ? "text-white"
+                    : "text-stone-400 hover:text-white"
                 }`}
               >
                 {link.label}
@@ -84,11 +81,7 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:block">
-            <Link href="/contact" className={`text-sm font-medium px-6 py-2.5 transition-all duration-300 ${
-              showLight
-                ? "bg-white/10 text-white border border-white/20 backdrop-blur-sm hover:bg-white/20"
-                : "bg-stone-900 text-stone-50 hover:bg-terra"
-            }`}>
+            <Link href="/contact" className="text-sm font-medium px-6 py-2.5 transition-all duration-300 bg-terra text-white hover:bg-terra-light">
               Get in Touch
             </Link>
           </div>
@@ -99,8 +92,8 @@ export default function Navbar() {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
-            <span className={`block w-6 h-[1.5px] bg-stone-900 transition-all duration-500 ease-out ${menuOpen ? "rotate-45 translate-y-[4px]" : ""}`} />
-            <span className={`block w-6 h-[1.5px] bg-stone-900 transition-all duration-500 ease-out mt-[5px] ${menuOpen ? "-rotate-45 -translate-y-[2.5px]" : ""}`} />
+            <span className={`block w-6 h-[1.5px] bg-white transition-all duration-500 ease-out ${menuOpen ? "rotate-45 translate-y-[4px]" : ""}`} />
+            <span className={`block w-6 h-[1.5px] bg-white transition-all duration-500 ease-out mt-[5px] ${menuOpen ? "-rotate-45 -translate-y-[2.5px]" : ""}`} />
           </button>
         </div>
       </nav>
@@ -112,7 +105,7 @@ export default function Navbar() {
         }`}
       >
         {/* Background */}
-        <div className="absolute inset-0 bg-stone-50" />
+        <div className="absolute inset-0 bg-stone-950" />
 
         {/* Content */}
         <div className="relative h-full flex flex-col justify-center px-8">
@@ -128,10 +121,10 @@ export default function Navbar() {
               >
                 <Link
                   href={link.href}
-                  className={`block font-display text-4xl sm:text-5xl font-light tracking-tight py-3 transition-colors duration-300 ${
+                  className={`block font-display text-4xl sm:text-5xl font-bold tracking-tight py-3 transition-colors duration-300 uppercase ${
                     isActive(link.href)
                       ? "text-terra"
-                      : "text-stone-800 hover:text-terra"
+                      : "text-stone-200 hover:text-terra"
                   }`}
                   onClick={() => setMenuOpen(false)}
                 >
@@ -143,7 +136,7 @@ export default function Navbar() {
 
           {/* Bottom section */}
           <div
-            className="mt-12 pt-8 border-t border-stone-200"
+            className="mt-12 pt-8 border-t border-stone-800"
             style={{
               transform: menuOpen ? "translateY(0)" : "translateY(20px)",
               opacity: menuOpen ? 1 : 0,

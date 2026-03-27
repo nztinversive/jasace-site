@@ -37,7 +37,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ["var(--font-cormorant)", "Georgia", "serif"],
+        display: ["var(--font-syne)", "system-ui", "sans-serif"],
         body: ["var(--font-archivo)", "system-ui", "sans-serif"],
       },
       animation: {

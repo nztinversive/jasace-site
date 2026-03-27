@@ -143,7 +143,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${fontVars} antialiased`}>
-      <body className="font-body bg-stone-50 text-stone-900">
+      <body className="font-body bg-stone-950 text-stone-100">
         <a href="#main-content" className="skip-link">Skip to content</a>
         {children}
       </body>

@@ -27,7 +27,7 @@ export default function Home() {
       <Marquee />
       <Clients />
       <Services />
-      <div className="bg-stone-100"><SectionDivider /></div>
+      <SectionDivider />
       <About />
       <Portfolio />
       <Stats />
