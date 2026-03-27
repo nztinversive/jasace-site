@@ -158,8 +158,23 @@ export default function Portfolio() {
   const rest = projects.filter((p) => !p.featured);
 
   return (
-    <section ref={sectionRef} id="work" className="py-28 lg:py-36 bg-stone-50 relative">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section ref={sectionRef} id="work" className="py-28 lg:py-36 bg-stone-950 relative overflow-hidden">
+      {/* Animated accent elements */}
+      <div className="absolute top-20 right-20 w-72 h-72 rounded-full bg-terra/[0.03] blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-40 left-10 w-56 h-56 rounded-full bg-terra/[0.02] blur-[80px] pointer-events-none" />
+      {/* Subtle grid */}
+      <div className="absolute inset-0 bg-grid-dark" />
+      {/* Animated wireframe accent */}
+      <svg className="absolute top-16 right-16 w-40 h-40 pointer-events-none hidden lg:block" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="10" width="140" height="140" stroke="#B8432F" strokeOpacity="0.08" strokeWidth="1" strokeDasharray="6 4">
+          <animate attributeName="stroke-dashoffset" values="0;-20" dur="4s" repeatCount="indefinite" />
+        </rect>
+        <circle cx="80" cy="80" r="40" stroke="white" strokeOpacity="0.03" strokeWidth="0.5">
+          <animate attributeName="r" values="38;42;38" dur="5s" repeatCount="indefinite" />
+        </circle>
+      </svg>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16">
           <div className="space-y-4">
@@ -167,8 +182,8 @@ export default function Portfolio() {
               <span className="w-8 h-px bg-terra" />
               Selected Work
             </span>
-            <h2 className="reveal reveal-delay-1 font-display text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight">
-              Projects That <span className="italic font-medium">Define Us</span>
+            <h2 className="reveal reveal-delay-1 font-display text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight text-stone-50">
+              Projects That <span className="italic font-medium text-terra">Define Us</span>
             </h2>
           </div>
           <p className="reveal reveal-delay-2 text-stone-500 text-sm max-w-xs leading-relaxed">

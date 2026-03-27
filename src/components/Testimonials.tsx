@@ -54,11 +54,13 @@ export default function Testimonials() {
   const t = testimonials[active];
 
   return (
-    <section ref={sectionRef} className="py-28 lg:py-36 bg-warm-cream relative overflow-hidden">
+    <section ref={sectionRef} className="py-28 lg:py-36 bg-stone-900 relative overflow-hidden">
       {/* Giant decorative quote mark */}
-      <div className="absolute -top-8 right-8 lg:right-24 font-display text-[280px] lg:text-[400px] leading-none text-terra/[0.04] select-none pointer-events-none">
+      <div className="absolute -top-8 right-8 lg:right-24 font-display text-[280px] lg:text-[400px] leading-none text-terra/[0.06] select-none pointer-events-none">
         &ldquo;
       </div>
+      {/* Subtle glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-terra/[0.03] blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
@@ -67,8 +69,8 @@ export default function Testimonials() {
             What They Say
             <span className="w-8 h-px bg-terra" />
           </span>
-          <h2 className="reveal reveal-delay-1 font-display text-4xl lg:text-5xl font-light tracking-tight">
-            Built on <span className="italic font-medium">Trust</span>
+          <h2 className="reveal reveal-delay-1 font-display text-4xl lg:text-5xl font-light tracking-tight text-stone-50">
+            Built on <span className="italic font-medium text-terra">Trust</span>
           </h2>
         </div>
 
@@ -77,17 +79,17 @@ export default function Testimonials() {
           <div className="min-h-[200px] flex flex-col items-center justify-center">
             <blockquote
               key={active}
-              className="font-display text-xl sm:text-2xl lg:text-3xl font-light text-stone-800 leading-relaxed tracking-tight italic"
+              className="font-display text-xl sm:text-2xl lg:text-3xl font-light text-stone-200 leading-relaxed tracking-tight italic"
               style={{ animation: "fadeIn 0.6s ease-out" }}
             >
               &ldquo;{t.quote}&rdquo;
             </blockquote>
             <div className="mt-8 flex items-center gap-4" key={`author-${active}`} style={{ animation: "fadeIn 0.6s ease-out 0.15s both" }}>
-              <div className="w-12 h-12 bg-stone-900 flex items-center justify-center text-stone-50 font-display text-sm font-semibold rounded-full">
+              <div className="w-12 h-12 bg-terra/20 border border-terra/30 flex items-center justify-center text-terra font-display text-sm font-semibold rounded-full">
                 {t.name.split(" ").map(n => n[0]).join("")}
               </div>
               <div className="text-left">
-                <div className="text-sm font-semibold text-stone-900">{t.name}</div>
+                <div className="text-sm font-semibold text-stone-100">{t.name}</div>
                 <div className="text-xs text-stone-500">{t.title}</div>
               </div>
             </div>
@@ -102,7 +104,7 @@ export default function Testimonials() {
                 className={`transition-all duration-500 rounded-full ${
                   i === active
                     ? "w-8 h-2 bg-terra"
-                    : "w-2 h-2 bg-stone-300 hover:bg-stone-400"
+                    : "w-2 h-2 bg-stone-700 hover:bg-stone-600"
                 }`}
                 aria-label={`View testimonial ${i + 1}`}
               />

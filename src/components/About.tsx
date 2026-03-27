@@ -24,6 +24,17 @@ export default function About() {
   return (
     <section ref={sectionRef} id="about" className="py-28 lg:py-36 bg-stone-100 relative overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-40" />
+      {/* Animated wireframe accent — bottom right */}
+      <svg className="absolute bottom-12 right-12 w-48 h-48 pointer-events-none hidden lg:block" viewBox="0 0 200 200" fill="none">
+        <circle cx="100" cy="100" r="80" stroke="#B8432F" strokeOpacity="0.06" strokeWidth="0.5" strokeDasharray="4 6">
+          <animate attributeName="stroke-dashoffset" values="0;-20" dur="6s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="100" cy="100" r="50" stroke="#B8432F" strokeOpacity="0.04" strokeWidth="0.5">
+          <animate attributeName="r" values="48;52;48" dur="4s" repeatCount="indefinite" />
+        </circle>
+        <line x1="60" y1="100" x2="140" y2="100" stroke="#B8432F" strokeOpacity="0.04" strokeWidth="0.5" />
+        <line x1="100" y1="60" x2="100" y2="140" stroke="#B8432F" strokeOpacity="0.04" strokeWidth="0.5" />
+      </svg>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
