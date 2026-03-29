@@ -115,54 +115,52 @@ export default function Hero() {
       <div className="absolute bottom-16 right-8 w-3 h-3 bg-terra/30 hidden lg:block" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full relative z-10">
-        <div className="max-w-3xl space-y-8">
+        <div className="max-w-2xl space-y-6">
           <div className="reveal">
-            <span className="inline-flex items-center gap-3 text-xs font-semibold tracking-[0.25em] uppercase text-terra">
-              <span className="w-10 h-px bg-terra" />
+            <span className="inline-flex items-center gap-3 text-[11px] font-semibold tracking-[0.2em] uppercase text-terra">
+              <span className="w-8 h-px bg-terra" />
               Architecture &middot; Construction &middot; Engineering
             </span>
           </div>
 
-          <h1 className="reveal reveal-delay-1 font-display text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] font-extrabold leading-[0.90] tracking-tight text-white text-balance uppercase">
+          <h1 className="reveal reveal-delay-1 font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[0.92] tracking-tight text-white uppercase">
             We Shape the
             <br />
             <span className="text-gradient">Built Environment</span>
           </h1>
 
-          <p className="reveal reveal-delay-2 text-lg lg:text-xl text-white/50 leading-relaxed max-w-xl">
+          <p className="reveal reveal-delay-2 text-base lg:text-lg text-white/50 leading-relaxed max-w-lg">
             A boutique ACE consulting practice delivering design excellence,
             construction expertise, and engineering precision for projects that matter.
           </p>
 
-          <div className="reveal reveal-delay-3 flex flex-wrap items-center gap-4 pt-2">
-            <a href="#work" className="group px-8 py-4 bg-terra text-stone-50 text-sm font-semibold tracking-wide hover:bg-terra-light transition-colors duration-300 relative overflow-hidden">
+          <div className="reveal reveal-delay-3 flex flex-wrap items-center gap-3 pt-1">
+            <a href="#work" className="group px-6 py-3 bg-terra text-stone-50 text-sm font-semibold tracking-wide hover:bg-terra-light transition-colors duration-300 relative overflow-hidden">
               <span className="relative z-10">View Our Work</span>
-              {/* Shine effect on hover */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
             </a>
-            <a href="#contact" className="px-8 py-4 border border-white/20 text-white/70 text-sm font-semibold tracking-wide hover:bg-white/5 hover:border-white/30 hover:text-white transition-all duration-300">
+            <a href="#contact" className="px-6 py-3 border border-white/20 text-white/60 text-sm font-semibold tracking-wide hover:bg-white/5 hover:border-white/30 hover:text-white transition-all duration-300">
               Get in Touch
             </a>
           </div>
 
-          {/* Micro credibility — with pulsing dot */}
-          <div className="reveal reveal-delay-4 flex items-center gap-6 pt-4 text-xs text-white/40">
-            <span className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 bg-terra rounded-full animate-pulse" />
-              <span className="text-white/60">Las Vegas, NV</span>
+          {/* Compact credibility */}
+          <div className="reveal reveal-delay-4 flex items-center gap-4 pt-2 text-[11px] text-white/30">
+            <span className="flex items-center gap-1.5">
+              <span className="w-1 h-1 bg-terra rounded-full" />
+              Las Vegas, NV
             </span>
-            <span className="w-px h-4 bg-white/15" />
-            <span className="text-white/50">100+ projects delivered</span>
-            <span className="w-px h-4 bg-white/15" />
-            <span className="text-white/50">98% client satisfaction</span>
+            <span className="text-white/10">&middot;</span>
+            <span>100+ projects</span>
+            <span className="text-white/10">&middot;</span>
+            <span>98% satisfaction</span>
           </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30 reveal reveal-delay-5">
-        <span className="text-[10px] tracking-[0.2em] uppercase">Scroll</span>
-        <div className="w-px h-8 bg-gradient-to-b from-white/30 to-transparent animate-pulse" />
+      {/* Minimal scroll indicator */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 reveal reveal-delay-5">
+        <div className="w-px h-6 bg-gradient-to-b from-white/20 to-transparent" />
       </div>
     </section>
   );
