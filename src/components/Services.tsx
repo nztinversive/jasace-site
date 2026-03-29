@@ -94,12 +94,12 @@ export default function Services() {
                   i === activeIdx ? "opacity-100" : "opacity-0"
                 }`} />
 
-                <div className="flex items-start justify-between">
-                  <div>
+                <div className="flex items-start justify-between gap-2">
+                  <div className="min-w-0">
                     <div className="text-xs font-semibold tracking-[0.15em] uppercase text-terra mb-1">{svc.subtitle}</div>
-                    <h3 className="font-display text-2xl lg:text-3xl font-medium text-stone-50 tracking-tight">{svc.title}</h3>
+                    <h3 className="font-display text-xl sm:text-2xl lg:text-3xl font-medium text-stone-50 tracking-tight">{svc.title}</h3>
                   </div>
-                  <div className="text-right flex-shrink-0 ml-4">
+                  <div className="text-right flex-shrink-0 hidden sm:block">
                     <div className="font-display text-2xl font-light text-terra">{svc.stat}</div>
                     <div className="text-[10px] text-stone-500 tracking-wider uppercase">{svc.statLabel}</div>
                   </div>
@@ -121,7 +121,7 @@ export default function Services() {
 
           {/* Right: Detail panel with photo */}
           <div className="lg:col-span-8 relative">
-            <div className={`reveal reveal-delay-2 ${vis} relative aspect-[4/3] lg:aspect-auto lg:h-full min-h-[300px] overflow-hidden group`}>
+            <div className={`reveal reveal-delay-2 ${vis} relative aspect-[3/4] sm:aspect-[4/3] lg:aspect-auto lg:h-full min-h-[300px] overflow-hidden group`}>
               {/* Image — changes with active tab */}
               <div key={activeIdx} className="absolute inset-0" style={{ animation: "fadeIn 0.5s ease-out" }}>
                 <Image
