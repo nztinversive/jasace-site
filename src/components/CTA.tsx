@@ -55,9 +55,9 @@ export default function CTA() {
               Start a Project
             </span>
 
-            <h2 className="reveal reveal-delay-1 font-display text-4xl lg:text-5xl font-light text-stone-50 tracking-tight leading-tight">
+            <h2 className="reveal reveal-delay-1 font-display text-4xl lg:text-5xl font-bold text-stone-50 tracking-tight leading-tight uppercase">
               Let&rsquo;s Build Something
-              <br /><span className="italic font-medium text-terra">Together</span>
+              <br /><span className="text-gradient">Together</span>
             </h2>
 
             <p className="reveal reveal-delay-2 text-stone-400 leading-relaxed">

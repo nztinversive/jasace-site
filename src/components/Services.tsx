@@ -69,9 +69,9 @@ export default function Services() {
             <span className="w-8 h-px bg-terra" />
             What We Do
           </span>
-          <h2 className={`reveal reveal-delay-1 ${vis} font-display text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight text-stone-50`}>
+          <h2 className={`reveal reveal-delay-1 ${vis} font-display text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-stone-50 uppercase`}>
             Three Disciplines,<br />
-            <span className="italic font-medium text-terra">One Vision</span>
+            <span className="text-gradient">One Vision</span>
           </h2>
         </div>
 

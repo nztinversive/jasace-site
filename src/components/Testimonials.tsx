@@ -61,8 +61,8 @@ export default function Testimonials() {
             What They Say
             <span className="w-8 h-px bg-terra" />
           </span>
-          <h2 className={`reveal reveal-delay-1 ${vis} font-display text-4xl lg:text-5xl font-light tracking-tight text-stone-50`}>
-            Built on <span className="italic font-medium text-terra">Trust</span>
+          <h2 className={`reveal reveal-delay-1 ${vis} font-display text-4xl lg:text-5xl font-bold tracking-tight text-stone-50 uppercase`}>
+            Built on <span className="text-gradient">Trust</span>
           </h2>
         </div>
 
@@ -71,7 +71,7 @@ export default function Testimonials() {
           <div className="min-h-[200px] flex flex-col items-center justify-center">
             <blockquote
               key={active}
-              className="font-display text-xl sm:text-2xl lg:text-3xl font-light text-stone-200 leading-relaxed tracking-tight italic"
+              className="font-display text-xl sm:text-2xl lg:text-3xl font-medium text-stone-200 leading-relaxed tracking-tight"
               style={{ animation: "fadeIn 0.6s ease-out" }}
             >
               &ldquo;{t.quote}&rdquo;

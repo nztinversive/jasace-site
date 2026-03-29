@@ -182,8 +182,8 @@ export default function Portfolio() {
               <span className="w-8 h-px bg-terra" />
               Selected Work
             </span>
-            <h2 className="reveal reveal-delay-1 font-display text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight text-stone-50">
-              Projects That <span className="italic font-medium text-terra">Define Us</span>
+            <h2 className="reveal reveal-delay-1 font-display text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-stone-50 uppercase">
+              Projects That <span className="text-gradient">Define Us</span>
             </h2>
           </div>
           <p className="reveal reveal-delay-2 text-stone-500 text-sm max-w-xs leading-relaxed">
