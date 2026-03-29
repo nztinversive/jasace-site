@@ -46,16 +46,16 @@ export default function TermsPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-32 pb-20 bg-stone-50">
+      <main className="pt-32 pb-20 bg-stone-950">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-terra">
             <span className="w-8 h-px bg-terra" />
             Legal
           </span>
-          <h1 className="font-display text-4xl lg:text-5xl font-light tracking-tight mt-4 mb-2">Terms of Service</h1>
-          <p className="text-sm text-stone-400 mb-12">Effective Date: January 1, 2025 &middot; Last Updated: March 1, 2025</p>
+          <h1 className="font-display text-4xl lg:text-5xl font-bold tracking-tight text-stone-50 mt-4 mb-2">Terms of Service</h1>
+          <p className="text-sm text-stone-500 mb-12">Effective Date: January 1, 2025 &middot; Last Updated: March 1, 2025</p>
 
-          <p className="text-stone-600 leading-relaxed mb-10">
+          <p className="text-stone-400 leading-relaxed mb-10">
             These Terms of Service govern your use of the Jasace AEC website and services.
             Please read them carefully before using our site.
           </p>
@@ -63,13 +63,13 @@ export default function TermsPage() {
           <div className="space-y-10">
             {sections.map((s, i) => (
               <div key={i}>
-                <h2 className="font-display text-xl font-medium tracking-tight mb-3">{s.title}</h2>
+                <h2 className="font-display text-xl font-medium tracking-tight text-stone-200 mb-3">{s.title}</h2>
                 <p className="text-stone-500 leading-relaxed text-sm">{s.content}</p>
               </div>
             ))}
           </div>
 
-          <div className="mt-16 pt-8 border-t border-stone-200">
+          <div className="mt-16 pt-8 border-t border-stone-800">
             <p className="text-sm text-stone-400">
               Questions about these terms? Contact us at{" "}
               <Link href="/contact" className="text-terra hover:underline">jason@jasace.com</Link>.

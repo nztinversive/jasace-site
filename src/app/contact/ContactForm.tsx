@@ -50,13 +50,13 @@ export default function ContactForm() {
     setTouched((t) => ({ ...t, [field]: true }));
   }
 
-  const inputBase = "w-full bg-white border px-4 py-3.5 text-sm text-stone-800 placeholder:text-stone-400 focus:outline-none transition-colors";
-  const inputOk = "border-stone-200 focus:border-terra/50";
-  const inputErr = "border-red-300 focus:border-red-400 bg-red-50/30";
+  const inputBase = "w-full bg-stone-800/50 border px-4 py-3.5 text-sm text-stone-200 placeholder:text-stone-500 focus:outline-none transition-colors";
+  const inputOk = "border-stone-700 focus:border-terra/50";
+  const inputErr = "border-red-500/50 focus:border-red-400 bg-red-900/10";
 
   if (status === "sent") {
     return (
-      <div className="bg-white border border-stone-200 p-10 text-center space-y-4">
+      <div className="glass p-10 text-center space-y-4">
         <div className="w-14 h-14 bg-terra/10 rounded-full flex items-center justify-center mx-auto">
           <svg className="w-7 h-7 text-terra" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />

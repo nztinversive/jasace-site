@@ -88,7 +88,7 @@ export default function ProjectContent({ project, prevProject, nextProject }: {
   }, []);
 
   return (
-    <div className="bg-stone-50 text-stone-900">
+    <div className="bg-stone-950 text-stone-100">
       {/* ── HERO ── */}
       <section ref={heroRef} className="relative h-[70vh] min-h-[500px] flex items-end overflow-hidden">
         <div ref={imgRef} className="absolute inset-0 scale-110">
@@ -132,35 +132,35 @@ export default function ProjectContent({ project, prevProject, nextProject }: {
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
             <div className="lg:col-span-7 space-y-12">
               <div className="reveal space-y-4">
-                <h2 className="font-display text-3xl font-light tracking-tight">Overview</h2>
-                <p className="text-stone-600 leading-relaxed text-lg">{project.description}</p>
+                <h2 className="font-display text-3xl font-bold tracking-tight text-stone-50">Overview</h2>
+                <p className="text-stone-400 leading-relaxed text-lg">{project.description}</p>
               </div>
               <div className="reveal reveal-delay-1 space-y-4">
-                <h3 className="font-display text-2xl font-light tracking-tight">The Challenge</h3>
+                <h3 className="font-display text-2xl font-bold tracking-tight text-stone-100">The Challenge</h3>
                 <p className="text-stone-500 leading-relaxed">{project.challenge}</p>
               </div>
               <div className="reveal reveal-delay-2 space-y-4">
-                <h3 className="font-display text-2xl font-light tracking-tight">Our Solution</h3>
+                <h3 className="font-display text-2xl font-bold tracking-tight text-stone-100">Our Solution</h3>
                 <p className="text-stone-500 leading-relaxed">{project.solution}</p>
               </div>
               <div className="reveal reveal-delay-3 space-y-4">
-                <h3 className="font-display text-2xl font-light tracking-tight">The Result</h3>
+                <h3 className="font-display text-2xl font-bold tracking-tight text-stone-100">The Result</h3>
                 <p className="text-stone-500 leading-relaxed">{project.result}</p>
               </div>
             </div>
             <div className="lg:col-span-5">
-              <div className="reveal sticky top-24 bg-stone-100 p-8 lg:p-10 space-y-6">
+              <div className="reveal sticky top-24 glass p-8 lg:p-10 space-y-6">
                 <h3 className="text-xs font-semibold tracking-[0.15em] uppercase text-terra">Project Details</h3>
                 <div className="space-y-4">
                   {project.specs.map((spec) => (
-                    <div key={spec.label} className="flex items-baseline justify-between border-b border-stone-200 pb-3">
+                    <div key={spec.label} className="flex items-baseline justify-between border-b border-stone-800 pb-3">
                       <span className="text-sm text-stone-500">{spec.label}</span>
-                      <span className="text-sm font-semibold text-stone-800">{spec.value}</span>
+                      <span className="text-sm font-semibold text-stone-200">{spec.value}</span>
                     </div>
                   ))}
                 </div>
                 <div className="pt-4">
-                  <a href="/#contact" className="w-full block text-center px-6 py-3.5 bg-stone-900 text-stone-50 text-sm font-semibold hover:bg-terra transition-colors">
+                  <a href="/#contact" className="w-full block text-center px-6 py-3.5 bg-terra text-stone-50 text-sm font-semibold hover:bg-terra-light transition-colors">
                     Discuss a Similar Project
                   </a>
                 </div>
@@ -173,8 +173,8 @@ export default function ProjectContent({ project, prevProject, nextProject }: {
       {/* ── GALLERY ── */}
       <section ref={galleryRef} className={`pb-20 lg:pb-28 ${galleryRevealed ? "[&_.reveal]:opacity-100 [&_.reveal]:translate-y-0" : ""}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <h3 className="reveal font-display text-2xl font-light tracking-tight mb-8">
-            Project <span className="italic font-medium">Gallery</span>
+          <h3 className="reveal font-display text-2xl font-bold tracking-tight text-stone-50 mb-8">
+            Project <span className="text-terra">Gallery</span>
           </h3>
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4">
             {project.gallery.map((img, i) => (
@@ -197,15 +197,15 @@ export default function ProjectContent({ project, prevProject, nextProject }: {
       </section>
 
       {/* ── NAVIGATION ── */}
-      <div className="border-t border-stone-200">
+      <div className="border-t border-stone-800">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-2">
-          <Link href={`/work/${prevProject.slug}`} className="py-8 lg:py-12 pr-4 border-r border-stone-200 group">
-            <span className="text-xs text-stone-400 tracking-wider uppercase">Previous</span>
-            <div className="font-display text-lg lg:text-xl font-medium mt-1 group-hover:text-terra transition-colors">{prevProject.title}</div>
+          <Link href={`/work/${prevProject.slug}`} className="py-8 lg:py-12 pr-4 border-r border-stone-800 group">
+            <span className="text-xs text-stone-500 tracking-wider uppercase">Previous</span>
+            <div className="font-display text-lg lg:text-xl font-medium text-stone-200 mt-1 group-hover:text-terra transition-colors">{prevProject.title}</div>
           </Link>
           <Link href={`/work/${nextProject.slug}`} className="py-8 lg:py-12 pl-4 text-right group">
-            <span className="text-xs text-stone-400 tracking-wider uppercase">Next</span>
-            <div className="font-display text-lg lg:text-xl font-medium mt-1 group-hover:text-terra transition-colors">{nextProject.title}</div>
+            <span className="text-xs text-stone-500 tracking-wider uppercase">Next</span>
+            <div className="font-display text-lg lg:text-xl font-medium text-stone-200 mt-1 group-hover:text-terra transition-colors">{nextProject.title}</div>
           </Link>
         </div>
       </div>

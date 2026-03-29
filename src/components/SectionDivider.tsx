@@ -1,6 +1,6 @@
 export default function SectionDivider({ variant = "default" }: { variant?: "default" | "terra" | "dark" }) {
   const colors = {
-    default: { line: "bg-stone-200", dot: "bg-stone-300" },
+    default: { line: "bg-stone-700", dot: "bg-stone-600" },
     terra: { line: "bg-terra/20", dot: "bg-terra/40" },
     dark: { line: "bg-stone-700", dot: "bg-stone-600" },
   };

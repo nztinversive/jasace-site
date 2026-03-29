@@ -12,7 +12,7 @@ export default function Marquee() {
 
   const track = items.map((item, i) => (
     <span key={i} className="flex items-center gap-8 mx-8">
-      <span className="font-display text-3xl lg:text-5xl font-bold tracking-tight text-stone-700 whitespace-nowrap hover:text-terra transition-colors duration-500 cursor-default select-none uppercase">
+      <span className="font-display text-3xl lg:text-5xl font-bold tracking-tight text-stone-500 whitespace-nowrap hover:text-terra transition-colors duration-500 cursor-default select-none uppercase">
         {item}
       </span>
       <span className="w-2 h-2 bg-terra/40 rotate-45 flex-shrink-0" />
