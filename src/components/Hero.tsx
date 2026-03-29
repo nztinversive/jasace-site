@@ -123,11 +123,10 @@ export default function Hero() {
             </span>
           </div>
 
-          <h1 className="reveal reveal-delay-1 font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight text-white uppercase">
-            We Shape the
+          <h1 className="reveal reveal-delay-1 font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight text-white uppercase">
+            Engineering
             <br />
-            <span className="text-gradient">Built</span>{" "}
-            <span className="text-gradient">Environment</span>
+            <span className="text-gradient">The Impossible</span>
           </h1>
 
           <p className="reveal reveal-delay-2 text-base lg:text-lg text-white/50 leading-relaxed max-w-lg">
