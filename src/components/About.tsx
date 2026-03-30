@@ -65,7 +65,7 @@ export default function About() {
               Our Philosophy
             </span>
 
-            <h2 className="reveal reveal-delay-1 font-display text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-stone-50">
+            <h2 className="reveal reveal-delay-1 font-display text-4xl lg:text-5xl font-bold tracking-tight leading-snug text-stone-50">
               Great Buildings Start<br />
               with <span className="text-gradient">Great Listening</span>
             </h2>
