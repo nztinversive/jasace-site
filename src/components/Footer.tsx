@@ -64,7 +64,7 @@ export default function Footer() {
                 <ul className="space-y-3">
                   {links.map((link) => (
                     <li key={link.label}>
-                      <Link href={link.href} className="text-sm text-stone-500 hover:text-stone-300 transition-colors">{link.label}</Link>
+                      <Link href={link.href} className="text-sm text-stone-500 hover:text-stone-300 transition-colors py-1 block">{link.label}</Link>
                     </li>
                   ))}
                 </ul>

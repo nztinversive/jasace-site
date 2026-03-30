@@ -96,7 +96,7 @@ export default function Services() {
                     <span key={cap} className="text-[10px] font-medium text-stone-500 border border-stone-700 px-2.5 py-1 tracking-wider uppercase">{cap}</span>
                   ))}
                 </div>
-                <a href="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-terra mt-2 group/link">
+                <a href="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-terra mt-2 py-3 group/link">
                   Learn More
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="group-hover/link:translate-x-1 transition-transform">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />

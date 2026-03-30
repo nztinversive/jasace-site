@@ -93,7 +93,7 @@ export default function About() {
             </div>
 
             <div className="reveal reveal-delay-4 pt-4">
-              <a href="/about" className="inline-flex items-center gap-2 text-sm font-semibold text-terra hover:text-terra-light transition-colors group">
+              <a href="/about" className="inline-flex items-center gap-2 text-sm font-semibold text-terra hover:text-terra-light transition-colors py-3 group">
                 Meet the Founder
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="transform group-hover:translate-x-1 transition-transform">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
