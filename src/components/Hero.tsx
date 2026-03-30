@@ -17,12 +17,15 @@ export default function Hero() {
     if (els) setTimeout(() => els.forEach((e) => e.classList.add("visible")), 200);
   }, []);
 
-  // Parallax on scroll
+  // Parallax on scroll — desktop only (mobile gets janky + pushes content)
   useEffect(() => {
+    const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+    if (!isDesktop) return;
+
     const onScroll = () => {
       if (imgRef.current) {
         const y = window.scrollY;
-        imgRef.current.style.transform = `translateY(${y * 0.3}px) scale(1.1)`;
+        imgRef.current.style.transform = `translateY(${y * 0.2}px) scale(1.1)`;
       }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
