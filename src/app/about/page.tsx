@@ -99,16 +99,17 @@ export default function AboutPage() {
             <div className="grid sm:grid-cols-1 gap-12 max-w-md">
               {leadership.map((person) => (
                 <div key={person.name} className="group">
-                  <div className="aspect-[4/5] relative overflow-hidden mb-5 bg-stone-200">
-                    {/* Placeholder for real photo — shows initials */}
-                    <div className="absolute inset-0 flex items-center justify-center bg-stone-900">
-                      <span className="font-display text-5xl text-stone-50/20 font-light">
-                        {person.name.split(" ").map(n => n[0]).join("")}
-                      </span>
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-stone-900/30 to-transparent" />
+                  <div className="aspect-[4/5] relative overflow-hidden mb-5 bg-stone-900">
+                    <Image
+                      src={person.image}
+                      alt={person.name}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 640px) 100vw, 400px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-stone-900/40 to-transparent" />
                   </div>
-                  <h3 className="font-display text-2xl font-medium tracking-tight text-stone-50">{person.name}</h3>
+                  <h3 className="font-display text-2xl font-bold tracking-tight text-stone-50">{person.name}</h3>
                   <p className="text-xs text-terra font-semibold tracking-wider uppercase mt-1">{person.title}</p>
                   <p className="text-sm text-stone-500 leading-relaxed mt-3">{person.bio}</p>
                 </div>
