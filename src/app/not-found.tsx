@@ -17,7 +17,7 @@ export default function NotFound() {
           </div>
           <div className="-mt-6 sm:-mt-10 space-y-4">
             <h1 className="font-display text-3xl sm:text-4xl font-light tracking-tight text-stone-900">
-              Page Not <span className="italic font-medium">Found</span>
+              Page Not <span className="text-gradient font-bold">FOUND</span>
             </h1>
             <p className="text-stone-500 text-sm max-w-md mx-auto leading-relaxed">
               The page you&apos;re looking for doesn&apos;t exist or has been moved.

@@ -91,7 +91,7 @@ export default function FeaturedProjects() {
               Opportunities
             </span>
             <h2 className="reveal reveal-delay-1 font-display text-4xl lg:text-5xl font-light tracking-tight">
-              Featured <span className="italic font-medium">Projects</span>
+              Featured <span className="text-gradient font-bold">PROJECTS</span>
             </h2>
           </div>
           <a href="#" className="reveal reveal-delay-2 inline-flex items-center gap-2 text-sm font-medium text-terra hover:text-terra-dark transition-colors group">

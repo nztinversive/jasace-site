@@ -80,7 +80,7 @@ export default function Categories() {
               Disciplines
             </span>
             <h2 className="reveal reveal-delay-1 font-display text-4xl lg:text-5xl font-light tracking-tight">
-              Browse by <span className="italic font-medium">Discipline</span>
+              Browse by <span className="text-gradient font-bold">DISCIPLINE</span>
             </h2>
           </div>
           <p className="reveal reveal-delay-2 text-stone-500 text-sm max-w-xs leading-relaxed">

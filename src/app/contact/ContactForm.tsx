@@ -63,7 +63,7 @@ export default function ContactForm() {
           </svg>
         </div>
         <h3 className="font-display text-2xl font-light tracking-tight">
-          Message <span className="italic font-medium">Sent</span>
+          Message <span className="text-gradient font-bold">SENT</span>
         </h3>
         <p className="text-sm text-stone-500 max-w-sm mx-auto">
           Thank you for reaching out. We typically respond within one business day.

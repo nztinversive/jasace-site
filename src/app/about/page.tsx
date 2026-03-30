@@ -35,7 +35,7 @@ export default function AboutPage() {
               Our Story
             </span>
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-tight mt-4">
-              Built on <span className="italic font-medium">Purpose</span>
+              Built on <span className="text-gradient font-bold">PURPOSE</span>
             </h1>
           </div>
         </section>
@@ -47,7 +47,7 @@ export default function AboutPage() {
             <div className="grid lg:grid-cols-2 gap-16 items-start">
               <div className="space-y-6">
                 <h2 className="font-display text-3xl lg:text-4xl font-light tracking-tight text-stone-50">
-                  Founded in Las Vegas,<br /><span className="italic font-medium text-terra">built on results</span>
+                  Founded in Las Vegas,<br /><span className="text-gradient font-bold">BUILT ON RESULTS</span>
                 </h2>
                 <p className="text-stone-500 leading-relaxed">
                   Jasace was founded by Jason Reese in Las Vegas, Nevada — built on the belief that the best projects come from people who think across disciplines, not in silos.
@@ -90,7 +90,7 @@ export default function AboutPage() {
                 Who We Are
               </span>
               <h2 className="font-display text-4xl lg:text-5xl font-light tracking-tight text-stone-50">
-                Meet the <span className="italic font-medium text-terra">Founder</span>
+                Meet the <span className="text-gradient font-bold">FOUNDER</span>
               </h2>
               <p className="text-stone-500 leading-relaxed">
                 When you work with Jasace, you work directly with Jason. No layers, no hand-offs — just dedicated expertise and a trusted network of specialist collaborators.
@@ -127,7 +127,7 @@ export default function AboutPage() {
                 Recognition
               </span>
               <h2 className="font-display text-4xl lg:text-5xl font-light text-stone-50 tracking-tight">
-                Awards & <span className="italic font-medium">Honors</span>
+                Awards & <span className="text-gradient font-bold">HONORS</span>
               </h2>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -148,7 +148,7 @@ export default function AboutPage() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-terra/[0.04] blur-[120px] pointer-events-none" />
           <div className="max-w-2xl mx-auto px-6 space-y-6 relative z-10">
             <h2 className="font-display text-3xl lg:text-4xl font-light tracking-tight text-stone-50">
-              Want to Work <span className="italic font-medium text-terra">With Us?</span>
+              Want to Work <span className="text-gradient font-bold">WITH US?</span>
             </h2>
             <p className="text-stone-400">We take on a limited number of projects each year so we can give each one our full attention.</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

@@ -40,7 +40,7 @@ export default function Footer() {
             </Link>
             <p className="text-sm leading-relaxed max-w-sm">
               A boutique ACE consulting practice delivering architecture,
-              construction, and engineering excellence since 2001.
+              construction, and engineering excellence since 2015.
             </p>
             <div className="pt-2 space-y-3">
               <p className="text-xs font-semibold tracking-[0.15em] uppercase text-stone-500">Stay Updated</p>

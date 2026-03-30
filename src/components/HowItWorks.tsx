@@ -69,7 +69,7 @@ export default function HowItWorks() {
             <span className="w-8 h-px bg-terra" />
           </span>
           <h2 className="reveal reveal-delay-1 font-display text-4xl lg:text-5xl font-light tracking-tight">
-            How It <span className="italic font-medium">Works</span>
+            How It <span className="text-gradient font-bold">WORKS</span>
           </h2>
         </div>
 

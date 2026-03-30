@@ -118,7 +118,7 @@ function StatItem({
         transition: `all 0.8s cubic-bezier(0.22, 1, 0.36, 1) ${index * 0.12}s`,
       }}
     >
-      <div className="font-display text-5xl sm:text-6xl lg:text-7xl font-light text-stone-50 tracking-tight leading-none">
+      <div className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-stone-50 tracking-tight leading-none">
         {count.toLocaleString()}
         <span className="text-terra">{stat.suffix}</span>
       </div>

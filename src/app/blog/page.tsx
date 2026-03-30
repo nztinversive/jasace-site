@@ -27,7 +27,7 @@ export default function BlogPage() {
               Insights
             </span>
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-tight mt-4">
-              Thinking About <span className="italic font-medium text-terra">Building</span>
+              Thinking About <span className="text-gradient font-bold">BUILDING</span>
             </h1>
             <p className="text-stone-500 mt-4 max-w-lg leading-relaxed">
               Perspectives on architecture, construction, and engineering.

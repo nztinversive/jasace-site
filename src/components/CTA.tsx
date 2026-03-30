@@ -37,7 +37,7 @@ export default function CTA() {
           {/* Corner accent */}
           <div className="absolute bottom-8 left-8 space-y-3">
             <div className="w-16 h-px bg-terra" />
-            <p className="font-display text-xl text-white/80 italic">
+            <p className="font-display text-xl text-white/80 font-medium">
               Every great project<br />starts with a conversation.
             </p>
           </div>

@@ -29,7 +29,7 @@ export default function ContactPage() {
               Contact Us
             </span>
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-tight mt-4">
-              Let&apos;s Build Something <span className="italic font-medium text-terra">Together</span>
+              Let&apos;s Build Something <span className="text-gradient font-bold">TOGETHER</span>
             </h1>
             <p className="text-stone-500 mt-4 max-w-lg leading-relaxed">
               Whether you have a project in mind or just want to explore possibilities, we&apos;d love to hear from you.
@@ -44,7 +44,7 @@ export default function ContactPage() {
               {/* Form */}
               <div className="lg:col-span-7 space-y-8">
                 <h2 className="font-display text-2xl font-light tracking-tight text-stone-50">
-                  Start a <span className="italic font-medium text-terra">Conversation</span>
+                  Start a <span className="text-gradient font-bold">CONVERSATION</span>
                 </h2>
                 <ContactForm />
               </div>
