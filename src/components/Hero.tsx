@@ -126,7 +126,7 @@ export default function Hero() {
             </span>
           </div>
 
-          <h1 className="reveal reveal-delay-1 font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight text-white uppercase">
+          <h1 className="reveal reveal-delay-1 font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.15] tracking-tight text-white uppercase">
             Building
             <br />
             <span className="text-gradient">Beyond Limits</span>
