@@ -62,7 +62,7 @@ export default function ContactForm() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
           </svg>
         </div>
-        <h3 className="font-display text-2xl font-light tracking-tight">
+        <h3 className="font-display text-2xl font-bold tracking-tight">
           Message <span className="text-gradient font-bold">SENT</span>
         </h3>
         <p className="text-sm text-stone-500 max-w-sm mx-auto">

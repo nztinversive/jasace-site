@@ -59,7 +59,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               <span className="text-white/30">&middot;</span>
               <span className="text-white/50">{post.readTime}</span>
             </div>
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-light text-white tracking-tight text-balance">
+            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight text-balance">
               {post.title}
             </h1>
             <div className="text-sm text-white/40 mt-4">By {post.author}</div>

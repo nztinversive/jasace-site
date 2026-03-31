@@ -113,7 +113,7 @@ export default function ProjectContent({ project, prevProject, nextProject }: {
               {project.category} &middot; {project.year}
             </span>
           </div>
-          <h1 className="reveal reveal-delay-1 font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light text-white tracking-tight mt-4">
+          <h1 className="reveal reveal-delay-1 font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white tracking-tight mt-4">
             {project.title}
           </h1>
           <div className="reveal reveal-delay-2 flex flex-wrap items-center gap-6 mt-4 text-sm text-white/50">

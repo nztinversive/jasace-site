@@ -80,7 +80,7 @@ export default function ServicesPage() {
               <span className="w-8 h-px bg-terra" />
               What We Do
             </span>
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-tight mt-4">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight mt-4">
               Three Disciplines, <span className="text-gradient font-bold">ONE VISION</span>
             </h1>
             <p className="text-white/50 mt-4 max-w-lg">Integrated architecture, construction, and engineering under one roof.</p>
@@ -150,7 +150,7 @@ export default function ServicesPage() {
         <section className="py-20 lg:py-24 bg-stone-950 bg-grid-dark grain relative text-center overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-terra/[0.04] blur-[120px] pointer-events-none" />
           <div className="max-w-2xl mx-auto px-6 relative z-10 space-y-6">
-            <h2 className="font-display text-3xl lg:text-4xl font-light text-stone-50 tracking-tight">
+            <h2 className="font-display text-3xl lg:text-4xl font-bold text-stone-50 tracking-tight">
               Ready to Start <span className="text-gradient font-bold">YOUR PROJECT?</span>
             </h2>
             <p className="text-stone-400">Tell us about your vision and we&apos;ll show you how our integrated approach delivers better results.</p>

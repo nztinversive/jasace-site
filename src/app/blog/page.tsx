@@ -26,7 +26,7 @@ export default function BlogPage() {
               <span className="w-8 h-px bg-terra" />
               Insights
             </span>
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-tight mt-4">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight mt-4">
               Thinking About <span className="text-gradient font-bold">BUILDING</span>
             </h1>
             <p className="text-stone-500 mt-4 max-w-lg leading-relaxed">

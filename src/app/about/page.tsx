@@ -34,7 +34,7 @@ export default function AboutPage() {
               <span className="w-8 h-px bg-terra" />
               Our Story
             </span>
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light text-white tracking-tight mt-4">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight mt-4">
               Built on <span className="text-gradient font-bold">PURPOSE</span>
             </h1>
           </div>
@@ -46,7 +46,7 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-start">
               <div className="space-y-6">
-                <h2 className="font-display text-3xl lg:text-4xl font-light tracking-tight text-stone-50">
+                <h2 className="font-display text-3xl lg:text-4xl font-bold tracking-tight text-stone-50">
                   Founded in Las Vegas,<br /><span className="text-gradient font-bold">BUILT ON RESULTS</span>
                 </h2>
                 <p className="text-stone-500 leading-relaxed">
@@ -89,7 +89,7 @@ export default function AboutPage() {
                 <span className="w-8 h-px bg-terra" />
                 Who We Are
               </span>
-              <h2 className="font-display text-4xl lg:text-5xl font-light tracking-tight text-stone-50">
+              <h2 className="font-display text-4xl lg:text-5xl font-bold tracking-tight text-stone-50">
                 Meet the <span className="text-gradient font-bold">FOUNDER</span>
               </h2>
               <p className="text-stone-500 leading-relaxed">
@@ -127,7 +127,7 @@ export default function AboutPage() {
                 <span className="w-8 h-px bg-terra" />
                 Recognition
               </span>
-              <h2 className="font-display text-4xl lg:text-5xl font-light text-stone-50 tracking-tight">
+              <h2 className="font-display text-4xl lg:text-5xl font-bold text-stone-50 tracking-tight">
                 Awards & <span className="text-gradient font-bold">HONORS</span>
               </h2>
             </div>
@@ -148,7 +148,7 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-grid-dark" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-terra/[0.04] blur-[120px] pointer-events-none" />
           <div className="max-w-2xl mx-auto px-6 space-y-6 relative z-10">
-            <h2 className="font-display text-3xl lg:text-4xl font-light tracking-tight text-stone-50">
+            <h2 className="font-display text-3xl lg:text-4xl font-bold tracking-tight text-stone-50">
               Want to Work <span className="text-gradient font-bold">WITH US?</span>
             </h2>
             <p className="text-stone-400">We take on a limited number of projects each year so we can give each one our full attention.</p>
