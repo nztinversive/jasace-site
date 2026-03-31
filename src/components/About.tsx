@@ -71,11 +71,11 @@ export default function About() {
             </h2>
 
             <p className="reveal reveal-delay-2 text-stone-400 leading-relaxed">
-              Founded in Las Vegas by Jason Reese, Jasace is a boutique ACE consulting
+              Founded in Las Vegas by Jason Reese, Jasace is an ACE consulting
               practice built on a simple principle: every project deserves full attention,
               every client deserves honest counsel, and every building should enhance the
               lives of the people who use it. With a trusted network of collaborators,
-              we deliver the expertise of a larger firm with the care of a dedicated partner.
+              we deliver real expertise without the overhead — direct access, honest counsel, and results.
             </p>
 
             <div className="reveal reveal-delay-3 grid grid-cols-2 gap-6 pt-4">

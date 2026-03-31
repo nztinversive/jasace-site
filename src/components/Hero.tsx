@@ -133,8 +133,8 @@ export default function Hero() {
           </h1>
 
           <p className="reveal reveal-delay-2 text-base lg:text-lg text-white/50 leading-relaxed max-w-lg">
-            A boutique ACE consulting practice delivering design excellence,
-            construction expertise, and engineering precision for projects that matter.
+            Architecture, construction, and engineering consulting —
+            delivering precision and results for projects that matter.
           </p>
 
           <div className="reveal reveal-delay-3 flex flex-wrap items-center gap-3 pt-1">

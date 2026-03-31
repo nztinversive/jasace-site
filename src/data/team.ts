@@ -24,7 +24,7 @@ export const awards = [
 ];
 
 export const milestones = [
-  { year: "2015", event: "Jasace founded as a boutique ACE consulting practice in Las Vegas, NV" },
+  { year: "2015", event: "Jasace founded as an ACE consulting practice in Las Vegas, NV" },
   { year: "2017", event: "Expanded into construction management and engineering consulting" },
   { year: "2019", event: "Built a trusted network of specialist collaborators across the Southwest" },
   { year: "2021", event: "Surpassed 100 completed projects" },

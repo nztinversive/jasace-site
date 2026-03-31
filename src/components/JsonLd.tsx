@@ -4,7 +4,7 @@ export default function JsonLd() {
     "@type": "ProfessionalService",
     name: "Jasace ACE",
     description:
-      "A boutique ACE consulting practice delivering architecture, construction, and engineering excellence. Based in Las Vegas, NV.",
+      "Architecture, construction, and engineering consulting based in Las Vegas, NV. 10+ years of delivering results.",
     url: "https://jasace.com",
     logo: "https://jasace.com/logo.png",
     image: "https://jasace.com/og-image.jpg",

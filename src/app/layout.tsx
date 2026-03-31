@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     template: "%s | Jasace ACE",
   },
   description:
-    "Jasace is a boutique ACE consulting practice in Las Vegas, NV delivering architecture, construction, and engineering excellence.",
+    "Jasace is a Las Vegas ACE consulting practice delivering architecture, construction, and engineering excellence.",
   keywords: [
     "architecture consulting",
     "construction management",
@@ -95,7 +95,7 @@ export const metadata: Metadata = {
     siteName: "Jasace ACE",
     title: "Jasace ACE — Architecture, Construction & Engineering Consulting",
     description:
-      "A boutique ACE consulting practice delivering design excellence, construction expertise, and engineering precision for projects that matter.",
+      "Architecture, construction, and engineering consulting for projects that demand precision and results.",
     images: [
       {
         url: "/og-image.jpg",
@@ -109,7 +109,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Jasace ACE — Architecture, Construction & Engineering",
     description:
-      "A boutique ACE consulting practice. 10+ years of ACE consulting excellence.",
+      "Architecture, construction, and engineering consulting. 10+ years of results.",
     images: ["/og-image.jpg"],
   },
   robots: {
