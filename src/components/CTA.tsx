@@ -62,7 +62,7 @@ export default function CTA() {
 
             <p className="reveal reveal-delay-2 text-stone-400 leading-relaxed">
               Whether you have a project in mind or just want to explore possibilities,
-              we&rsquo;d love to hear from you. Our team is ready to bring your vision to life.
+              we&rsquo;d love to hear from you. Let&rsquo;s bring your vision to life.
             </p>
 
             <div className="reveal reveal-delay-3 space-y-4">

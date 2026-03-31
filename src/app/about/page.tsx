@@ -56,7 +56,7 @@ export default function AboutPage() {
                   With a background in business development and operations management in the engineering industry, Jason brings a unique perspective to ACE consulting — combining technical understanding with strong project delivery and client relationships. A UNLV graduate with a BBA in International Business Management, he built Jasace into a trusted name across the Southwest.
                 </p>
                 <p className="text-stone-500 leading-relaxed">
-                  Today, Jasace delivers the expertise of a full-service firm with the personal care of a dedicated partner. Every client works directly with Jason — no hand-offs, no layers, no surprises.
+                  Today, Jasace delivers real expertise without the overhead. Every client works directly with Jason — no hand-offs, no layers, no surprises.
                 </p>
               </div>
 

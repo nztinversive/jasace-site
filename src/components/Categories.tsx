@@ -7,7 +7,7 @@ const categories = [
   {
     title: "Architecture",
     count: "180+",
-    description: "Commercial, residential, and public architecture projects from top firms nationwide.",
+    description: "Commercial, residential, and public architecture projects from firms across the region.",
     image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=600&h=400&fit=crop",
     icon: (
       <svg className="w-6 h-6" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={1.5}>

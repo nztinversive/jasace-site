@@ -57,7 +57,7 @@ export const projects: Project[] = [
     featured: true,
     scope: "Structural engineering and seismic retrofit",
     description: "A comprehensive rehabilitation of a 1960s-era highway bridge serving 85,000 vehicles daily, including full seismic retrofit to current California standards.",
-    challenge: "The bridge had to remain partially operational during construction. Seismic analysis revealed the original piers were inadequate for current code requirements, requiring innovative reinforcement.",
+    challenge: "The bridge had to remain partially operational during construction. Seismic analysis revealed the original piers were inadequate for current code requirements, requiring creative reinforcement.",
     solution: "We designed a carbon fiber wrap system for the existing piers combined with new base isolation bearings — avoiding the need for full pier replacement. Night-shift construction minimized traffic impact.",
     result: "Zero lost-time incidents over 18 months of construction. Bridge rated for 75-year service life extension with full seismic compliance.",
     specs: [
@@ -86,7 +86,7 @@ export const projects: Project[] = [
     scope: "Construction management and general contracting",
     description: "A 200-unit luxury residential complex on Chicago's lakefront featuring private marina access, rooftop amenities, and panoramic views of Lake Michigan.",
     challenge: "Lakefront construction presented unique logistical challenges including soil stabilization, strict environmental regulations for the shoreline setback, and a compressed 24-month delivery schedule.",
-    solution: "Our team implemented an accelerated construction schedule using prefabricated wall panels and a just-in-time materials delivery system. Weekly coordination with environmental agencies kept the project compliant.",
+    solution: "We implemented an accelerated construction schedule using prefabricated wall panels and a just-in-time materials delivery system. Weekly coordination with environmental agencies kept the project compliant.",
     result: "Completed 6 weeks ahead of schedule. 92% of units pre-sold before completion. The project set a new benchmark for lakefront residential in the Chicago market.",
     specs: [
       { label: "Units", value: "200" },
@@ -139,7 +139,7 @@ export const projects: Project[] = [
     heroImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&h=900&fit=crop",
     featured: false,
     scope: "Master planning, architecture, and interior design",
-    description: "A 120,000 SF campus expansion for a Fortune 500 technology company, designed to foster collaboration while respecting Nashville's urban fabric.",
+    description: "A 120,000 SF campus expansion for a major technology company, designed to foster collaboration while respecting Nashville's urban fabric.",
     challenge: "The client wanted an open, collaborative workspace that also provided acoustic privacy for focused work — a tension that required careful spatial planning and material selection.",
     solution: "We created a 'neighborhood' concept: clusters of team zones separated by planted atriums and acoustic buffer zones. Custom-designed sound-absorbing ceiling panels integrate lighting and HVAC systems.",
     result: "Employee satisfaction scores increased 34% post-occupancy. The campus expansion accommodated 600 new positions while maintaining the company's target of 180 SF per employee.",

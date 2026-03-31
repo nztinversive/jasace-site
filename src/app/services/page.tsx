@@ -6,7 +6,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 
 export const metadata = {
   title: "Services — Jasace ACE",
-  description: "Architecture, construction, and engineering services from a firm that integrates all three disciplines.",
+  description: "Architecture, construction, and engineering services from a practice that integrates all three disciplines.",
 };
 
 const services = [
@@ -30,7 +30,7 @@ const services = [
     description: "Construction management that keeps your project on time, on budget, and built to the highest standards. We bring field experience and a collaborative approach to every build.",
     details: [
       "Our construction management doesn\u2019t just track schedules and budgets \u2014 it solves problems before they happen. With deep field experience, we ensure design intent is preserved from groundbreaking to ribbon-cutting.",
-      "We leverage modern project delivery methods and real-time dashboards to give clients full visibility into their project\u2019s progress.",
+      "We use modern project delivery methods and real-time dashboards to give clients full visibility into their project\u2019s progress.",
     ],
     capabilities: ["Construction Management", "Cost Estimation", "Scheduling", "Quality Assurance", "Safety Management", "Prefabrication", "Commissioning", "Owner\u2019s Rep"],
     image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=800&fit=crop",
@@ -42,8 +42,8 @@ const services = [
     subtitle: "Precision & Performance",
     description: "Structural, civil, and MEP engineering solutions that perform beautifully. We bring technical rigor and creative problem-solving to every engineering challenge.",
     details: [
-      "Engineering is the backbone of every great building. Our engineers work alongside architects and construction managers, ensuring that structural systems and building services are coordinated seamlessly.",
-      "From seismic retrofit to cutting-edge MEP design, we combine analytical rigor with practical construction knowledge \u2014 because the best engineering solution is one that can actually be built.",
+      "Engineering is the backbone of every great building. Our engineers work alongside architects and construction managers, ensuring that structural systems and building services are fully coordinated.",
+      "From seismic retrofit to advanced MEP design, we combine analytical rigor with practical construction knowledge \u2014 because the best engineering solution is one that can actually be built.",
     ],
     capabilities: ["Structural Engineering", "Civil Engineering", "MEP Design", "Seismic Retrofit", "Environmental Engineering", "Geotechnical", "Energy Modeling", "Commissioning"],
     image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1200&h=800&fit=crop",

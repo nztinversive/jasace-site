@@ -9,7 +9,7 @@ const testimonials = [
     title: "CEO, Chen Development Group",
   },
   {
-    quote: "Every detail is considered, every decision is backed by expertise. Working with Jasace feels less like hiring a firm and more like gaining a partner.",
+    quote: "Every detail is considered, every decision is backed by expertise. Working with Jasace feels less like hiring a company and more like gaining a partner.",
     name: "S. Okonkwo",
     title: "Director of Facilities, Okonkwo + Partners",
   },

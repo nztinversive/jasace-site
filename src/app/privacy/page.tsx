@@ -14,7 +14,7 @@ const sections = [
   },
   {
     title: "How We Use Your Information",
-    content: "We use the information we collect to respond to your inquiries and project requests, send you newsletters and updates about our firm (with your consent), improve our website and services, comply with legal obligations, and communicate with you about projects and opportunities relevant to your interests.",
+    content: "We use the information we collect to respond to your inquiries and project requests, send you newsletters and updates about our practice (with your consent), improve our website and services, comply with legal obligations, and communicate with you about projects and opportunities relevant to your interests.",
   },
   {
     title: "Information Sharing",
