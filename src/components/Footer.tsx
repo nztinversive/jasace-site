@@ -1,4 +1,10 @@
+"use client";
+
 import Link from "next/link";
+import { FormEvent, useState } from "react";
+import { useMutation } from "convex/react";
+import { api } from "../../convex/_generated/api";
+import { convexEnabled } from "@/lib/convex-config";
 
 const footerLinks = {
   Services: [
@@ -27,7 +33,23 @@ const footerLinks = {
   ],
 };
 
-export default function Footer() {
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function FooterContent({
+  email,
+  onEmailChange,
+  onSubmit,
+  isSubmitting,
+  statusMessage,
+  statusTone,
+}: {
+  email: string;
+  onEmailChange: (value: string) => void;
+  onSubmit: (event: FormEvent<HTMLFormElement>) => void;
+  isSubmitting: boolean;
+  statusMessage: string | null;
+  statusTone: "success" | "error" | null;
+}) {
   return (
     <footer className="bg-stone-950 text-stone-400 pt-20 pb-8">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -39,21 +61,30 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-sm leading-relaxed max-w-sm">
-              Architecture, construction, and engineering consulting —
+              Architecture, construction, and engineering consulting -
               delivering results since 2015.
             </p>
             <div className="pt-2 space-y-3">
               <p className="text-xs font-semibold tracking-[0.15em] uppercase text-stone-500">Stay Updated</p>
-              <div className="flex">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 bg-stone-900 border border-stone-800 px-4 py-3 text-sm text-stone-300 placeholder:text-stone-600 focus:outline-none focus:border-terra/50 transition-colors"
-                />
-                <button className="px-6 py-3 bg-terra text-stone-50 text-sm font-medium hover:bg-terra-light transition-colors">
-                  Subscribe
-                </button>
-              </div>
+              <form className="space-y-3" onSubmit={onSubmit}>
+                <div className="flex">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(event) => onEmailChange(event.target.value)}
+                    placeholder="Enter your email"
+                    className="flex-1 bg-stone-900 border border-stone-800 px-4 py-3 text-sm text-stone-300 placeholder:text-stone-600 focus:outline-none focus:border-terra/50 transition-colors"
+                  />
+                  <button type="submit" disabled={isSubmitting} className="px-6 py-3 bg-terra text-stone-50 text-sm font-medium hover:bg-terra-light transition-colors disabled:cursor-not-allowed disabled:opacity-70">
+                    {isSubmitting ? "Submitting..." : "Subscribe"}
+                  </button>
+                </div>
+                {statusMessage ? (
+                  <p className={`text-xs ${statusTone === "error" ? "text-red-400" : "text-stone-300"}`}>
+                    {statusMessage}
+                  </p>
+                ) : null}
+              </form>
             </div>
           </div>
 
@@ -90,4 +121,93 @@ export default function Footer() {
       </div>
     </footer>
   );
+}
+
+function ConvexFooter() {
+  const subscribe = useMutation(api.newsletterSubscribers.subscribe);
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const [statusTone, setStatusTone] = useState<"success" | "error" | null>(null);
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const normalizedEmail = email.trim().toLowerCase();
+    if (!emailPattern.test(normalizedEmail)) {
+      setStatusTone("error");
+      setStatusMessage("Enter a valid email address.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setStatusMessage(null);
+    setStatusTone(null);
+
+    try {
+      const result = await subscribe({ email: normalizedEmail });
+      setStatusTone("success");
+      setStatusMessage(result.duplicate ? "You are already subscribed." : "Thanks for subscribing.");
+      setEmail("");
+    } catch {
+      setStatusTone("error");
+      setStatusMessage("Subscription failed. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <FooterContent
+      email={email}
+      onEmailChange={(value) => {
+        setEmail(value);
+        setStatusMessage(null);
+        setStatusTone(null);
+      }}
+      onSubmit={handleSubmit}
+      isSubmitting={isSubmitting}
+      statusMessage={statusMessage}
+      statusTone={statusTone}
+    />
+  );
+}
+
+export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const [statusTone, setStatusTone] = useState<"success" | "error" | null>(null);
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const normalizedEmail = email.trim().toLowerCase();
+    if (!emailPattern.test(normalizedEmail)) {
+      setStatusTone("error");
+      setStatusMessage("Enter a valid email address.");
+      return;
+    }
+
+    setStatusTone("error");
+    setStatusMessage("Newsletter signup is unavailable until Convex is connected.");
+  };
+
+  if (!convexEnabled) {
+    return (
+      <FooterContent
+        email={email}
+        onEmailChange={(value) => {
+          setEmail(value);
+          setStatusMessage(null);
+          setStatusTone(null);
+        }}
+        onSubmit={handleSubmit}
+        isSubmitting={false}
+        statusMessage={statusMessage}
+        statusTone={statusTone}
+      />
+    );
+  }
+
+  return <ConvexFooter />;
 }

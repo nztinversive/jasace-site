@@ -2,38 +2,54 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api";
+import { convexEnabled } from "@/lib/convex-config";
+import type { ServiceContent } from "@/types/cms";
 
-const services = [
+const fallbackServices: ServiceContent[] = [
   {
     title: "Architecture",
     subtitle: "Design Excellence",
-    description: "From concept through completion, we create spaces that inspire. Our architectural practice spans commercial, residential, and public projects with a focus on contextual design and lasting impact.",
+    description:
+      "From concept through completion, we create spaces that inspire. Our architectural practice spans commercial, residential, and public projects with a focus on contextual design and lasting impact.",
     image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&h=600&fit=crop",
     capabilities: ["Master Planning", "Commercial Design", "Residential", "Adaptive Reuse"],
     stat: "60+",
     statLabel: "projects",
+    order: 1,
+    details: [],
+    stats: [],
   },
   {
     title: "Construction",
     subtitle: "Delivered with Integrity",
-    description: "Construction management that keeps your project on time, on budget, and built to the highest standards. We bring decades of field experience to every build.",
+    description:
+      "Construction management that keeps your project on time, on budget, and built to the highest standards. We bring decades of field experience to every build.",
     image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop",
     capabilities: ["Project Management", "Cost Control", "Quality Assurance", "Scheduling"],
     stat: "98%",
     statLabel: "on-time",
+    order: 2,
+    details: [],
+    stats: [],
   },
   {
     title: "Engineering",
     subtitle: "Precision & Performance",
-    description: "Structural, civil, and MEP engineering solutions that perform beautifully. We bring technical rigor and creative problem-solving to every engineering challenge.",
+    description:
+      "Structural, civil, and MEP engineering solutions that perform beautifully. We bring technical rigor and creative problem-solving to every engineering challenge.",
     image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=600&fit=crop",
     capabilities: ["Structural", "Civil", "MEP Systems", "Environmental"],
     stat: "40+",
     statLabel: "structures",
+    order: 3,
+    details: [],
+    stats: [],
   },
 ];
 
-export default function Services() {
+function ServicesSection({ services }: { services: ServiceContent[] }) {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeIdx, setActiveIdx] = useState(0);
   const [revealed, setRevealed] = useState(false);
@@ -45,25 +61,31 @@ export default function Services() {
       },
       { threshold: 0.08 }
     );
+
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
-  const active = services[activeIdx];
+  useEffect(() => {
+    if (!services[activeIdx]) {
+      setActiveIdx(0);
+    }
+  }, [activeIdx, services]);
+
+  const active = services[activeIdx] ?? services[0];
   const vis = revealed ? "visible" : "";
+
+  if (!active) return null;
 
   return (
     <section ref={sectionRef} id="services" className="py-28 lg:py-36 bg-stone-950 relative overflow-hidden">
-      {/* Background elements */}
       <div className="absolute inset-0 bg-grid-dark" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-terra/30 to-transparent" />
 
-      {/* Glow orbs */}
       <div className="absolute top-1/3 -left-20 w-80 h-80 rounded-full bg-terra/[0.04] blur-[100px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-0 w-64 h-64 rounded-full bg-terra/[0.03] blur-[80px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        {/* Header */}
         <div className="max-w-2xl mb-16 space-y-4">
           <span className={`reveal ${vis} inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-terra`}>
             <span className="w-8 h-px bg-terra" />
@@ -75,25 +97,23 @@ export default function Services() {
           </h2>
         </div>
 
-        {/* ═══ MOBILE: Stacked cards with inline images ═══ */}
         <div className="lg:hidden space-y-6">
-          {services.map((svc, i) => (
-            <div key={svc.title} className={`reveal reveal-delay-${i + 1} ${vis} relative overflow-hidden border border-stone-800 group`}>
-              {/* Image */}
+          {services.map((service, index) => (
+            <div key={service.title} className={`reveal reveal-delay-${index + 1} ${vis} relative overflow-hidden border border-stone-800 group`}>
               <div className="relative h-48 overflow-hidden">
-                <Image src={svc.image} alt={svc.title} fill className="object-cover" sizes="100vw" />
+                <Image src={service.image} alt={service.title} fill className="object-cover" sizes="100vw" />
                 <div className="absolute inset-0 bg-gradient-to-t from-stone-950/90 via-stone-950/40 to-stone-950/10" />
-                {/* Corner accents */}
                 <div className="absolute top-3 left-3 w-6 h-6 border-l border-t border-terra/30" />
               </div>
-              {/* Content */}
               <div className="p-6 space-y-3">
-                <div className="text-xs font-semibold tracking-[0.15em] uppercase text-terra">{svc.subtitle}</div>
-                <h3 className="font-display text-2xl font-bold text-stone-50 tracking-tight">{svc.title}</h3>
-                <p className="text-sm text-stone-400 leading-relaxed">{svc.description}</p>
+                <div className="text-xs font-semibold tracking-[0.15em] uppercase text-terra">{service.subtitle}</div>
+                <h3 className="font-display text-2xl font-bold text-stone-50 tracking-tight">{service.title}</h3>
+                <p className="text-sm text-stone-400 leading-relaxed">{service.description}</p>
                 <div className="flex flex-wrap gap-2 pt-2">
-                  {svc.capabilities.map((cap) => (
-                    <span key={cap} className="text-[10px] font-medium text-stone-500 border border-stone-700 px-2.5 py-1 tracking-wider uppercase">{cap}</span>
+                  {service.capabilities.map((capability) => (
+                    <span key={capability} className="text-[10px] font-medium text-stone-500 border border-stone-700 px-2.5 py-1 tracking-wider uppercase">
+                      {capability}
+                    </span>
                   ))}
                 </div>
                 <a href="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-terra mt-2 py-3 group/link">
@@ -107,45 +127,44 @@ export default function Services() {
           ))}
         </div>
 
-        {/* ═══ DESKTOP: Tab selector + detail panel ═══ */}
         <div className="hidden lg:grid lg:grid-cols-12 gap-8">
-          {/* Left: Card selectors */}
           <div className="lg:col-span-4 space-y-4">
-            {services.map((svc, i) => (
+            {services.map((service, index) => (
               <button
-                key={svc.title}
-                onClick={() => setActiveIdx(i)}
-                className={`reveal reveal-delay-${i + 1} ${vis} w-full text-left p-6 border transition-all duration-500 group relative overflow-hidden ${
-                  i === activeIdx
+                key={service.title}
+                onClick={() => setActiveIdx(index)}
+                className={`reveal reveal-delay-${index + 1} ${vis} w-full text-left p-6 border transition-all duration-500 group relative overflow-hidden ${
+                  index === activeIdx
                     ? "border-terra/40 bg-terra/[0.06]"
                     : "border-stone-800 bg-stone-900/50 hover:border-stone-700 hover:bg-stone-900/80"
                 }`}
               >
                 <div className={`absolute left-0 top-0 bottom-0 w-[3px] bg-terra transition-all duration-500 ${
-                  i === activeIdx ? "opacity-100" : "opacity-0"
+                  index === activeIdx ? "opacity-100" : "opacity-0"
                 }`} />
                 <div className="flex items-start justify-between gap-2">
                   <div className="min-w-0">
-                    <div className="text-xs font-semibold tracking-[0.15em] uppercase text-terra mb-1">{svc.subtitle}</div>
-                    <h3 className="font-display text-2xl lg:text-3xl font-medium text-stone-50 tracking-tight">{svc.title}</h3>
+                    <div className="text-xs font-semibold tracking-[0.15em] uppercase text-terra mb-1">{service.subtitle}</div>
+                    <h3 className="font-display text-2xl lg:text-3xl font-medium text-stone-50 tracking-tight">{service.title}</h3>
                   </div>
                   <div className="text-right flex-shrink-0">
-                    <div className="font-display text-2xl font-light text-terra">{svc.stat}</div>
-                    <div className="text-[10px] text-stone-500 tracking-wider uppercase">{svc.statLabel}</div>
+                    <div className="font-display text-2xl font-light text-terra">{service.stat}</div>
+                    <div className="text-[10px] text-stone-500 tracking-wider uppercase">{service.statLabel}</div>
                   </div>
                 </div>
                 <div className={`flex flex-wrap gap-2 mt-4 transition-all duration-500 ${
-                  i === activeIdx ? "opacity-100 max-h-20" : "opacity-0 max-h-0 overflow-hidden"
+                  index === activeIdx ? "opacity-100 max-h-20" : "opacity-0 max-h-0 overflow-hidden"
                 }`}>
-                  {svc.capabilities.map((cap) => (
-                    <span key={cap} className="text-[10px] font-medium text-stone-400 border border-stone-700 px-2.5 py-1 tracking-wider uppercase">{cap}</span>
+                  {service.capabilities.map((capability) => (
+                    <span key={capability} className="text-[10px] font-medium text-stone-400 border border-stone-700 px-2.5 py-1 tracking-wider uppercase">
+                      {capability}
+                    </span>
                   ))}
                 </div>
               </button>
             ))}
           </div>
 
-          {/* Right: Detail panel with photo */}
           <div className="lg:col-span-8 relative">
             <div className={`reveal reveal-delay-2 ${vis} relative lg:h-full min-h-[400px] overflow-hidden group`}>
               <div key={activeIdx} className="absolute inset-0" style={{ animation: "fadeIn 0.5s ease-out" }}>
@@ -160,7 +179,9 @@ export default function Services() {
               <div className="absolute top-4 left-4 w-8 h-8 border-l border-t border-terra/30" />
               <div className="absolute bottom-4 right-4 w-8 h-8 border-r border-b border-terra/30" />
               <div className="absolute bottom-0 inset-x-0 p-8 lg:p-12">
-                <p key={`desc-${activeIdx}`} className="text-stone-300 leading-relaxed max-w-xl" style={{ animation: "fadeIn 0.5s ease-out 0.1s both" }}>{active.description}</p>
+                <p key={`desc-${activeIdx}`} className="text-stone-300 leading-relaxed max-w-xl" style={{ animation: "fadeIn 0.5s ease-out 0.1s both" }}>
+                  {active.description}
+                </p>
                 <a href="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-terra hover:text-terra-light transition-colors mt-6 group/link" style={{ animation: "fadeIn 0.5s ease-out 0.2s both" }}>
                   Learn More
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="group-hover/link:translate-x-1 transition-transform">
@@ -176,4 +197,19 @@ export default function Services() {
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-terra/30 to-transparent" />
     </section>
   );
+}
+
+function ConvexServices() {
+  const cmsData = useQuery(api.services.list);
+  const data = cmsData ?? fallbackServices;
+
+  return <ServicesSection services={data} />;
+}
+
+export default function Services() {
+  if (!convexEnabled) {
+    return <ServicesSection services={fallbackServices} />;
+  }
+
+  return <ConvexServices />;
 }

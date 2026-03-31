@@ -3,7 +3,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "../../../../convex/_generated/api";
-import { fallbackContent, getRecordKey, sortStats, stripSystemFields, type CmsRecord } from "@/lib/cms";
+import { fallbackContent, getRecordKey, sortStats, type CmsRecord } from "@/lib/cms";
 import { convexEnabled } from "@/lib/convex-config";
 import type { SiteStat } from "@/types/cms";
 import { AdminButton, AdminCard, AdminField, AdminInput, AdminNotice, AdminPage } from "@/components/admin/AdminPrimitives";

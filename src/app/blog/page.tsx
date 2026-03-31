@@ -1,24 +1,41 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useQuery } from "convex/react";
+import { api } from "../../../convex/_generated/api";
 import { posts } from "@/data/blog";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
+import { convexEnabled } from "@/lib/convex-config";
+import { sortPosts } from "@/lib/cms";
 
-export const metadata = {
-  title: "Insights",
-  description: "Perspectives on architecture, construction, and engineering from Jason Reese.",
-};
+function BlogIndexContent({ items }: { items: typeof posts }) {
+  const sortedPosts = sortPosts(items);
+  const [featured, ...rest] = sortedPosts;
 
-export default function BlogPage() {
-  const [featured, ...rest] = posts;
+  if (!featured) {
+    return (
+      <>
+        <ScrollProgress />
+        <Navbar />
+        <main className="min-h-screen bg-stone-950 pt-32 pb-24">
+          <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+            <h1 className="font-display text-4xl font-bold text-white tracking-tight">Insights</h1>
+            <p className="text-stone-500 mt-4">No articles are available yet.</p>
+          </div>
+        </main>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
       <ScrollProgress />
       <Navbar />
       <main>
-        {/* Hero - dark with glow */}
         <section className="bg-stone-950 bg-grid-dark grain relative pt-32 pb-16 overflow-hidden">
           <div className="absolute bottom-0 left-1/3 w-80 h-80 rounded-full bg-terra/[0.03] blur-[100px] pointer-events-none" />
           <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
@@ -38,7 +55,6 @@ export default function BlogPage() {
         <section className="py-20 lg:py-28 bg-stone-900 relative overflow-hidden">
           <div className="absolute inset-0 bg-grid-dark" />
           <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-            {/* Featured Post */}
             <Link href={`/blog/${featured.slug}`} className="group grid lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
               <div className="aspect-[3/2] relative overflow-hidden">
                 <Image
@@ -49,7 +65,6 @@ export default function BlogPage() {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-stone-950/40 to-transparent" />
-                {/* Corner accents */}
                 <div className="absolute top-3 left-3 w-6 h-6 border-l border-t border-terra/30" />
                 <div className="absolute bottom-3 right-3 w-6 h-6 border-r border-b border-terra/30" />
               </div>
@@ -65,15 +80,15 @@ export default function BlogPage() {
                 <p className="text-stone-400 leading-relaxed">{featured.excerpt}</p>
                 <div className="text-sm font-semibold text-terra group-hover:text-terra-light transition-colors inline-flex items-center gap-2">
                   Read Article
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="transform group-hover:translate-x-1 transition-transform"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="transform group-hover:translate-x-1 transition-transform">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
                 </div>
               </div>
             </Link>
 
-            {/* Divider */}
             <div className="h-px bg-gradient-to-r from-transparent via-stone-700/50 to-transparent mb-16" />
 
-            {/* Rest of posts */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {rest.map((post) => (
                 <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
@@ -104,4 +119,19 @@ export default function BlogPage() {
       <Footer />
     </>
   );
+}
+
+function ConvexBlogPage() {
+  const cmsData = useQuery(api.blog.list);
+  const data = cmsData ?? posts;
+
+  return <BlogIndexContent items={data} />;
+}
+
+export default function BlogPage() {
+  if (!convexEnabled) {
+    return <BlogIndexContent items={posts} />;
+  }
+
+  return <ConvexBlogPage />;
 }

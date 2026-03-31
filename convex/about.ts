@@ -6,6 +6,10 @@ export const list = query({
   handler: async ({ db }) => db.query("about").collect(),
 });
 
+export const get = query({
+  handler: async ({ db }) => db.query("about").first(),
+});
+
 export const getById = query({
   args: { id: v.id("about") },
   handler: async ({ db }, { id }) => db.get(id),
@@ -38,4 +42,3 @@ const remove = mutation({
 });
 
 export { remove as delete };
-

@@ -2,14 +2,38 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api";
+import { convexEnabled } from "@/lib/convex-config";
+import type { Category } from "@/types/cms";
 
-const categories = [
+const fallbackCategories: Category[] = [
   {
     title: "Architecture",
     count: "180+",
     description: "Commercial, residential, and public architecture projects from firms across the region.",
     image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=600&h=400&fit=crop",
-    icon: (
+    order: 1,
+  },
+  {
+    title: "Engineering",
+    count: "210+",
+    description: "Structural, civil, MEP, and environmental engineering opportunities across all sectors.",
+    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&h=400&fit=crop",
+    order: 2,
+  },
+  {
+    title: "Contracting",
+    count: "150+",
+    description: "General contracting, specialty trades, and construction management roles on active builds.",
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=400&fit=crop",
+    order: 3,
+  },
+];
+
+function getCategoryIcon(title: string) {
+  if (/architect/i.test(title)) {
+    return (
       <svg className="w-6 h-6" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={1.5}>
         <rect x="4" y="14" width="24" height="14" />
         <polygon points="16,4 4,14 28,14" />
@@ -17,40 +41,32 @@ const categories = [
         <line x1="16" y1="20" x2="16" y2="28" />
         <line x1="22" y1="20" x2="22" y2="28" />
       </svg>
-    ),
-  },
-  {
-    title: "Engineering",
-    count: "210+",
-    description: "Structural, civil, MEP, and environmental engineering opportunities across all sectors.",
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&h=400&fit=crop",
-    icon: (
+    );
+  }
+
+  if (/engineer/i.test(title)) {
+    return (
       <svg className="w-6 h-6" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={1.5}>
         <circle cx="16" cy="16" r="10" />
         <line x1="16" y1="6" x2="16" y2="26" />
         <line x1="6" y1="16" x2="26" y2="16" />
         <circle cx="16" cy="16" r="4" />
       </svg>
-    ),
-  },
-  {
-    title: "Contracting",
-    count: "150+",
-    description: "General contracting, specialty trades, and construction management roles on active builds.",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=400&fit=crop",
-    icon: (
-      <svg className="w-6 h-6" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={1.5}>
-        <rect x="6" y="16" width="20" height="12" />
-        <rect x="12" y="8" width="8" height="8" />
-        <line x1="6" y1="22" x2="26" y2="22" />
-        <line x1="14" y1="16" x2="14" y2="28" />
-        <line x1="18" y1="16" x2="18" y2="28" />
-      </svg>
-    ),
-  },
-];
+    );
+  }
 
-export default function Categories() {
+  return (
+    <svg className="w-6 h-6" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth={1.5}>
+      <rect x="6" y="16" width="20" height="12" />
+      <rect x="12" y="8" width="8" height="8" />
+      <line x1="6" y1="22" x2="26" y2="22" />
+      <line x1="14" y1="16" x2="14" y2="28" />
+      <line x1="18" y1="16" x2="18" y2="28" />
+    </svg>
+  );
+}
+
+function CategoriesSection({ categories }: { categories: Category[] }) {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -58,14 +74,13 @@ export default function Categories() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.querySelectorAll(".reveal").forEach((el) =>
-              el.classList.add("visible")
-            );
+            entry.target.querySelectorAll(".reveal").forEach((element) => element.classList.add("visible"));
           }
         });
       },
       { threshold: 0.15 }
     );
+
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
@@ -89,38 +104,34 @@ export default function Categories() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-          {categories.map((cat, i) => (
+          {categories.map((category, index) => (
             <div
-              key={cat.title}
-              className={`reveal reveal-delay-${i + 1} group relative bg-white border border-stone-200 overflow-hidden transition-all duration-500 hover:border-terra/40 hover:shadow-lg hover:shadow-terra/5 cursor-pointer`}
+              key={category.title}
+              className={`reveal reveal-delay-${index + 1} group relative bg-white border border-stone-200 overflow-hidden transition-all duration-500 hover:border-terra/40 hover:shadow-lg hover:shadow-terra/5 cursor-pointer`}
             >
-              {/* Top accent line on hover */}
               <div className="absolute top-0 left-0 w-0 h-px bg-terra transition-all duration-500 group-hover:w-full z-10" />
 
-              {/* Photo */}
               <div className="relative h-48 overflow-hidden">
                 <Image
-                  src={cat.image}
-                  alt={cat.title}
+                  src={category.image}
+                  alt={category.title}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-stone-900/40 to-transparent" />
-                {/* Icon badge */}
                 <div className="absolute bottom-4 left-4 w-10 h-10 bg-white/90 backdrop-blur-sm flex items-center justify-center text-stone-700">
-                  {cat.icon}
+                  {getCategoryIcon(category.title)}
                 </div>
               </div>
 
-              {/* Content */}
               <div className="p-8">
                 <div className="space-y-4">
                   <div className="flex items-baseline justify-between">
-                    <h3 className="font-display text-2xl font-medium tracking-tight">{cat.title}</h3>
-                    <span className="text-xs font-semibold text-terra tracking-wider">{cat.count} projects</span>
+                    <h3 className="font-display text-2xl font-medium tracking-tight">{category.title}</h3>
+                    <span className="text-xs font-semibold text-terra tracking-wider">{category.count} projects</span>
                   </div>
-                  <p className="text-sm text-stone-500 leading-relaxed">{cat.description}</p>
+                  <p className="text-sm text-stone-500 leading-relaxed">{category.description}</p>
                 </div>
                 <div className="mt-6 flex items-center gap-2 text-sm font-medium text-stone-400 group-hover:text-terra transition-colors duration-300">
                   <span>Explore</span>
@@ -135,4 +146,19 @@ export default function Categories() {
       </div>
     </section>
   );
+}
+
+function ConvexCategories() {
+  const cmsData = useQuery(api.categories.list);
+  const data = cmsData ?? fallbackCategories;
+
+  return <CategoriesSection categories={data} />;
+}
+
+export default function Categories() {
+  if (!convexEnabled) {
+    return <CategoriesSection categories={fallbackCategories} />;
+  }
+
+  return <ConvexCategories />;
 }
