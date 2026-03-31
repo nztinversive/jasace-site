@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "Terms of Service — Jasace ACE",
+  title: "Terms of Service",
   description: "Jasace ACE terms of service governing use of our website and services.",
 };
 
@@ -38,7 +38,7 @@ const sections = [
   },
   {
     title: "Governing Law",
-    content: "These terms shall be governed by and construed in accordance with the laws of the State of Texas, without regard to conflict of law provisions. Any disputes arising from these terms or your use of our website shall be resolved in the courts of Travis County, Texas.",
+    content: "These terms shall be governed by and construed in accordance with the laws of the State of Nevada, without regard to conflict of law provisions. Any disputes arising from these terms or your use of our website shall be resolved in the courts of Clark County, Nevada.",
   },
 ];
 

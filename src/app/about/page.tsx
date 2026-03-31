@@ -7,7 +7,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import AboutClient from "./AboutClient";
 
 export const metadata = {
-  title: "About — Jasace ACE",
+  title: "About",
   description: "The story behind Jasace. 10+ years of architecture, construction, and engineering consulting.",
 };
 
@@ -50,13 +50,13 @@ export default function AboutPage() {
                   Founded in Las Vegas,<br /><span className="text-gradient font-bold">BUILT ON RESULTS</span>
                 </h2>
                 <p className="text-stone-500 leading-relaxed">
-                  Jasace was founded by Jason Reese in Las Vegas, Nevada — built on the belief that the best projects come from people who think across disciplines, not in silos.
+                  Jasace was founded by Jason Reese in Las Vegas, Nevada - built on the belief that the best projects come from people who think across disciplines, not in silos.
                 </p>
                 <p className="text-stone-500 leading-relaxed">
-                  With a background in business development and operations management in the engineering industry, Jason brings a unique perspective to ACE consulting — combining technical understanding with strong project delivery and client relationships. A UNLV graduate with a BBA in International Business Management, he built Jasace into a trusted name across the Southwest.
+                  With a background in business development and operations management in the engineering industry, Jason brings a unique perspective to ACE consulting - combining technical understanding with strong project delivery and client relationships. A UNLV graduate with a BBA in International Business Management, he built Jasace into a trusted name across the Southwest.
                 </p>
                 <p className="text-stone-500 leading-relaxed">
-                  Today, Jasace delivers real expertise without the overhead. Every client works directly with Jason — no hand-offs, no layers, no surprises.
+                  Today, Jasace delivers real expertise without the overhead. Every client works directly with Jason - no hand-offs, no layers, no surprises.
                 </p>
               </div>
 
@@ -80,7 +80,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Team — 2 person layout */}
+        {/* Team - 2 person layout */}
         <section className="py-20 lg:py-28 bg-stone-950 relative overflow-hidden">
           <div className="absolute inset-0 bg-grid-dark" />
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -93,7 +93,7 @@ export default function AboutPage() {
                 Meet the <span className="text-gradient font-bold">FOUNDER</span>
               </h2>
               <p className="text-stone-500 leading-relaxed">
-                When you work with Jasace, you work directly with Jason. No layers, no hand-offs — just dedicated expertise and a trusted network of specialist collaborators.
+                When you work with Jasace, you work directly with Jason. No layers, no hand-offs - just dedicated expertise and a trusted network of specialist collaborators.
               </p>
             </div>
             <div className="grid sm:grid-cols-1 gap-12 max-w-md">

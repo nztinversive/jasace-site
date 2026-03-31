@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 
 export const metadata = {
-  title: "Insights — Jasace ACE",
+  title: "Insights",
   description: "Perspectives on architecture, construction, and engineering from Jason Reese.",
 };
 
@@ -18,7 +18,7 @@ export default function BlogPage() {
       <ScrollProgress />
       <Navbar />
       <main>
-        {/* Hero — dark with glow */}
+        {/* Hero - dark with glow */}
         <section className="bg-stone-950 bg-grid-dark grain relative pt-32 pb-16 overflow-hidden">
           <div className="absolute bottom-0 left-1/3 w-80 h-80 rounded-full bg-terra/[0.03] blur-[100px] pointer-events-none" />
           <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">

@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 
 export const metadata = {
-  title: "Services — Jasace ACE",
+  title: "Services",
   description: "Architecture, construction, and engineering services from a practice that integrates all three disciplines.",
 };
 
@@ -57,7 +57,7 @@ export default function ServicesPage() {
       <ScrollProgress />
       <Navbar />
       <main>
-        {/* Hero — dark with wireframe accents */}
+        {/* Hero - dark with wireframe accents */}
         <section className="relative h-[50vh] min-h-[400px] flex items-end overflow-hidden">
           <Image
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&h=800&fit=crop"
@@ -87,7 +87,7 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* Service Sections — alternating dark/darker */}
+        {/* Service Sections - alternating dark/darker */}
         {services.map((svc, i) => (
           <section key={svc.id} id={svc.id} className={`py-20 lg:py-28 relative overflow-hidden ${i % 2 === 0 ? "bg-stone-950" : "bg-stone-900"}`}>
             {/* Glow orb */}
@@ -136,7 +136,7 @@ export default function ServicesPage() {
                   </div>
                   <div className="pt-4">
                     <Link href="/contact" className="inline-flex items-center gap-2 text-sm font-semibold text-terra hover:text-terra-light transition-colors group">
-                      Discuss a {svc.title} Project
+                      Discuss {/^[aeiou]/i.test(svc.title) ? "an" : "a"} {svc.title} Project
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="transform group-hover:translate-x-1 transition-transform"><path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
                     </Link>
                   </div>

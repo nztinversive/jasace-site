@@ -4,7 +4,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import ContactForm from "./ContactForm";
 
 export const metadata = {
-  title: "Contact — Jasace ACE",
+  title: "Contact",
   description: "Get in touch with Jasace. Start a project, ask a question, or visit our office in Las Vegas.",
 };
 
@@ -14,7 +14,7 @@ export default function ContactPage() {
       <ScrollProgress />
       <Navbar />
       <main>
-        {/* Hero — dark with glow */}
+        {/* Hero - dark with glow */}
         <section className="bg-stone-950 bg-grid-dark grain relative pt-32 pb-16 overflow-hidden">
           <div className="absolute top-1/2 right-0 w-80 h-80 rounded-full bg-terra/[0.04] blur-[100px] pointer-events-none -translate-y-1/2" />
           {/* Wireframe accent */}
@@ -77,7 +77,7 @@ export default function ContactPage() {
                   <div className="border border-stone-700/50 p-6 bg-stone-800/30">
                     <div className="text-sm font-semibold text-stone-200">Las Vegas, NV</div>
                     <div className="text-sm text-stone-500 mt-1">Las Vegas, Nevada</div>
-                    <div className="text-xs text-stone-600 mt-2">Mon – Fri, 8:00 AM – 6:00 PM PT</div>
+                    <div className="text-xs text-stone-600 mt-2">Mon - Fri, 8:00 AM - 6:00 PM PT</div>
                   </div>
                 </div>
 

@@ -3,7 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "Privacy Policy — Jasace ACE",
+  title: "Privacy Policy",
   description: "Jasace ACE privacy policy. How we collect, use, and protect your information.",
 };
 
