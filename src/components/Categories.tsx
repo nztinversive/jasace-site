@@ -84,7 +84,7 @@ export default function Categories() {
             </h2>
           </div>
           <p className="reveal reveal-delay-2 text-stone-500 text-sm max-w-xs leading-relaxed">
-            Explore opportunities tailored to your expertise across the AEC industry.
+            Explore opportunities tailored to your expertise across the ACE industry.
           </p>
         </div>
 

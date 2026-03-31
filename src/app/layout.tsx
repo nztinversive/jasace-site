@@ -109,7 +109,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Jasace ACE — Architecture, Construction & Engineering",
     description:
-      "A boutique ACE consulting practice. 25+ years, 500+ projects delivered.",
+      "A boutique ACE consulting practice. 10+ years of ACE consulting excellence.",
     images: ["/og-image.jpg"],
   },
   robots: {

@@ -3,8 +3,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "Privacy Policy — Jasace AEC",
-  description: "Jasace AEC privacy policy. How we collect, use, and protect your information.",
+  title: "Privacy Policy — Jasace ACE",
+  description: "Jasace ACE privacy policy. How we collect, use, and protect your information.",
 };
 
 const sections = [
@@ -56,7 +56,7 @@ export default function PrivacyPage() {
           <p className="text-sm text-stone-500 mb-12">Effective Date: January 1, 2025 &middot; Last Updated: March 1, 2025</p>
 
           <p className="text-stone-400 leading-relaxed mb-10">
-            Jasace AEC (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) is committed to protecting your privacy.
+            Jasace ACE (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;) is committed to protecting your privacy.
             This policy describes how we collect, use, and safeguard your information when you visit our website or engage with our services.
           </p>
 

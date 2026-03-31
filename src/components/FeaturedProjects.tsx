@@ -94,7 +94,7 @@ export default function FeaturedProjects() {
               Featured <span className="text-gradient font-bold">PROJECTS</span>
             </h2>
           </div>
-          <a href="#" className="reveal reveal-delay-2 inline-flex items-center gap-2 text-sm font-medium text-terra hover:text-terra-dark transition-colors group">
+          <a href="/services" className="reveal reveal-delay-2 inline-flex items-center gap-2 text-sm font-medium text-terra hover:text-terra-dark transition-colors group">
             View all projects
             <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />

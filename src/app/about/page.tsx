@@ -8,7 +8,7 @@ import AboutClient from "./AboutClient";
 
 export const metadata = {
   title: "About — Jasace ACE",
-  description: "The story behind Jasace. 25+ years of architecture, construction, and engineering consulting.",
+  description: "The story behind Jasace. 10+ years of architecture, construction, and engineering consulting.",
 };
 
 export default function AboutPage() {
