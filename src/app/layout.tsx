@@ -9,6 +9,7 @@ import {
   Syne,
   Manrope,
 } from "next/font/google";
+import ConvexClientProvider from "@/components/ConvexClientProvider";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -145,7 +146,7 @@ export default function RootLayout({
     <html lang="en" className={`${fontVars} antialiased`}>
       <body className="font-body bg-stone-950 text-stone-100">
         <a href="#main-content" className="skip-link">Skip to content</a>
-        {children}
+        <ConvexClientProvider>{children}</ConvexClientProvider>
       </body>
     </html>
   );
