@@ -9,6 +9,7 @@ import type { HeroContent } from "@/types/cms";
 import { AdminButton, AdminCard, AdminField, AdminInput, AdminNotice, AdminPage } from "@/components/admin/AdminPrimitives";
 import { useAdminToast } from "@/components/admin/AdminToastProvider";
 import { ImageUpload } from "@/components/admin/ImageUpload";
+import { PreviewLink } from "@/components/admin/PreviewLink";
 import { toOptionalString } from "@/lib/admin/cms";
 
 export default function AdminHeroPage() {
@@ -66,6 +67,7 @@ export default function AdminHeroPage() {
     <AdminPage
       title="Hero Section"
       description="Manage the homepage hero. This is treated as a single record."
+      actions={<PreviewLink href="/" label="Homepage" />}
     >
       {!convexEnabled ? (
         <AdminNotice tone="warning">Convex is disabled. The form is showing fallback content only.</AdminNotice>

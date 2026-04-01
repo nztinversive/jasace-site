@@ -16,6 +16,7 @@ import {
   AdminTextarea,
 } from "@/components/admin/AdminPrimitives";
 import { useAdminToast } from "@/components/admin/AdminToastProvider";
+import { PreviewLink } from "@/components/admin/PreviewLink";
 
 type TestimonialRecord = CmsRecord<Testimonial>;
 
@@ -113,9 +114,12 @@ export default function AdminTestimonialsPage() {
       title="Testimonials"
       description="Manage testimonial cards displayed on the homepage."
       actions={
-        <AdminButton type="button" tone="secondary" onClick={() => setSelectedKey("new")}>
-          New Testimonial
-        </AdminButton>
+        <>
+          <PreviewLink href="/" label="Testimonials" />
+          <AdminButton type="button" tone="secondary" onClick={() => setSelectedKey("new")}>
+            New Testimonial
+          </AdminButton>
+        </>
       }
     >
       {!convexEnabled ? (

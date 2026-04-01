@@ -17,6 +17,7 @@ import {
   AdminPage,
 } from "@/components/admin/AdminPrimitives";
 import { useAdminToast } from "@/components/admin/AdminToastProvider";
+import { PreviewLink } from "@/components/admin/PreviewLink";
 
 export default function AdminAboutPage() {
   const { showToast } = useAdminToast();
@@ -82,6 +83,7 @@ export default function AdminAboutPage() {
     <AdminPage
       title="About"
       description="Edit the main about record, including copy, image, highlights, awards, and milestones."
+      actions={<PreviewLink href="/about" label="About Page" />}
     >
       {!convexEnabled ? (
         <AdminNotice tone="warning">Convex is disabled. The form is showing fallback content only.</AdminNotice>

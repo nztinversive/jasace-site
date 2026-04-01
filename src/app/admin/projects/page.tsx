@@ -19,6 +19,7 @@ import {
   AdminTextarea,
 } from "@/components/admin/AdminPrimitives";
 import { useAdminToast } from "@/components/admin/AdminToastProvider";
+import { PreviewLink } from "@/components/admin/PreviewLink";
 
 type ProjectRecord = CmsRecord<CmsProject>;
 
@@ -139,9 +140,12 @@ export default function AdminProjectsPage() {
       title="Projects"
       description="Manage the full project records used in portfolio cards and project detail pages."
       actions={
-        <AdminButton type="button" tone="secondary" onClick={() => setSelectedKey("new")}>
-          New Project
-        </AdminButton>
+        <>
+          <PreviewLink href="/#work" label="Portfolio" />
+          <AdminButton type="button" tone="secondary" onClick={() => setSelectedKey("new")}>
+            New Project
+          </AdminButton>
+        </>
       }
     >
       {!convexEnabled ? (

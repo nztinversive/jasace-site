@@ -9,6 +9,7 @@ import type { SiteSettings } from "@/types/cms";
 import { ObjectListEditor } from "@/components/admin/AdminArrayEditors";
 import { AdminButton, AdminCard, AdminField, AdminInput, AdminNotice, AdminPage, AdminTextarea } from "@/components/admin/AdminPrimitives";
 import { useAdminToast } from "@/components/admin/AdminToastProvider";
+import { PreviewLink } from "@/components/admin/PreviewLink";
 
 export default function AdminSettingsPage() {
   const { showToast } = useAdminToast();
@@ -69,6 +70,7 @@ export default function AdminSettingsPage() {
     <AdminPage
       title="Settings"
       description="Edit shared site settings such as footer copy, company info, and social links."
+      actions={<PreviewLink href="/" label="Footer" />}
     >
       {!convexEnabled ? (
         <AdminNotice tone="warning">Convex is disabled. The form is showing fallback content only.</AdminNotice>

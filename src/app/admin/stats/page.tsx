@@ -8,6 +8,7 @@ import { convexEnabled } from "@/lib/convex-config";
 import type { SiteStat } from "@/types/cms";
 import { AdminButton, AdminCard, AdminField, AdminInput, AdminNotice, AdminPage } from "@/components/admin/AdminPrimitives";
 import { useAdminToast } from "@/components/admin/AdminToastProvider";
+import { PreviewLink } from "@/components/admin/PreviewLink";
 import { toNumber } from "@/lib/admin/cms";
 
 type EditableStat = CmsRecord<SiteStat> & { valueInput: string; orderInput: string };
@@ -100,7 +101,7 @@ export default function AdminStatsPage() {
   };
 
   return (
-    <AdminPage title="Stats" description="Edit the metrics shown on the homepage stats section.">
+    <AdminPage title="Stats" description="Edit the metrics shown on the homepage stats section." actions={<PreviewLink href="/" label="Stats Section" />}>
       {!convexEnabled ? (
         <AdminNotice tone="warning">Convex is disabled. The form is showing fallback content only.</AdminNotice>
       ) : null}

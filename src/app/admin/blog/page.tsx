@@ -19,6 +19,7 @@ import {
   AdminTextarea,
 } from "@/components/admin/AdminPrimitives";
 import { useAdminToast } from "@/components/admin/AdminToastProvider";
+import { PreviewLink } from "@/components/admin/PreviewLink";
 
 type BlogRecord = CmsRecord<CmsBlogPost>;
 
@@ -132,9 +133,12 @@ export default function AdminBlogPage() {
       title="Blog"
       description="Manage blog posts used in the insights index and post detail pages."
       actions={
-        <AdminButton type="button" tone="secondary" onClick={() => setSelectedKey("new")}>
-          New Post
-        </AdminButton>
+        <>
+          <PreviewLink href="/blog" label="Blog" />
+          <AdminButton type="button" tone="secondary" onClick={() => setSelectedKey("new")}>
+            New Post
+          </AdminButton>
+        </>
       }
     >
       {!convexEnabled ? (

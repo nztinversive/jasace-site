@@ -18,6 +18,7 @@ import {
   AdminTextarea,
 } from "@/components/admin/AdminPrimitives";
 import { useAdminToast } from "@/components/admin/AdminToastProvider";
+import { PreviewLink } from "@/components/admin/PreviewLink";
 import { toNumber } from "@/lib/admin/cms";
 
 type EditableService = CmsRecord<ServiceContent> & { orderInput: string };
@@ -150,9 +151,12 @@ export default function AdminServicesPage() {
       title="Services"
       description="Create, edit, and delete the services shown throughout the site."
       actions={
-        <AdminButton type="button" tone="secondary" onClick={() => handleSelect("new")}>
-          New Service
-        </AdminButton>
+        <>
+          <PreviewLink href="/services" label="Services Page" />
+          <AdminButton type="button" tone="secondary" onClick={() => handleSelect("new")}>
+            New Service
+          </AdminButton>
+        </>
       }
     >
       {!convexEnabled ? (

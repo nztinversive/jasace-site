@@ -17,6 +17,7 @@ import {
   AdminTextarea,
 } from "@/components/admin/AdminPrimitives";
 import { useAdminToast } from "@/components/admin/AdminToastProvider";
+import { PreviewLink } from "@/components/admin/PreviewLink";
 import { toOptionalString } from "@/lib/admin/cms";
 
 type TeamRecord = CmsRecord<CmsTeamMember>;
@@ -113,9 +114,12 @@ export default function AdminTeamPage() {
       title="Team"
       description="Manage the team members displayed on the site."
       actions={
-        <AdminButton type="button" tone="secondary" onClick={() => setSelectedKey("new")}>
-          New Member
-        </AdminButton>
+        <>
+          <PreviewLink href="/about" label="Team Section" />
+          <AdminButton type="button" tone="secondary" onClick={() => setSelectedKey("new")}>
+            New Member
+          </AdminButton>
+        </>
       }
     >
       {!convexEnabled ? (
