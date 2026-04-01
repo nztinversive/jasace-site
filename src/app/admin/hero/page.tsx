@@ -64,7 +64,7 @@ export default function AdminHeroPage() {
 
   return (
     <AdminPage
-      title="Hero"
+      title="Hero Section"
       description="Manage the homepage hero. This is treated as a single record."
     >
       {!convexEnabled ? (
