@@ -97,4 +97,3 @@ export interface SiteSettings {
 export type CmsProject = Project;
 export type CmsTeamMember = TeamMember;
 export type CmsBlogPost = BlogPost;
-

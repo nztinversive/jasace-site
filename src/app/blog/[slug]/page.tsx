@@ -4,12 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useQuery } from "convex/react";
 import { api } from "../../../../convex/_generated/api";
-import { getPostBySlug, posts } from "@/data/blog";
+import { getPostBySlug, posts, type BlogPost } from "@/data/blog";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollProgress from "@/components/ScrollProgress";
 import { convexEnabled } from "@/lib/convex-config";
 import { sortPosts } from "@/lib/cms";
+
+type RuntimeBlogPost = Omit<BlogPost, "content"> & { content: string | string[] };
 
 function BlogNotFound() {
   return (
@@ -53,8 +55,8 @@ function BlogPostContent({
   items,
 }: {
   slug: string;
-  post: (typeof posts)[0] | undefined;
-  items: typeof posts;
+  post: RuntimeBlogPost | undefined;
+  items: RuntimeBlogPost[];
 }) {
   if (!post) {
     return <BlogNotFound />;
@@ -106,11 +108,15 @@ function BlogPostContent({
               {post.excerpt}
             </p>
             <div className="h-px bg-stone-800 mb-8" />
-            <div className="space-y-6">
-              {post.content.map((paragraph, index) => (
-                <p key={index} className="text-stone-400 leading-relaxed">{paragraph}</p>
-              ))}
-            </div>
+            {Array.isArray(post.content) ? (
+              <div className="space-y-6">
+                {post.content.map((paragraph, index) => (
+                  <p key={index} className="text-stone-400 leading-relaxed">{paragraph}</p>
+                ))}
+              </div>
+            ) : (
+              <div className="blog-prose" dangerouslySetInnerHTML={{ __html: post.content }} />
+            )}
 
             <div className="mt-12 pt-8 border-t border-stone-800">
               <div className="flex items-center justify-between">
@@ -179,8 +185,8 @@ function BlogPostContent({
 }
 
 function ConvexBlogPostPage({ slug }: { slug: string }) {
-  const cmsPost = useQuery(api.blog.getBySlug, { slug });
-  const cmsPosts = useQuery(api.blog.list);
+  const cmsPost = useQuery(api.blog.getBySlug, { slug }) as RuntimeBlogPost | null | undefined;
+  const cmsPosts = useQuery(api.blog.list) as RuntimeBlogPost[] | undefined;
   const items = cmsPosts ?? posts;
   const post = cmsPost ?? getPostBySlug(slug);
 

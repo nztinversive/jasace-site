@@ -161,7 +161,7 @@ export const blogFields = {
   readTime: v.string(),
   image: v.string(),
   author: v.string(),
-  content: v.array(v.string()),
+  content: v.string(),
 };
 
 export const blogPatchFields = {
@@ -173,7 +173,7 @@ export const blogPatchFields = {
   readTime: v.optional(v.string()),
   image: v.optional(v.string()),
   author: v.optional(v.string()),
-  content: v.optional(v.array(v.string())),
+  content: v.optional(v.string()),
 };
 
 export const testimonialFields = {
@@ -263,4 +263,3 @@ export default defineSchema({
   siteSettings: defineTable(siteSettingsFields),
   newsletterSubscribers: defineTable(newsletterSubscriberFields).index("by_email", ["email"]),
 });
-

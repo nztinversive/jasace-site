@@ -4,10 +4,11 @@ import { FormEvent, useEffect, useMemo, useState } from "react";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "../../../../convex/_generated/api";
 import { fallbackContent, getRecordKey, sortPosts, type CmsRecord } from "@/lib/cms";
+import { normalizeBlogContent } from "@/lib/blog-content";
 import { convexEnabled } from "@/lib/convex-config";
 import type { CmsBlogPost } from "@/types/cms";
-import { StringListEditor } from "@/components/admin/AdminArrayEditors";
 import { ImageUpload } from "@/components/admin/ImageUpload";
+import { RichTextEditor } from "@/components/admin/RichTextEditor";
 import {
   AdminButton,
   AdminCard,
@@ -21,6 +22,13 @@ import { useAdminToast } from "@/components/admin/AdminToastProvider";
 
 type BlogRecord = CmsRecord<CmsBlogPost>;
 
+function normalizePost(record: BlogRecord): BlogRecord {
+  return {
+    ...record,
+    content: normalizeBlogContent(record.content),
+  };
+}
+
 function createEmptyPost(): BlogRecord {
   return {
     slug: "",
@@ -31,7 +39,7 @@ function createEmptyPost(): BlogRecord {
     readTime: "",
     image: "",
     author: "",
-    content: [""],
+    content: "",
   };
 }
 
@@ -41,7 +49,10 @@ export default function AdminBlogPage() {
   const createPost = useMutation(api.blog.create);
   const updatePost = useMutation(api.blog.update);
   const deletePost = useMutation(api.blog.delete);
-  const items = useMemo(() => sortPosts(posts?.length ? posts : fallbackContent.blog), [posts]);
+  const items = useMemo(
+    () => sortPosts((posts?.length ? posts : fallbackContent.blog).map(normalizePost)),
+    [posts]
+  );
   const [selectedKey, setSelectedKey] = useState<string>("new");
   const [draft, setDraft] = useState<BlogRecord>(createEmptyPost());
   const [saving, setSaving] = useState(false);
@@ -54,7 +65,7 @@ export default function AdminBlogPage() {
 
     const selected = items.find((item, index) => getRecordKey(item, index) === selectedKey);
     if (selected) {
-      setDraft(selected);
+      setDraft(normalizePost(selected));
       return;
     }
 
@@ -80,7 +91,7 @@ export default function AdminBlogPage() {
         readTime: draft.readTime.trim(),
         image: draft.image.trim(),
         author: draft.author.trim(),
-        content: draft.content.map((item) => item.trim()).filter(Boolean),
+        content: draft.content.trim(),
       };
 
       if (draft._id) {
@@ -152,7 +163,7 @@ export default function AdminBlogPage() {
                   type="button"
                   onClick={() => {
                     setSelectedKey(key);
-                    setDraft(item);
+                    setDraft(normalizePost(item));
                   }}
                   className={`w-full rounded-2xl border px-4 py-3 text-left transition-colors ${
                     selectedKey === key
@@ -205,12 +216,9 @@ export default function AdminBlogPage() {
               </div>
             </div>
 
-            <StringListEditor
-              label="Content Blocks"
-              items={draft.content}
-              onChange={(content) => setDraft((current) => ({ ...current, content }))}
-              placeholder="Paragraph"
-            />
+            <AdminField label="Content" hint="Use headings, lists, quotes, and links to structure the article.">
+              <RichTextEditor value={draft.content} onChange={(content) => setDraft((current) => ({ ...current, content }))} />
+            </AdminField>
 
             <div className="flex flex-wrap justify-between gap-3">
               <AdminButton type="button" tone="secondary" onClick={handleDelete}>
