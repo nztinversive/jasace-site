@@ -1,12 +1,18 @@
 import { notFound } from "next/navigation";
 import { projects, getProjectBySlug } from "@/data/projects";
+import { convexEnabled } from "@/lib/convex-config";
 import ProjectContent from "@/components/ProjectContent";
+import ProjectPageClient from "./ProjectPageClient";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
 
 export default function ProjectPage({ params }: { params: { slug: string } }) {
+  if (convexEnabled) {
+    return <ProjectPageClient slug={params.slug} />;
+  }
+
   const project = getProjectBySlug(params.slug);
   if (!project) notFound();
 

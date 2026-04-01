@@ -49,6 +49,22 @@ function BlogNotFound() {
   );
 }
 
+function BlogLoading() {
+  return (
+    <>
+      <ScrollProgress />
+      <Navbar />
+      <main className="min-h-screen flex items-center justify-center bg-stone-950">
+        <div className="flex items-center gap-3 text-sm text-stone-400">
+          <div className="w-4 h-4 border-2 border-terra/40 border-t-terra rounded-full animate-spin" />
+          Loading article...
+        </div>
+      </main>
+      <Footer />
+    </>
+  );
+}
+
 function BlogPostContent({
   slug,
   post,
@@ -187,7 +203,12 @@ function BlogPostContent({
 function ConvexBlogPostPage({ slug }: { slug: string }) {
   const cmsPost = useQuery(api.blog.getBySlug, { slug }) as RuntimeBlogPost | null | undefined;
   const cmsPosts = useQuery(api.blog.list) as RuntimeBlogPost[] | undefined;
-  const items = cmsPosts ?? posts;
+
+  if (cmsPost === undefined || cmsPosts === undefined) {
+    return <BlogLoading />;
+  }
+
+  const items = cmsPosts.length ? cmsPosts : posts;
   const post = cmsPost ?? getPostBySlug(slug);
 
   return <BlogPostContent slug={slug} post={post} items={items} />;

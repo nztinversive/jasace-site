@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { FormEvent, useState } from "react";
-import { useMutation } from "convex/react";
+import { useMutation, useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
+import { fallbackContent } from "@/lib/cms";
 import { convexEnabled } from "@/lib/convex-config";
+import type { SiteSettings, SocialLink } from "@/types/cms";
 
 const footerLinks = {
   Services: [
@@ -36,6 +38,7 @@ const footerLinks = {
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function FooterContent({
+  settings,
   email,
   onEmailChange,
   onSubmit,
@@ -43,6 +46,7 @@ function FooterContent({
   statusMessage,
   statusTone,
 }: {
+  settings: SiteSettings;
   email: string;
   onEmailChange: (value: string) => void;
   onSubmit: (event: FormEvent<HTMLFormElement>) => void;
@@ -57,12 +61,12 @@ function FooterContent({
           <div className="lg:col-span-5 space-y-6">
             <Link href="/" className="inline-block">
               <span className="font-display text-2xl font-semibold text-stone-50 tracking-tight">
-                <span className="text-terra">J</span>asace
+                <span className="text-terra">{settings.companyName.charAt(0) || "J"}</span>
+                {settings.companyName.slice(1) || "asace"}
               </span>
             </Link>
             <p className="text-sm leading-relaxed max-w-sm">
-              Architecture, construction, and engineering consulting -
-              delivering results since 2015.
+              {settings.footerText}
             </p>
             <div className="pt-2 space-y-3">
               <p className="text-xs font-semibold tracking-[0.15em] uppercase text-stone-500">Stay Updated</p>
@@ -105,17 +109,20 @@ function FooterContent({
         </div>
 
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-stone-600">&copy; {new Date().getFullYear()} Jasace ACE. All rights reserved.</p>
+          <p className="text-xs text-stone-600">&copy; {new Date().getFullYear()} {settings.companyName}. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-stone-600 hover:text-stone-400 transition-colors" aria-label="LinkedIn">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-stone-600 hover:text-stone-400 transition-colors" aria-label="Instagram">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-stone-600 hover:text-stone-400 transition-colors" aria-label="Twitter">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
-            </a>
+            {settings.socialLinks.map((link) => (
+              <a
+                key={`${link.platform}-${link.url}`}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-stone-600 hover:text-stone-400 transition-colors"
+                aria-label={link.platform}
+              >
+                <SocialIcon link={link} />
+              </a>
+            ))}
           </div>
         </div>
       </div>
@@ -123,8 +130,43 @@ function FooterContent({
   );
 }
 
+function SocialIcon({ link }: { link: SocialLink }) {
+  const platform = link.platform.trim().toLowerCase();
+
+  if (platform.includes("linkedin")) {
+    return (
+      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+      </svg>
+    );
+  }
+
+  if (platform.includes("instagram")) {
+    return (
+      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+      </svg>
+    );
+  }
+
+  if (platform.includes("twitter") || platform.includes("x")) {
+    return (
+      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-7.5 3L21 3m0 0h-6.75M21 3v6.75" />
+    </svg>
+  );
+}
+
 function ConvexFooter() {
   const subscribe = useMutation(api.newsletterSubscribers.subscribe);
+  const settings = useQuery(api.siteSettings.list) as SiteSettings[] | undefined;
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
@@ -159,6 +201,7 @@ function ConvexFooter() {
 
   return (
     <FooterContent
+      settings={settings?.[0] ?? fallbackContent.siteSettings}
       email={email}
       onEmailChange={(value) => {
         setEmail(value);
@@ -195,6 +238,7 @@ export default function Footer() {
   if (!convexEnabled) {
     return (
       <FooterContent
+        settings={fallbackContent.siteSettings}
         email={email}
         onEmailChange={(value) => {
           setEmail(value);

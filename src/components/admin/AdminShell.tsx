@@ -38,19 +38,68 @@ export default function AdminShell({ children }: { children: ReactNode }) {
   const isLoginPage = pathname === "/admin/login";
 
   useEffect(() => {
-    const token = getStoredAdminSession();
-    const isAuthed = Boolean(token);
-    setAuthenticated(isAuthed);
-    setSessionChecked(true);
+    let cancelled = false;
 
-    if (!isAuthed && !isLoginPage) {
-      router.replace("/admin/login");
-      return;
-    }
+    const verifySession = async () => {
+      setSessionChecked(false);
 
-    if (isAuthed && isLoginPage) {
-      router.replace("/admin");
-    }
+      const token = getStoredAdminSession();
+      if (!token) {
+        if (cancelled) return;
+        setAuthenticated(false);
+        setSessionChecked(true);
+
+        if (!isLoginPage) {
+          router.replace("/admin/login");
+        }
+        return;
+      }
+
+      try {
+        const response = await fetch("/api/admin/session", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token }),
+        });
+        const result = (await response.json()) as { ok: boolean };
+        const isAuthed = response.ok && result.ok;
+
+        if (!isAuthed) {
+          clearStoredAdminSession();
+        }
+
+        if (cancelled) return;
+
+        setAuthenticated(isAuthed);
+        setSessionChecked(true);
+
+        if (!isAuthed && !isLoginPage) {
+          router.replace("/admin/login");
+          return;
+        }
+
+        if (isAuthed && isLoginPage) {
+          router.replace("/admin");
+        }
+      } catch {
+        clearStoredAdminSession();
+
+        if (cancelled) return;
+
+        setAuthenticated(false);
+        setSessionChecked(true);
+
+        if (!isLoginPage) {
+          router.replace("/admin/login");
+        }
+      }
+    };
+
+    void verifySession();
+
+    return () => {
+      cancelled = true;
+    };
   }, [isLoginPage, pathname, router]);
 
   const activeLabel = useMemo(
