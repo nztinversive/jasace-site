@@ -11,6 +11,7 @@
 import type * as about from "../about.js";
 import type * as blog from "../blog.js";
 import type * as categories from "../categories.js";
+import type * as files from "../files.js";
 import type * as hero from "../hero.js";
 import type * as newsletterSubscribers from "../newsletterSubscribers.js";
 import type * as projects from "../projects.js";
@@ -32,6 +33,7 @@ declare const fullApi: ApiFromModules<{
   about: typeof about;
   blog: typeof blog;
   categories: typeof categories;
+  files: typeof files;
   hero: typeof hero;
   newsletterSubscribers: typeof newsletterSubscribers;
   projects: typeof projects;

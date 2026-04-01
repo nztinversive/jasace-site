@@ -7,6 +7,7 @@ import { fallbackContent, type CmsRecord } from "@/lib/cms";
 import { convexEnabled } from "@/lib/convex-config";
 import type { AboutContent } from "@/types/cms";
 import { ObjectListEditor, StringListEditor } from "@/components/admin/AdminArrayEditors";
+import { ImageUpload } from "@/components/admin/ImageUpload";
 import {
   AdminButton,
   AdminCard,
@@ -102,10 +103,11 @@ export default function AdminAboutPage() {
               />
             </AdminField>
             <div className="lg:col-span-2">
-              <AdminField label="Image URL">
-                <AdminInput
+              <AdminField label="Image">
+                <ImageUpload
                   value={form.image}
-                  onChange={(event) => setForm((current) => ({ ...current, image: event.target.value }))}
+                  onChange={(image) => setForm((current) => ({ ...current, image }))}
+                  previewLabel="About image"
                 />
               </AdminField>
             </div>

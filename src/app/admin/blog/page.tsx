@@ -7,6 +7,7 @@ import { fallbackContent, getRecordKey, sortPosts, type CmsRecord } from "@/lib/
 import { convexEnabled } from "@/lib/convex-config";
 import type { CmsBlogPost } from "@/types/cms";
 import { StringListEditor } from "@/components/admin/AdminArrayEditors";
+import { ImageUpload } from "@/components/admin/ImageUpload";
 import {
   AdminButton,
   AdminCard,
@@ -189,8 +190,12 @@ export default function AdminBlogPage() {
                 <AdminInput value={draft.author} onChange={(event) => setDraft((current) => ({ ...current, author: event.target.value }))} />
               </AdminField>
               <div className="lg:col-span-2">
-                <AdminField label="Image URL">
-                  <AdminInput value={draft.image} onChange={(event) => setDraft((current) => ({ ...current, image: event.target.value }))} />
+                <AdminField label="Image">
+                  <ImageUpload
+                    value={draft.image}
+                    onChange={(image) => setDraft((current) => ({ ...current, image }))}
+                    previewLabel="Blog post image"
+                  />
                 </AdminField>
               </div>
               <div className="lg:col-span-2">

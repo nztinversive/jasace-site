@@ -6,7 +6,8 @@ import { api } from "../../../../convex/_generated/api";
 import { fallbackContent, getRecordKey, sortProjects, type CmsRecord } from "@/lib/cms";
 import { convexEnabled } from "@/lib/convex-config";
 import type { CmsProject } from "@/types/cms";
-import { ObjectListEditor, StringListEditor } from "@/components/admin/AdminArrayEditors";
+import { ImageListEditor, ObjectListEditor } from "@/components/admin/AdminArrayEditors";
+import { ImageUpload } from "@/components/admin/ImageUpload";
 import {
   AdminButton,
   AdminCard,
@@ -214,8 +215,12 @@ export default function AdminProjectsPage() {
                 <AdminInput value={draft.year} onChange={(event) => setDraft((current) => ({ ...current, year: event.target.value }))} />
               </AdminField>
               <div className="lg:col-span-2">
-                <AdminField label="Hero Image URL">
-                  <AdminInput value={draft.heroImage} onChange={(event) => setDraft((current) => ({ ...current, heroImage: event.target.value }))} />
+                <AdminField label="Hero Image">
+                  <ImageUpload
+                    value={draft.heroImage}
+                    onChange={(heroImage) => setDraft((current) => ({ ...current, heroImage }))}
+                    previewLabel="Project hero image"
+                  />
                 </AdminField>
               </div>
               <div className="lg:col-span-2">
@@ -263,11 +268,12 @@ export default function AdminProjectsPage() {
               ]}
             />
 
-            <StringListEditor
-              label="Gallery"
+            <ImageListEditor
+              label="Gallery Images"
               items={draft.gallery}
               onChange={(gallery) => setDraft((current) => ({ ...current, gallery }))}
-              placeholder="Image URL"
+              addLabel="Add Gallery Image"
+              hint="Upload images to Convex or paste external URLs."
             />
 
             <div className="flex flex-wrap justify-between gap-3">

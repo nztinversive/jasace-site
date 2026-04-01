@@ -8,6 +8,7 @@ import { convexEnabled } from "@/lib/convex-config";
 import type { HeroContent } from "@/types/cms";
 import { AdminButton, AdminCard, AdminField, AdminInput, AdminNotice, AdminPage } from "@/components/admin/AdminPrimitives";
 import { useAdminToast } from "@/components/admin/AdminToastProvider";
+import { ImageUpload } from "@/components/admin/ImageUpload";
 import { toOptionalString } from "@/lib/admin/cms";
 
 export default function AdminHeroPage() {
@@ -121,12 +122,13 @@ export default function AdminHeroPage() {
             />
           </AdminField>
           <div className="lg:col-span-2">
-            <AdminField label="Background Image URL">
-              <AdminInput
+            <AdminField label="Background Image">
+              <ImageUpload
                 value={form.backgroundImage}
-                onChange={(event) =>
-                  setForm((current) => ({ ...current, backgroundImage: event.target.value }))
+                onChange={(backgroundImage) =>
+                  setForm((current) => ({ ...current, backgroundImage }))
                 }
+                previewLabel="Hero background"
               />
             </AdminField>
           </div>

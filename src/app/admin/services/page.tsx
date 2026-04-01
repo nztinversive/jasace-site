@@ -7,6 +7,7 @@ import { fallbackContent, getRecordKey, sortServices, type CmsRecord } from "@/l
 import { convexEnabled } from "@/lib/convex-config";
 import type { ServiceContent } from "@/types/cms";
 import { ObjectListEditor, StringListEditor } from "@/components/admin/AdminArrayEditors";
+import { ImageUpload } from "@/components/admin/ImageUpload";
 import {
   AdminButton,
   AdminCard,
@@ -213,8 +214,12 @@ export default function AdminServicesPage() {
               <AdminField label="Order">
                 <AdminInput value={draft.orderInput} onChange={(event) => setDraft((current) => ({ ...current, orderInput: event.target.value }))} />
               </AdminField>
-              <AdminField label="Image URL">
-                <AdminInput value={draft.image} onChange={(event) => setDraft((current) => ({ ...current, image: event.target.value }))} />
+              <AdminField label="Image">
+                <ImageUpload
+                  value={draft.image}
+                  onChange={(image) => setDraft((current) => ({ ...current, image }))}
+                  previewLabel="Service image"
+                />
               </AdminField>
               <div className="lg:col-span-2">
                 <AdminField label="Description">

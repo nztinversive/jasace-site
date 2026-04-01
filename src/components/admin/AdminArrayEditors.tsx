@@ -1,6 +1,7 @@
 "use client";
 
 import { AdminButton, AdminField, AdminInput } from "@/components/admin/AdminPrimitives";
+import { ImageUpload } from "@/components/admin/ImageUpload";
 
 type StringListEditorProps = {
   label: string;
@@ -110,5 +111,56 @@ export function ObjectListEditor<T extends Record<string, string>>({
         </AdminButton>
       </div>
     </div>
+  );
+}
+
+type ImageListEditorProps = {
+  label: string;
+  items: string[];
+  onChange: (items: string[]) => void;
+  hint?: string;
+  addLabel?: string;
+};
+
+export function ImageListEditor({
+  label,
+  items,
+  onChange,
+  hint,
+  addLabel = "Add Image",
+}: ImageListEditorProps) {
+  const updateItem = (index: number, value: string) => {
+    onChange(items.map((item, itemIndex) => (itemIndex === index ? value : item)));
+  };
+
+  const removeItem = (index: number) => {
+    onChange(items.filter((_, itemIndex) => itemIndex !== index));
+  };
+
+  return (
+    <AdminField label={label} hint={hint}>
+      <div className="space-y-4">
+        {items.map((item, index) => (
+          <div
+            key={`${label}-${index}`}
+            className="rounded-2xl border border-stone-800 bg-stone-950/60 p-4"
+          >
+            <ImageUpload
+              value={item}
+              onChange={(value) => updateItem(index, value)}
+              previewLabel={`Gallery image ${index + 1}`}
+            />
+            <div className="mt-4 flex justify-end">
+              <AdminButton type="button" tone="secondary" onClick={() => removeItem(index)}>
+                Remove
+              </AdminButton>
+            </div>
+          </div>
+        ))}
+        <AdminButton type="button" tone="secondary" onClick={() => onChange([...items, ""])}>
+          {addLabel}
+        </AdminButton>
+      </div>
+    </AdminField>
   );
 }

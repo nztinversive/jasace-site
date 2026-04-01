@@ -6,6 +6,7 @@ import { api } from "../../../../convex/_generated/api";
 import { fallbackContent, getRecordKey, type CmsRecord } from "@/lib/cms";
 import { convexEnabled } from "@/lib/convex-config";
 import type { CmsTeamMember } from "@/types/cms";
+import { ImageUpload } from "@/components/admin/ImageUpload";
 import {
   AdminButton,
   AdminCard,
@@ -168,8 +169,12 @@ export default function AdminTeamPage() {
               <AdminField label="Title">
                 <AdminInput value={draft.title} onChange={(event) => setDraft((current) => ({ ...current, title: event.target.value }))} />
               </AdminField>
-              <AdminField label="Image URL">
-                <AdminInput value={draft.image} onChange={(event) => setDraft((current) => ({ ...current, image: event.target.value }))} />
+              <AdminField label="Image">
+                <ImageUpload
+                  value={draft.image}
+                  onChange={(image) => setDraft((current) => ({ ...current, image }))}
+                  previewLabel="Team member image"
+                />
               </AdminField>
               <AdminField label="LinkedIn URL">
                 <AdminInput value={draft.linkedin ?? ""} onChange={(event) => setDraft((current) => ({ ...current, linkedin: event.target.value }))} />
