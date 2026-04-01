@@ -108,7 +108,7 @@ export default function ServicesPage() {
                   <div className="flex gap-6 mt-6">
                     {svc.stats.map((s) => (
                       <div key={s.label}>
-                        <div className="font-display text-2xl font-light text-stone-50">{s.value}</div>
+                        <div className="font-display text-2xl font-bold text-stone-50">{s.value}</div>
                         <div className="text-xs text-stone-500 tracking-wider uppercase">{s.label}</div>
                       </div>
                     ))}

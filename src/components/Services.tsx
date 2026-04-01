@@ -148,7 +148,7 @@ function ServicesSection({ services }: { services: ServiceContent[] }) {
                     <h3 className="font-display text-2xl lg:text-3xl font-medium text-stone-50 tracking-tight">{service.title}</h3>
                   </div>
                   <div className="text-right flex-shrink-0">
-                    <div className="font-display text-2xl font-light text-terra">{service.stat}</div>
+                    <div className="font-display text-2xl font-bold text-terra">{service.stat}</div>
                     <div className="text-[10px] text-stone-500 tracking-wider uppercase">{service.statLabel}</div>
                   </div>
                 </div>

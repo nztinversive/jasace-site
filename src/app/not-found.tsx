@@ -16,7 +16,7 @@ export default function NotFound() {
             4<span className="text-terra/20">0</span>4
           </div>
           <div className="-mt-6 sm:-mt-10 space-y-4">
-            <h1 className="font-display text-3xl sm:text-4xl font-light tracking-tight text-stone-100">
+            <h1 className="font-display text-3xl sm:text-4xl font-bold tracking-tight text-stone-100">
               Page Not <span className="text-gradient font-bold">FOUND</span>
             </h1>
             <p className="text-stone-500 text-sm max-w-md mx-auto leading-relaxed">
